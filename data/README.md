@@ -1,19 +1,17 @@
-# Requirements Corpus
+# Korpus Kebutuhan (Requirements Corpus)
 
-This directory contains the requirements corpus used as evidence for the
-thesis. The corpus is deliberately split into source material and derived
-analysis so that a result can be traced back to the BRD that supplied it.
+Direktori ini berisi korpus kebutuhan (*requirements corpus*) yang digunakan sebagai sumber bukti dalam penelitian tesis. Korpus ini secara sengaja dipisahkan menjadi material sumber dan hasil analisis turunan agar setiap hasil analisis dapat ditelusuri kembali ke dokumen *Business Requirements Document* (BRD) yang menjadi sumbernya.
 
-## Directory roles
+## Peran Direktori
 
-| Path | Role | Editing rule |
+| Path | Peran | Aturan Pengeditan |
 | --- | --- | --- |
-| `raw/` | Source BRDs converted to Markdown and the visual assets referenced by them. | Preserve source wording and structure; only repair broken local asset links or add a source-asset reference. |
-| `requirements text/` | Ten derived, normalised module breakdowns plus a corpus coverage audit used for analysis. | Record interpretations, explicit business rules, acceptance scenarios, and unresolved source conflicts. |
+| `raw/` | Berisi dokumen BRD sumber yang telah dikonversi ke format Markdown beserta aset visual yang dirujuk di dalamnya. | Pertahankan redaksi dan struktur dokumen sumber. Perubahan hanya diperbolehkan untuk memperbaiki tautan aset lokal yang rusak atau menambahkan referensi aset sumber. |
+| `requirements text/` | Berisi sepuluh dokumen hasil penjabaran kebutuhan per modul yang telah dinormalisasi, serta satu dokumen audit cakupan korpus yang digunakan untuk analisis. | Catat hasil interpretasi, aturan bisnis yang dinyatakan secara eksplisit, skenario penerimaan (*acceptance scenarios*), dan konflik antarsumber yang belum terselesaikan. |
 
-## Traceability manifest
+## Manifest Ketertelusuran (Traceability Manifest)
 
-| ID | Derived requirements file | Source BRD | Referenced visual assets |
+| ID | File Kebutuhan Turunan | BRD Sumber | Jumlah Referensi Aset Visual |
 | --- | --- | --- | --- |
 | 01 | `requirements text/01-ec-benefit-reimbursement.md` | `raw/BRD - EC Benefit Reimbursement.md` | 10 |
 | 02 | `requirements text/02-ec-employee-status-change.md` | `raw/BRD - EC Employee Status Change.md` | 18 |
@@ -26,30 +24,38 @@ analysis so that a result can be traced back to the BRD that supplied it.
 | 09 | `requirements text/09-pmgm-goal-management-addendum.md` | `raw/BRD20Goal20-%20Adendum.md` | 0 |
 | 10 | `requirements text/10-ec-personal-data.md` | `raw/BRD - EC Personal Data.md` | 14 |
 
-The count is the number of Markdown image occurrences, not necessarily the
-number of distinct files; a source image may be deliberately shown more than
-once in a BRD. The corpus currently contains 10 source BRDs, 10 derived module
-requirement breakdowns, one coverage audit, and 63 distinct local image assets.
-All source-image references resolve locally.
+Jumlah referensi aset visual menunjukkan banyaknya kemunculan gambar dalam Markdown, bukan selalu jumlah file gambar yang berbeda. Sebuah gambar sumber dapat secara sengaja ditampilkan lebih dari satu kali dalam dokumen BRD.
 
-## Interpretation boundary
+Saat ini, korpus terdiri atas:
 
-The files in `requirements text/` are not replacements for the BRDs. They are
-analysis artefacts: implementation implications and ambiguities remain clearly
-labelled as such. When an experiment needs a ground-truth requirement, cite the
-corresponding `raw/` BRD; when it needs a compact analysis input, cite both the
-breakdown and its source BRD from the table above.
+- **10 dokumen BRD sumber**.
+- **10 dokumen penjabaran kebutuhan turunan** berdasarkan modul.
+- **1 dokumen audit cakupan korpus**.
+- **63 aset gambar lokal yang berbeda**.
 
-## Reproducibility checks
+Seluruh referensi gambar pada dokumen sumber dapat diakses melalui path lokal yang sesuai.
 
-Before using the corpus in an experiment or committing new source material:
+## Batasan Interpretasi (Interpretation Boundary)
 
-1. Ensure every file in `requirements text/` has one `Source:` entry pointing
-   to an existing file in `raw/`.
-2. Resolve every local Markdown image reference from its BRD directory,
-   including percent-encoded paths.
-3. Keep unresolved business conflicts in the derived breakdown rather than
-   silently selecting a value. Current examples include the Goal Management
-   cascade threshold and several module-specific rules marked as source gaps.
-4. Do not use signatures, logos, or diagrams as labelled ground truth unless
-   the relevant experiment explicitly evaluates visual content.
+File dalam direktori `requirements text/` bukan merupakan pengganti dokumen BRD asli.
+
+File-file tersebut merupakan artefak analisis yang berisi hasil interpretasi kebutuhan, termasuk implikasi terhadap implementasi sistem dan ambiguitas yang ditemukan. Setiap interpretasi dan ambiguitas tetap diberi penanda secara jelas agar dapat dibedakan dari pernyataan yang secara eksplisit tercantum dalam dokumen sumber.
+
+Dalam pelaksanaan eksperimen:
+
+- Apabila eksperimen membutuhkan kebutuhan yang dijadikan sebagai **acuan kebenaran (*ground truth*)**, gunakan dokumen BRD asli yang terdapat pada direktori `raw/` sebagai referensi.
+- Apabila eksperimen membutuhkan masukan analisis yang lebih ringkas dan terstruktur, gunakan dokumen penjabaran kebutuhan beserta dokumen BRD sumber yang bersesuaian berdasarkan tabel ketertelusuran di atas.
+
+## Pemeriksaan Reprodusibilitas (Reproducibility Checks)
+
+Sebelum menggunakan korpus dalam eksperimen atau melakukan *commit* terhadap material sumber baru, lakukan pemeriksaan berikut:
+
+1. **Validasi referensi sumber.** Pastikan setiap file dalam direktori `requirements text/` memiliki satu entri `Source:` yang mengarah ke file yang benar-benar tersedia dalam direktori `raw/`.
+
+2. **Validasi referensi gambar.** Pastikan seluruh referensi gambar Markdown lokal dapat ditemukan berdasarkan direktori tempat BRD berada, termasuk path yang menggunakan *percent-encoding*.
+
+3. **Pertahankan konflik kebutuhan yang belum terselesaikan.** Konflik aturan bisnis yang masih ditemukan pada dokumen sumber harus tetap dicatat dalam dokumen penjabaran kebutuhan, bukan diselesaikan secara sepihak dengan memilih suatu nilai tanpa dasar yang jelas. Contoh konflik yang saat ini ditemukan meliputi:
+   - Nilai ambang batas (*threshold*) pada mekanisme *cascade* dalam modul Goal Management.
+   - Beberapa aturan spesifik modul yang ditandai sebagai kesenjangan informasi pada dokumen sumber (*source gaps*).
+
+4. **Batasi penggunaan aset visual sebagai ground truth.** Jangan menggunakan tanda tangan, logo, atau diagram sebagai data acuan berlabel (*labelled ground truth*), kecuali apabila eksperimen yang dilakukan secara eksplisit bertujuan mengevaluasi konten visual.
