@@ -228,6 +228,10 @@ flowchart TD
     Close --> End([End])
 ```
 
+**Proxy Flow (As-Is) — visual source**
+
+![Proxy Flow As-Is](BRD%20-%20EC%20Foundation_assets/proxy-flow-as-is.jpeg)
+
 ## Expected Business Improvement
 
 ### General Expectation
@@ -290,6 +294,10 @@ flowchart TD
     Exit -->|Proxy Expired| Deactivate
     Deactivate --> End
 ```
+
+**Proxy Flow (To-Be) — visual source**
+
+![Proxy Flow To-Be](BRD%20-%20EC%20Foundation_assets/proxy-flow-to-be.jpeg)
 
 ## General Principles
 
@@ -676,5 +684,9 @@ Sistem harus menyediakan mekanisme enkripsi terhadap data yang diklasifikasikan 
 | Business User Expert | Darren Nurachmad |  |  |
 | Business User Expert | Anny Nasution |  |  |
 | Business User Expert | Agung Wahyudiono |  |  |
+
+**Business Analyst signature — visual source**
+
+![Business Analyst Signature](BRD%20-%20EC%20Foundation_assets/business-analyst-signature.jpeg)
 
 *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*

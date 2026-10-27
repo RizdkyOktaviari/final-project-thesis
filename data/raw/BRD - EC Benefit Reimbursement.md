@@ -1,5 +1,7 @@
 # BRD — EC Benefit Reimbursement
 
+![Agincourt Resources](media/agincourt_logo.jpeg)
+
 **IT SYSTEM DEVELOPMENT — BUSINESS REQUIREMENT ASSESSMENT**
 
 **Project:** Mata Air Hub

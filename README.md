@@ -22,3 +22,9 @@ Documentation is stored under:
 
 ```text
 docs/v++/
+```
+
+The requirements corpus used for thesis experiments is documented in
+[`data/README.md`](data/README.md). It separates original BRD material from
+derived requirement breakdowns so that an experiment can be reproduced without
+modifying the source evidence.
