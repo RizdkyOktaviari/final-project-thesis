@@ -1,0 +1,19 @@
+sequenceDiagram
+    title Peninjauan KPI oleh Atasan Langsung
+    actor E as Karyawan
+    actor M as Atasan Langsung
+    participant S as Layanan Goal Management
+    actor OD as Organization Development
+    E->>S: Submit KPI untuk ditinjau
+    S-->>M: Notifikasi KPI bawahan
+    M->>S: Buka dan evaluasi KPI
+    alt KPI sesuai
+        M->>S: Setujui KPI
+        S-->>OD: Kirim untuk review akhir
+    else KPI perlu revisi
+        M->>S: Send Back dengan komentar wajib
+        S->>S: Ubah status Revise Required
+        S-->>E: Notifikasi beserta catatan
+        E->>S: Perbaiki dan submit ulang
+        S-->>M: Kirim kembali untuk review
+    end

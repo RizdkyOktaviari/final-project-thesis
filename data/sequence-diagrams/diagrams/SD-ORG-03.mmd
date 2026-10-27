@@ -1,0 +1,16 @@
+sequenceDiagram
+    title Pencarian Struktur Organisasi
+    actor U as Pengguna
+    participant UI as Bagan Organisasi
+    participant S as Layanan Pencarian
+    participant M as Modul Referensi Pegawai dan Posisi
+    U->>UI: Cari departemen, posisi, nama atau ID pegawai
+    UI->>S: Jalankan pencarian
+    S->>S: Validasi otorisasi dan cakupan data
+    alt Pengguna memiliki izin
+        S->>M: Cari entitas sesuai ruang lingkup akses
+        M-->>S: Data yang boleh ditampilkan
+        S-->>UI: Hasil pencarian terfilter
+    else Tidak berwenang
+        S-->>UI: Akses ditolak
+    end

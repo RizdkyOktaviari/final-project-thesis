@@ -1,0 +1,17 @@
+sequenceDiagram
+    title Pengembalian dan Pengajuan Ulang Data Pribadi
+    actor HR as HR Compensation dan Benefit
+    actor E as Pegawai
+    participant S as Layanan Perubahan Data
+    participant DB as Riwayat Pengajuan
+    participant N as Notifikasi
+    HR->>S: Send Back pengajuan dengan komentar
+    S->>S: Validasi komentar wajib
+    S->>DB: Catat status Sent Back
+    S->>N: Beri tahu pegawai
+    N-->>E: Permintaan perbaikan diterima
+    E->>S: Perbaiki data dan dokumen
+    E->>S: Submit ulang
+    S->>DB: Simpan revisi dan audit
+    S->>S: Mulai kembali persetujuan dari awal
+    S-->>E: Status In Progress

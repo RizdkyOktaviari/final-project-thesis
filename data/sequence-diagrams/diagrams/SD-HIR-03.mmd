@@ -1,0 +1,21 @@
+sequenceDiagram
+    title Revisi atau Penarikan Request to Employ
+    actor A as Pemeriksa RTE
+    actor D as Department Head
+    participant S as Layanan RTE
+    participant N as Notifikasi
+    actor HR as HR Recruitment
+    A->>S: Send Back pengajuan RTE
+    S->>N: Notifikasi permintaan revisi
+    N-->>D: RTE dikembalikan
+    D->>S: Buka dan perbaiki pengajuan
+    alt Submit ulang
+        S->>S: Validasi dokumen RTE dan Position Description
+        S->>S: Kembalikan ke tahap pengiriman dokumen
+        S-->>D: Proses peninjauan dimulai ulang
+    else Withdraw
+        S->>S: Set status Withdrawn dan catat log
+        S->>N: Kirim pemberitahuan penarikan
+        N-->>HR: RTE telah ditarik
+        S-->>D: Proses dihentikan
+    end

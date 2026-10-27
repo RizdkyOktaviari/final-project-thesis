@@ -1,0 +1,17 @@
+sequenceDiagram
+    title Pemeriksaan Awal Promosi dan Transfer
+    actor D as Kepala Departemen
+    participant S as Layanan ESC
+    actor OD as Organization Development
+    actor HR as HR Admin
+    participant W as Workflow Persetujuan
+    D->>S: Kirim ESC jenis Promosi atau Transfer
+    S->>OD: Minta pemeriksaan manning budget dan kelayakan
+    OD->>S: Hasil pemeriksaan awal
+    alt Lolos pemeriksaan OD
+        S->>HR: Minta penentuan jalur persetujuan
+        HR->>W: Konfigurasi tahapan persetujuan
+        W-->>D: Pengajuan memasuki alur utama
+    else Tidak lolos pemeriksaan OD
+        S-->>D: Pengajuan tidak dapat dilanjutkan
+    end

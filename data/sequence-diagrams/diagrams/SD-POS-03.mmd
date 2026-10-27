@@ -1,0 +1,18 @@
+sequenceDiagram
+    title Perubahan Posisi dan Jalur Pelaporan
+    actor OD as OD Admin
+    participant UI as Formulir Posisi
+    participant S as Layanan Posisi
+    participant DB as Riwayat Posisi
+    participant CH as Position dan Organization Chart
+    OD->>UI: Pilih posisi lalu ubah atribut atau Reporting Line
+    UI->>S: Kirim perubahan beserta tanggal berlaku
+    S->>DB: Validasi unit, atasan posisi dan aturan bisnis
+    alt Valid
+        S->>DB: Simpan perubahan dan versi sebelumnya
+        S->>DB: Catat jejak audit
+        S->>CH: Perbarui bagan sesuai tanggal efektif
+        S-->>UI: Perubahan tersimpan
+    else Tidak valid
+        S-->>UI: Tampilkan alasan dan minta perbaikan
+    end

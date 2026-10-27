@@ -1,0 +1,21 @@
+sequenceDiagram
+    title Peninjauan Kinerja oleh Atasan Langsung
+    actor M as Atasan Langsung
+    participant UI as Formulir Penilaian
+    participant S as Layanan PA
+    actor O as One-Up Supervisor
+    actor E as Karyawan
+    M->>UI: Buka penilaian bawahan
+    UI->>S: Ambil penilaian diri tanpa penilaian One-Up
+    S-->>UI: Nilai dan komentar karyawan
+    M->>UI: Isi nilai, komentar, kekuatan dan perbaikan
+    opt Simpan draf
+        UI->>S: Simpan peninjauan sementara
+    end
+    alt Ajukan hasil review dengan alur One-Up
+        UI->>S: Submit hasil peninjauan
+        S-->>O: Kirim tugas One-Up review
+    else Send Back
+        UI->>S: Kembalikan penilaian
+        S-->>E: Notifikasi perbaikan
+    end

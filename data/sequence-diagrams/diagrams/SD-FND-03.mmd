@@ -1,0 +1,20 @@
+sequenceDiagram
+    title Mengaktifkan dan Menggunakan Akses Proxy
+    actor P as Pemegang Proxy
+    participant UI as Antarmuka Proxy
+    participant S as Layanan Akses
+    participant DB as Data Proxy
+    participant N as Notifikasi
+    P->>UI: Buka daftar proxy
+    UI->>S: Minta daftar akses yang disetujui
+    S->>DB: Validasi status dan periode efektif
+    alt Approved dan periode sudah berlaku
+        S->>DB: Tandai proxy aktif
+        S->>N: Notifikasi aktivasi kepada pemohon
+        S-->>UI: Tampilkan Switch User
+        P->>UI: Pilih Switch User
+        UI->>S: Aktifkan konteks pengguna yang diwakili
+        S-->>UI: Terapkan hak akses pengguna yang diwakili
+    else Proxy belum efektif atau tidak berlaku
+        S-->>UI: Switch User tidak tersedia
+    end

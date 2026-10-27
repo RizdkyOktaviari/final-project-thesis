@@ -1,0 +1,21 @@
+sequenceDiagram
+    title Pembatasan Cascade KPI Non-Staff
+    actor M as Atasan
+    participant UI as Fitur Cascade KPI
+    participant S as Layanan Goal
+    participant O as Struktur Organisasi
+    actor E as Bawahan Non-Staff
+    M->>UI: Pilih bawahan Non-Staff
+    UI->>S: Minta cascade KPI
+    S->>O: Periksa jabatan pemberi cascade
+    O-->>S: Informasi jabatan
+    alt Pemberi cascade adalah Supervisor
+        S->>S: Periksa KPI atasan sudah Submitted
+        alt KPI atasan sudah diajukan
+            S-->>E: Kirim KPI cascade
+        else Masih draf
+            S-->>UI: Tolak karena KPI belum diajukan
+        end
+    else Jabatan bukan Supervisor
+        S-->>UI: Tolak cascade kepada Non-Staff
+    end

@@ -1,21 +1,31 @@
 diagram_id,requirement_ids,intentional_inconsistency,type,explanation
 SD-BR-01,REQ-BR-001,0,none,
 SD-BR-02,REQ-BR-006,0,none,
+SD-BR-03,REQ-BR-003,0,none,
 SD-ESC-01,REQ-ESC-001,0,none,
 SD-ESC-02,REQ-ESC-002,0,none,
+SD-ESC-03,REQ-ESC-003,0,none,
 SD-FND-01,REQ-FND-002,0,none,
 SD-FND-02,REQ-FND-003,0,none,
+SD-FND-03,REQ-FND-004,0,none,
 SD-GM-01,REQ-GM-002;REQ-GMA-003,0,none,
 SD-GM-02,REQ-GM-004,0,none,
+SD-GM-03,REQ-GM-005,0,none,
 SD-GMA-01,REQ-GMA-001,0,none,
 SD-GMA-02,REQ-GMA-003,1,addition,Draf hanya boleh disimpan setelah cascade
+SD-GMA-03,REQ-GMA-002,0,none,
 SD-HIR-01,REQ-HIR-001,0,none,
 SD-HIR-02,REQ-HIR-005,0,none,
+SD-HIR-03,REQ-HIR-003,0,none,
 SD-ORG-01,REQ-ORG-001,0,none,
 SD-ORG-02,REQ-ORG-002,0,none,
+SD-ORG-03,REQ-ORG-003,0,none,
 SD-PA-01,REQ-PA-002,0,none,
 SD-PA-02,REQ-PA-010,0,none,
+SD-PA-03,REQ-PA-003,0,none,
 SD-PD-01,REQ-PD-001;REQ-PD-002,0,none,
 SD-PD-02,REQ-PD-003,1,temporal_violation,Data langsung diterapkan setelah disetujui tanpa pemeriksaan tanggal efektif
+SD-PD-03,REQ-PD-004,1,omission,Notifikasi kepada HR saat resubmission tidak dimodelkan
 SD-POS-01,REQ-POS-001,0,none,
 SD-POS-02,REQ-POS-004,1,omission,Pengecekan kandidat aktif dihilangkan
+SD-POS-03,REQ-POS-003,0,none,

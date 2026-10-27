@@ -1,0 +1,18 @@
+sequenceDiagram
+    title Pemeriksaan Kelayakan dan Riwayat Klaim
+    actor P as Pegawai
+    participant UI as Formulir Manfaat
+    participant S as Layanan Validasi Klaim
+    participant EC as Data Tanggungan
+    participant DB as Riwayat Klaim
+    P->>UI: Ajukan bantuan pendidikan
+    UI->>S: Periksa kelayakan
+    S->>EC: Ambil usia dan relasi tanggungan
+    EC-->>S: Informasi tanggungan
+    S->>DB: Periksa periode, duplikasi, frekuensi, dan plafon
+    DB-->>S: Riwayat dan sisa plafon
+    alt Syarat usia, frekuensi dan plafon terpenuhi
+        S-->>UI: Pengajuan dapat dilanjutkan
+    else Usia melebihi 23 tahun atau klaim tidak memenuhi aturan
+        S-->>UI: Tolak dengan alasan validasi
+    end

@@ -18,6 +18,15 @@
     "inconsistency": null
   },
   {
+    "diagram_id": "SD-BR-03",
+    "requirement_ids": [
+      "REQ-BR-003"
+    ],
+    "diagram_file": "diagrams/SD-BR-03.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
     "diagram_id": "SD-ESC-01",
     "requirement_ids": [
       "REQ-ESC-001"
@@ -36,6 +45,15 @@
     "inconsistency": null
   },
   {
+    "diagram_id": "SD-ESC-03",
+    "requirement_ids": [
+      "REQ-ESC-003"
+    ],
+    "diagram_file": "diagrams/SD-ESC-03.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
     "diagram_id": "SD-FND-01",
     "requirement_ids": [
       "REQ-FND-002"
@@ -50,6 +68,15 @@
       "REQ-FND-003"
     ],
     "diagram_file": "diagrams/SD-FND-02.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
+    "diagram_id": "SD-FND-03",
+    "requirement_ids": [
+      "REQ-FND-004"
+    ],
+    "diagram_file": "diagrams/SD-FND-03.mmd",
     "has_injected_inconsistency": false,
     "inconsistency": null
   },
@@ -73,6 +100,15 @@
     "inconsistency": null
   },
   {
+    "diagram_id": "SD-GM-03",
+    "requirement_ids": [
+      "REQ-GM-005"
+    ],
+    "diagram_file": "diagrams/SD-GM-03.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
     "diagram_id": "SD-GMA-01",
     "requirement_ids": [
       "REQ-GMA-001"
@@ -91,6 +127,15 @@
     "inconsistency": "Draf hanya boleh disimpan setelah cascade"
   },
   {
+    "diagram_id": "SD-GMA-03",
+    "requirement_ids": [
+      "REQ-GMA-002"
+    ],
+    "diagram_file": "diagrams/SD-GMA-03.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
     "diagram_id": "SD-HIR-01",
     "requirement_ids": [
       "REQ-HIR-001"
@@ -105,6 +150,15 @@
       "REQ-HIR-005"
     ],
     "diagram_file": "diagrams/SD-HIR-02.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
+    "diagram_id": "SD-HIR-03",
+    "requirement_ids": [
+      "REQ-HIR-003"
+    ],
+    "diagram_file": "diagrams/SD-HIR-03.mmd",
     "has_injected_inconsistency": false,
     "inconsistency": null
   },
@@ -127,6 +181,15 @@
     "inconsistency": null
   },
   {
+    "diagram_id": "SD-ORG-03",
+    "requirement_ids": [
+      "REQ-ORG-003"
+    ],
+    "diagram_file": "diagrams/SD-ORG-03.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
     "diagram_id": "SD-PA-01",
     "requirement_ids": [
       "REQ-PA-002"
@@ -141,6 +204,15 @@
       "REQ-PA-010"
     ],
     "diagram_file": "diagrams/SD-PA-02.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
+  },
+  {
+    "diagram_id": "SD-PA-03",
+    "requirement_ids": [
+      "REQ-PA-003"
+    ],
+    "diagram_file": "diagrams/SD-PA-03.mmd",
     "has_injected_inconsistency": false,
     "inconsistency": null
   },
@@ -164,6 +236,15 @@
     "inconsistency": "Data langsung diterapkan setelah disetujui tanpa pemeriksaan tanggal efektif"
   },
   {
+    "diagram_id": "SD-PD-03",
+    "requirement_ids": [
+      "REQ-PD-004"
+    ],
+    "diagram_file": "diagrams/SD-PD-03.mmd",
+    "has_injected_inconsistency": true,
+    "inconsistency": "Notifikasi kepada HR saat resubmission tidak dimodelkan"
+  },
+  {
     "diagram_id": "SD-POS-01",
     "requirement_ids": [
       "REQ-POS-001"
@@ -180,5 +261,14 @@
     "diagram_file": "diagrams/SD-POS-02.mmd",
     "has_injected_inconsistency": true,
     "inconsistency": "Pengecekan kandidat aktif dihilangkan"
+  },
+  {
+    "diagram_id": "SD-POS-03",
+    "requirement_ids": [
+      "REQ-POS-003"
+    ],
+    "diagram_file": "diagrams/SD-POS-03.mmd",
+    "has_injected_inconsistency": false,
+    "inconsistency": null
   }
 ]
