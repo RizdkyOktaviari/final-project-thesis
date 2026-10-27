@@ -8,6 +8,11 @@ Direktori ini berisi korpus kebutuhan (*requirements corpus*) yang digunakan seb
 | --- | --- | --- |
 | `raw/` | Berisi salinan BRD yang telah dianonimkan ke format Markdown; aset visual sumber tidak disertakan dalam versi publik. | Pertahankan fungsi bisnis dan ketertelusuran, tetapi jangan mempublikasikan nama asli, informasi pribadi, aset identitas, atau dokumen mentah. |
 | `requirements text/` | Berisi sepuluh dokumen hasil penjabaran kebutuhan per modul yang telah dinormalisasi, serta satu dokumen audit cakupan korpus yang digunakan untuk analisis. | Catat hasil interpretasi, aturan bisnis yang dinyatakan secara eksplisit, skenario penerimaan (*acceptance scenarios*), dan konflik antarsumber yang belum terselesaikan. |
+| `architecture/` | Rancangan arsitektur sistem pemeriksaan konsistensi berdasarkan draf tesis dan diagram paper rujukan. | Pertahankan keterkaitan dengan sumber dan bedakan metode usulan dari hasil eksperimen. |
+
+## Arsitektur sistem penelitian
+
+[Arsitektur Structure-Aware Hybrid Consistency Checking](architecture/README.md) memuat diagram Mermaid utama, rincian validasi dua arah, alur evaluasi, dan pemetaan komponen ke draf tesis serta paper rujukan. Diagram sumber tersedia sebagai berkas `.mmd` dan ditampilkan pada README agar dapat dibaca langsung di GitHub.
 
 ## Manifest Ketertelusuran (Traceability Manifest)
 
@@ -62,3 +67,4 @@ Sebelum menggunakan korpus dalam eksperimen atau melakukan *commit* terhadap mat
 ## Ketentuan anonimisasi
 
 Salinan publik mengubah identitas organisasi, nama proyek, merek sistem yang dapat mengungkap sumber, dan nama orang menjadi label netral. Label pengganti tidak membuktikan bahwa materi bebas dari informasi sensitif secara kontekstual. Aset visual asli dikeluarkan dari pohon berkas terbaru; rujukan gambar diberi penanda. Untuk eksperimen berbasis diagram, buat ilustrasi sintetis atau diagram yang telah ditinjau anonimisasi secara terpisah. Riwayat Git sebelumnya masih dapat memuat identitas dan aset asli; mengubah berkas pada `main` tidak menghapus riwayat tersebut. Periksa juga hak penggunaan BRD dan catatan persetujuan pemilik data.
+

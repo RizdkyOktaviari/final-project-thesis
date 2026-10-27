@@ -1,0 +1,37 @@
+flowchart TB
+    I["IR, mapping, scope, dan aturan"]
+    G{"Bukti dan prasyarat memadai?"}
+    S["Spesifikasi ke desain"]
+    D["Desain ke spesifikasi"]
+    SC["Cek realisasi perilaku yang diwajibkan"]
+    DC["Cek dukungan perilaku dan refinement"]
+    E["Evaluasi tujuh kategori konsistensi"]
+    J{"Hasil setiap aturan"}
+    F["violation: temuan dengan bukti"]
+    N["no_violation_found: cakupan tanpa temuan"]
+    U["needs_review: alasan ketidakpastian"]
+    O["Gabungkan hasil dan cakupan pemeriksaan"]
+
+    I --> G
+    G -->|Ya| S
+    G -->|Ya| D
+    G -->|Tidak| U
+    S --> SC
+    D --> DC
+    SC --> E
+    DC --> E
+    I -.->|Struktur dan relasi sumber| E
+    E --> J
+    J -->|Pelanggaran ditemukan| F
+    J -->|Tidak ditemukan pada cakupan| N
+    J -->|Belum dapat diputuskan| U
+    F --> O
+    N --> O
+    U --> O
+
+    classDef process fill:#eff6ff,stroke:#2563eb,color:#172554
+    classDef validation fill:#f0fdfa,stroke:#0f766e,color:#134e4a
+    classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
+    class S,D,SC,DC process
+    class I,G,E,J,F,N,O validation
+    class U review

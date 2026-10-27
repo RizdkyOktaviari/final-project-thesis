@@ -1,0 +1,41 @@
+flowchart TB
+    A["Pasangan kebutuhan dan diagram"]
+    B["Tetapkan scope dan kelompok asal kasus"]
+    C["Pisahkan data pengembangan dan data uji"]
+    DEV["Pengembangan prompt dan aturan"]
+    TEST["Input uji tanpa label kesalahan"]
+    CFG["Model, prompt, dan aturan dibekukan"]
+    H["Baseline holistic LLM"]
+    NR["LLM terstruktur tanpa rule validation"]
+    HY["Metode hibrida lengkap"]
+    P["Prediksi tiap metode dan tiap run"]
+    GOLD["Gold standard hasil review pakar"]
+    E["Evaluasi issue dengan pasangan satu ke satu"]
+    M["Precision, recall, F1, dan hasil per kategori"]
+    COV["Coverage, needs_review, dan variasi antarrun"]
+
+    A --> B
+    B --> C
+    C -->|Pengembangan| DEV
+    C -->|Uji| TEST
+    DEV --> CFG
+    CFG --> H
+    CFG --> NR
+    CFG --> HY
+    TEST --> H
+    TEST --> NR
+    TEST --> HY
+    H --> P
+    NR --> P
+    HY --> P
+    P --> E
+    GOLD -->|Hanya untuk evaluator| E
+    E --> M
+    E --> COV
+
+    classDef input fill:#f8fafc,stroke:#475569,color:#0f172a
+    classDef method fill:#eff6ff,stroke:#2563eb,color:#172554
+    classDef evaluation fill:#f0fdfa,stroke:#0f766e,color:#134e4a
+    class A,B,C,DEV,TEST,CFG input
+    class H,NR,HY,P method
+    class GOLD,E,M,COV evaluation

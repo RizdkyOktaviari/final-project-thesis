@@ -1,0 +1,53 @@
+flowchart TB
+    R["Use Case Specification atau FR"]
+    D["Sequence diagram tekstual"]
+
+    subgraph REP["1. Representasi"]
+        EX["Ekstraksi dan dekomposisi dengan LLM"]
+        PA["Parsing pesan dan konteks fragment"]
+        RI["IR spesifikasi dan bukti sumber"]
+        DI["IR diagram dan bukti sumber"]
+        V["Validasi IR dan cakupan skenario"]
+        EX --> RI
+        PA --> DI
+        RI --> V
+        DI --> V
+    end
+
+    subgraph ALIGN["2. Pemetaan"]
+        L["Semantic alignment dengan LLM"]
+        T["Traceability dua arah dan ketidakpastian"]
+        L --> T
+    end
+
+    subgraph CHECK["3. Pemeriksaan"]
+        C["Deterministic consistency checker"]
+        O["Laporan temuan, bukti, dan cakupan"]
+        C --> O
+    end
+
+    K["Aturan konsistensi dan kontrak abstraksi"]
+    Q["Kasus yang perlu review"]
+
+    R --> EX
+    D --> PA
+    V -->|Elemen valid beserta konteks| L
+    V -->|Tidak lengkap atau tidak didukung| Q
+    T -->|Pemetaan memenuhi prasyarat| C
+    T -->|Pemetaan belum pasti| Q
+    RI -.->|IR spesifikasi valid| C
+    DI -.->|IR diagram valid| C
+    K --> C
+    Q --> O
+
+    classDef input fill:#f8fafc,stroke:#475569,color:#0f172a
+    classDef semantic fill:#eff6ff,stroke:#2563eb,color:#172554
+    classDef validation fill:#f0fdfa,stroke:#0f766e,color:#134e4a
+    classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
+    class R,D,RI,DI,K input
+    class EX,L,T semantic
+    class PA,V,C,O validation
+    class Q review
+    style REP fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
+    style ALIGN fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
+    style CHECK fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
