@@ -1,65 +1,65 @@
-# Requirements Breakdown: EC Personal Data
+# Penjabaran Kebutuhan: EC Data Pribadi (Personal Data)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD - EC Personal Data.md`
-- Roles: Employee/Requestor and HR Compensation & Benefit.
-- Model: requested personal-data changes follow a request, review, approval, history, and integration lifecycle rather than direct employee mutation.
+- Peran: Karyawan/Pemohon (Employee/Requestor) dan HR Compensation & Benefit.
+- Model: perubahan data pribadi yang dimohonkan mengikuti siklus pengajuan, peninjauan, persetujuan, pencatatan riwayat, dan integrasi, bukan perubahan langsung oleh karyawan.
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-1. Enable employees to request updates across the listed Personal Data sections, including personal/biographical data, address, contact, National ID, emergency contact, dependents, payment, position/organisation, job/employment/time data, documents, compensation, education, career background, and memberships/volunteering.
-2. Use a section-specific Personal Data form, validate mandatory fields and supporting evidence, and allow only one `In Progress` request for the same Personal Data section and employee.
-3. Let HR Compensation & Benefit review all requested changes and evidence, approve with optional comment, or send back with mandatory comment. Employees may edit sent-back requests, resubmit, or withdraw a sent-back request.
-4. On approval, apply the change, complete workflow, record change history, and trigger downstream update only after final approval.
-5. Support attachments tied to the request and subject to company policy, with examples such as marriage-book/family-card evidence for marital-status change and family-card evidence for child-data change.
-6. Provide request status, employee history, HR history, and activity log covering submit, approve, edit, send back, resubmit, withdraw, data change, and review comments.
-7. Send HR submission, resubmission, withdrawal, and reminder notifications; send employees send-back and completed notifications.
+1. Memungkinkan karyawan mengajukan pembaruan pada bagian Data Pribadi yang tercantum, meliputi data pribadi/biografis, alamat, kontak, identitas nasional (National ID), kontak darurat, tanggungan, pembayaran, posisi/organisasi, data pekerjaan/kepegawaian/waktu kerja, dokumen, kompensasi, pendidikan, latar belakang karier, serta keanggotaan/kegiatan sukarela.
+2. Menggunakan formulir Data Pribadi yang khusus untuk setiap bagian, memvalidasi kolom wajib dan bukti pendukung, serta hanya mengizinkan satu permohonan berstatus `In Progress` untuk bagian Data Pribadi dan karyawan yang sama.
+3. Memungkinkan HR Compensation & Benefit meninjau seluruh perubahan yang dimohonkan beserta buktinya, menyetujui dengan komentar opsional, atau mengembalikan dengan komentar wajib. Karyawan dapat mengedit permohonan yang dikembalikan, mengajukannya kembali, atau menarik kembali permohonan tersebut.
+4. Setelah persetujuan, menerapkan perubahan, menyelesaikan alur kerja, mencatat riwayat perubahan, dan memicu pembaruan pada modul lanjutan hanya setelah persetujuan akhir.
+5. Mendukung lampiran yang terikat pada permohonan dan mengikuti kebijakan perusahaan, misalnya bukti buku nikah/kartu keluarga untuk perubahan status perkawinan dan bukti kartu keluarga untuk perubahan data anak.
+6. Menyediakan status permohonan, riwayat karyawan, riwayat HR, serta log aktivitas yang mencakup pengajuan, persetujuan, pengeditan, pengembalian, pengajuan ulang, penarikan kembali, perubahan data, dan komentar peninjauan.
+7. Mengirimkan notifikasi pengajuan, pengajuan ulang, penarikan kembali, dan pengingat kepada HR; serta notifikasi pengembalian dan penyelesaian kepada karyawan.
 
-**Functional input, output, and field constraints**
+**Masukan, keluaran, dan batasan kolom fungsional**
 
-- Personal Information has effective date, names, auto-filled full name, salutation, religion, gender, marital status, nationality/locale, and optional family-card evidence.
-- Address is home address with geographic values, postal code, and primary flag. Contact supports personal/work phone and email types.
-- National ID supports KTP and Passport, country, ID number, attachment, and primary flag.
-- Emergency Contacts allow multiple entries up to two. Dependents require effective date, name, relationship, date of birth, and may have attachments; only HR can set dependent eligibility during review.
-- Payment Information contains effective start/end dates and Payroll/Insurance bank/account information. The BRD says bank-account change may be submitted only once per year.
-- Job, organisation, time, and job-relationship information are listed as non-editable in the field catalogue despite appearing in the wider requestable-section list. Treat the field-level editability table as the more specific rule unless business confirms otherwise.
+- Informasi Pribadi mencakup tanggal berlaku, nama, nama lengkap yang diisi otomatis, sapaan, agama, jenis kelamin, status perkawinan, kewarganegaraan/pengaturan lokal (locale), dan bukti kartu keluarga yang opsional.
+- Alamat berupa alamat rumah dengan data geografis, kode pos, dan penanda utama. Kontak mendukung jenis nomor telepon dan email pribadi/kantor.
+- Identitas Nasional mendukung KTP dan Paspor, negara, nomor identitas, lampiran, serta penanda utama.
+- Kontak Darurat dapat berisi beberapa entri dengan jumlah maksimal dua. Tanggungan memerlukan tanggal berlaku, nama, hubungan, tanggal lahir, dan dapat memiliki lampiran; hanya HR yang dapat menetapkan kelayakan tanggungan saat peninjauan.
+- Informasi Pembayaran memuat tanggal mulai/akhir berlaku serta informasi bank/rekening untuk Penggajian/Asuransi. BRD menyatakan bahwa perubahan rekening bank hanya dapat diajukan sekali per tahun.
+- Informasi pekerjaan, organisasi, waktu kerja, dan hubungan pekerjaan tercantum sebagai tidak dapat diedit dalam katalog kolom, meskipun muncul dalam daftar bagian yang dapat diajukan secara lebih luas. Gunakan tabel izin pengeditan pada tingkat kolom sebagai aturan yang lebih spesifik, kecuali pihak bisnis mengonfirmasi ketentuan lain.
 
-**Additional functional behavior**
+**Perilaku fungsional tambahan**
 
-- National ID is repeatable; KTP is mandatory, and Passport is also supported. A record includes country, ID number, optional attachment, and primary flag. The source notes that an expatriate may enter a passport number in the KTP section, which requires a business decision before implementation.
-- Dependents are limited to three, while Emergency Contacts are limited to two. Dependents support person relationship, personal/biographical, National ID, address, and multiple attachments; a dependent's eligibility remains HR-only. A dependent attachment is not the same as an employee attachment.
-- Payment Information permits more than one account. Insurance defaults to the Payroll account; its field set includes insurance type/classification in addition to bank/payment data. The effective end date is system-disabled.
-- Editable employee-maintained field groups include personal/biographical data, home address, phone, National ID, emergency contact, dependent, personal document, and the specified compensation amount. Contact email, position, organisation, job details, time information, job relationships, and Pay Targets are marked read-only in the detailed catalogue.
-- Personal-document fields include country/region, type, title, number, issue date/place/authority, expiry date, and attachment. Education, honours/awards, internal work experience, previous employment, courses, certifications, professional memberships, and volunteer involvement are source-listed request sections; their detailed field catalogues are retained in the BRD.
+- Identitas Nasional dapat memiliki beberapa entri; KTP wajib diisi dan Paspor juga didukung. Satu entri mencakup negara, nomor identitas, lampiran opsional, dan penanda utama. Sumber menyebutkan bahwa ekspatriat dapat memasukkan nomor paspor pada bagian KTP, yang memerlukan keputusan bisnis sebelum implementasi.
+- Tanggungan dibatasi maksimal tiga, sedangkan Kontak Darurat dibatasi maksimal dua. Data tanggungan mendukung hubungan antarorang, data pribadi/biografis, Identitas Nasional, alamat, dan beberapa lampiran; kelayakan tanggungan tetap hanya dapat ditetapkan oleh HR. Lampiran tanggungan berbeda dari lampiran karyawan.
+- Informasi Pembayaran mengizinkan lebih dari satu rekening. Rekening Asuransi secara bawaan mengikuti rekening Penggajian; kumpulan kolomnya mencakup jenis/klasifikasi asuransi selain data bank/pembayaran. Kolom tanggal akhir berlaku dinonaktifkan oleh sistem.
+- Kelompok kolom yang dapat dikelola dan diedit karyawan mencakup data pribadi/biografis, alamat rumah, telepon, Identitas Nasional, kontak darurat, tanggungan, dokumen pribadi, dan jumlah kompensasi yang ditentukan. Email kontak, posisi, organisasi, detail pekerjaan, informasi waktu kerja, hubungan pekerjaan, dan Target Pembayaran (Pay Targets) ditandai sebagai hanya baca dalam katalog terperinci.
+- Kolom dokumen pribadi mencakup negara/wilayah, jenis, judul, nomor, tanggal/tempat/otoritas penerbitan, tanggal kedaluwarsa, dan lampiran. Pendidikan, tanda kehormatan/penghargaan, pengalaman kerja internal, pekerjaan sebelumnya, kursus, sertifikasi, keanggotaan profesi, dan keterlibatan dalam kegiatan sukarela merupakan bagian permohonan yang tercantum dalam sumber; katalog kolom terperincinya tetap tersedia dalam BRD.
 
-**Behavioral rules and preconditions**
+**Aturan perilaku dan prasyarat**
 
-- Mandatory fields must be complete before submit. File size cannot exceed the configured limit.
-- Send back requires a comment. Withdraw is permitted only for `Sent Back`; a withdrawn request cannot be processed again.
-- A bank-account change may be submitted once per year.
-- HR can mark a dependent `Eligible` or `Not Eligible` during review/approval.
-- A request only updates official data after approval and the stated Effective Date. HR administrators with authority may also submit permitted changes; this does not override the employee-owned request rule for normal self-service.
-- After approval, integration can update Organisation Structure, Position Management, Payroll & Compensation, and Benefit Reimbursement, depending on the change type.
+- Kolom wajib harus lengkap sebelum pengajuan. Ukuran file tidak boleh melebihi batas yang dikonfigurasi.
+- Pengembalian memerlukan komentar. Penarikan kembali hanya diperbolehkan untuk status `Sent Back`; permohonan yang telah ditarik kembali tidak dapat diproses lagi.
+- Perubahan rekening bank dapat diajukan sekali per tahun.
+- HR dapat menandai tanggungan sebagai `Eligible` atau `Not Eligible` saat peninjauan/persetujuan.
+- Permohonan hanya memperbarui data resmi setelah persetujuan dan tanggal berlaku (Effective Date) yang ditetapkan. Administrator HR yang berwenang juga dapat mengajukan perubahan yang diizinkan; hal ini tidak mengesampingkan aturan kepemilikan permohonan oleh karyawan dalam layanan mandiri biasa.
+- Setelah persetujuan, integrasi dapat memperbarui Struktur Organisasi, Pengelolaan Posisi, Penggajian & Kompensasi, serta Penggantian Biaya Tunjangan (Benefit Reimbursement), bergantung pada jenis perubahan.
 
-**Access, audit, and confidentiality behavior**
+**Perilaku akses, audit, dan kerahasiaan**
 
-- National ID, date of birth, address, personal contact, emergency contact, payment, dependent, grading, and basic salary are confidential. Apply RBAC and deny unauthorised reading or change.
-- Employee sees only own personal data, requests, and history. HR Compensation & Benefit sees the requests/evidence within its responsibility.
-- Supporting documents remain confidential and request-bound. Employees cannot change or delete stored evidence after the request enters approval except through the supplied change mechanism.
-- Audit trail is read-only and includes user, role, activity, time, and request ID. Change history includes section, changed field, prior value, new value, actor, time, and request ID.
-- Personal Data history migration covers 2021 through the latest available records. Employee termination, payroll execution, recruitment, performance evaluation, organisation/position management, and ESC are outside this module even where approved data is consumed by them.
+- Identitas Nasional, tanggal lahir, alamat, kontak pribadi, kontak darurat, pembayaran, tanggungan, penggolongan (grading), dan gaji pokok bersifat rahasia. Terapkan RBAC dan tolak pembacaan atau perubahan tanpa kewenangan.
+- Karyawan hanya melihat data pribadi, permohonan, dan riwayatnya sendiri. HR Compensation & Benefit melihat permohonan/bukti yang berada dalam lingkup tanggung jawabnya.
+- Dokumen pendukung tetap bersifat rahasia dan terikat pada permohonan. Karyawan tidak dapat mengubah atau menghapus bukti yang tersimpan setelah permohonan memasuki proses persetujuan, kecuali melalui mekanisme perubahan yang disediakan.
+- Jejak audit bersifat hanya baca dan mencakup pengguna, peran, aktivitas, waktu, dan ID permohonan. Riwayat perubahan mencakup bagian, kolom yang berubah, nilai sebelumnya, nilai baru, pelaku, waktu, dan ID permohonan.
+- Migrasi riwayat Data Pribadi mencakup tahun 2021 hingga catatan terbaru yang tersedia. Pemutusan hubungan kerja, pelaksanaan penggajian, rekrutmen, evaluasi kinerja, pengelolaan organisasi/posisi, dan ESC berada di luar modul ini, meskipun menggunakan data yang telah disetujui dari modul ini.
 
-**Use-case scenarios**
+**Skenario kasus penggunaan**
 
-1. An employee submits a valid address change. A second in-progress address request is blocked, while a different eligible section may be requested.
-2. HR sends back without comment and is blocked; after comment, the employee corrects and resubmits.
-3. A sent-back request can be withdrawn and becomes non-processable.
-4. An unauthorised user cannot view National ID, payment data, or the attached evidence.
-5. An approved relevant change updates the appropriate downstream module only after workflow completion.
+1. Karyawan mengajukan perubahan alamat yang valid. Permohonan alamat kedua yang masih dalam proses diblokir, sedangkan permohonan untuk bagian lain yang memenuhi syarat tetap dapat diajukan.
+2. HR mencoba mengembalikan permohonan tanpa komentar dan tindakan tersebut diblokir; setelah komentar diberikan, karyawan memperbaiki dan mengajukan ulang permohonan.
+3. Permohonan yang dikembalikan dapat ditarik kembali dan menjadi tidak dapat diproses.
+4. Pengguna yang tidak berwenang tidak dapat melihat Identitas Nasional, data pembayaran, atau bukti terlampir.
+5. Perubahan relevan yang telah disetujui memperbarui modul lanjutan yang sesuai hanya setelah alur kerja selesai.
 
-## Source ambiguities outside the executable requirement set
+## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
 
-- Confirm which listed sections employees may genuinely edit where the detailed field table marks the fields read-only.
-- Confirm allowed file formats and configured size limits.
-- Confirm whether the one-per-year payment rule applies to all account changes or a specified payment subtype.
+- Konfirmasikan bagian mana dalam daftar yang memang dapat diedit oleh karyawan ketika tabel kolom terperinci menandai kolom tersebut sebagai hanya baca.
+- Konfirmasikan format file yang diizinkan dan batas ukuran yang dikonfigurasi.
+- Konfirmasikan apakah aturan pembayaran sekali per tahun berlaku untuk seluruh perubahan rekening atau hanya subjenis pembayaran tertentu.

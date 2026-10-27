@@ -1,47 +1,47 @@
-# Requirements Breakdown: PMGM Goal Management
+# Penjabaran Kebutuhan: PMGM Pengelolaan Sasaran (Goal Management)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD_PMGM_Goal_Management.md`
-- Roles: OD Section, employee, Direct Supervisor, upper managers/One-Up Supervisor, and Department Head/leadership for reminder escalation.
+- Peran: OD Section, karyawan, Direct Supervisor, manajer di tingkat atas/One-Up Supervisor, dan Department Head/pimpinan untuk eskalasi pengingat.
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-1. Let OD create KPI periods with start and due dates, choose exempt employees, open/reopen the period, and configure notifications.
-2. Provide two automatically selected KPI forms, one for Staff and one for Non-Staff. While the period is open, employees create, edit, delete, save, and submit their KPIs; after closure they may only create or amend linked activities.
-3. Validate a maximum of 10 KPI items, 100% total weight, Staff per-item weights of 5-25%, Non-Staff per-item weights of 5-30%, and Learning & Growth total no greater than 15%.
-4. Support KPI cascade by eligible managers to direct subordinates. Validate required cascade weight before submit, then send submitted KPI to Direct Supervisor review.
-5. Let Direct Supervisor approve or request revision with mandatory notes. Let OD perform final approval or revision. A revision returns the KPI to the employee, then through Direct Supervisor again before OD.
-6. Lock completed KPI even if the period remains open. Provide appropriate in-app and email notifications, reminder escalation, and configurable format/duration/recipients/content.
-7. Enforce visibility: employees manage their own KPIs; supervisors/managers see authorised subordinate KPIs based on organisation hierarchy; OD sees all employees, statuses, review history, and revision history.
-8. Store KPI changes, approval, revisions, and review notes in audit trail. Export own/subordinate KPI in PDF and department KPI data in Excel for OD.
-9. Support Mid-Year revision, including OD status override and reopening. For a position/department change during a KPI period, reset the KPI to draft so it can be reauthored for the new role.
-10. Allow OD to configure KPI business rules, participant inclusion/exclusion, notification settings, and whether a cascaded KPI is mandatory. A mandatory cascaded KPI cannot be edited or deleted by the subordinate.
+1. Memungkinkan OD membuat periode KPI dengan tanggal mulai dan tenggat, memilih karyawan yang dikecualikan, membuka/membuka kembali periode, dan mengonfigurasi notifikasi.
+2. Menyediakan dua formulir KPI yang dipilih secara otomatis, satu untuk Staff dan satu untuk Non-Staff. Selama periode terbuka, karyawan dapat membuat, mengubah, menghapus, menyimpan, dan mengajukan KPI mereka; setelah periode ditutup, mereka hanya dapat membuat atau mengubah aktivitas yang terkait.
+3. Memvalidasi jumlah maksimal 10 butir KPI, total bobot 100%, bobot per butir sebesar 5-25% untuk Staff dan 5-30% untuk Non-Staff, serta total bobot Learning & Growth yang tidak melebihi 15%.
+4. Mendukung penurunan KPI (cascade) oleh manajer yang memenuhi syarat kepada bawahan langsung. Memvalidasi bobot KPI turunan yang diwajibkan sebelum pengajuan, lalu mengirimkan KPI yang diajukan untuk ditinjau oleh Direct Supervisor.
+5. Memungkinkan Direct Supervisor menyetujui atau meminta revisi dengan catatan wajib. Memungkinkan OD memberikan persetujuan akhir atau meminta revisi. Revisi mengembalikan KPI kepada karyawan, lalu melalui Direct Supervisor kembali sebelum sampai ke OD.
+6. Mengunci KPI yang telah selesai meskipun periode masih terbuka. Menyediakan notifikasi dalam aplikasi dan email yang sesuai, eskalasi pengingat, serta format/durasi/penerima/isi yang dapat dikonfigurasi.
+7. Menerapkan batasan visibilitas: karyawan mengelola KPI mereka sendiri; atasan/manajer melihat KPI bawahan yang diizinkan berdasarkan hierarki organisasi; OD melihat seluruh karyawan, status, riwayat peninjauan, dan riwayat revisi.
+8. Menyimpan perubahan KPI, persetujuan, revisi, dan catatan peninjauan dalam jejak audit. Mengekspor KPI milik sendiri/bawahan ke PDF dan data KPI departemen ke Excel untuk OD.
+9. Mendukung revisi pertengahan tahun (Mid-Year), termasuk penggantian status oleh OD dan pembukaan kembali. Jika terjadi perubahan posisi/departemen selama periode KPI, mengembalikan KPI ke draf agar dapat disusun ulang untuk peran baru.
+10. Memungkinkan OD mengonfigurasi aturan bisnis KPI, penyertaan/pengecualian peserta, pengaturan notifikasi, dan apakah KPI turunan bersifat wajib. Bawahan tidak dapat mengubah atau menghapus KPI turunan yang wajib.
 
-**Behavioral rules and preconditions**
+**Aturan perilaku dan prasyarat**
 
-- Staff use Finance, Stakeholder, Internal Process, and Learning & Growth perspectives. Not all perspectives must be used if they do not fit the work.
-- The lowest role permitted to cascade is Supervisor. Staff Direct Supervisor cannot skip levels in cascade; non-staff cascade is performed by Supervisor.
-- A manager must complete and submit their own KPI before cascading to subordinates. Employees may create and save draft without receiving cascade, but cannot submit before required cascade validation passes.
-- The document says the default minimum received cascade weight is 50% and configurable by OD. Its embedded diagram states 40%. This is a source conflict; do not select either value without a business decision.
-- When a manager's position changes, OD adjusts the workflow so the role can continue review and authorised KPI changes.
-- Employees excluded by OD do not receive KPI-period notifications and need not submit KPI.
-- Goal Management excludes automatic forwarding to OD at the due date, a drag-and-drop Activity/Kanban board, in-system KPI creation for Board members, and a launch/open/close approval request.
+- Staff menggunakan perspektif Finance, Stakeholder, Internal Process, dan Learning & Growth. Tidak semua perspektif wajib digunakan apabila tidak sesuai dengan pekerjaan.
+- Peran terendah yang diizinkan menurunkan KPI adalah Supervisor. Direct Supervisor untuk Staff tidak boleh melompati tingkat hierarki saat menurunkan KPI; untuk Non-Staff, penurunan KPI dilakukan oleh Supervisor.
+- Manajer harus menyelesaikan dan mengajukan KPI miliknya sendiri sebelum menurunkan KPI kepada bawahan. Karyawan dapat membuat dan menyimpan draf tanpa menerima KPI turunan, tetapi tidak dapat mengajukan sebelum lolos validasi KPI turunan yang diwajibkan.
+- Dokumen menyatakan bahwa bobot minimum bawaan KPI turunan yang diterima adalah 50% dan dapat dikonfigurasi oleh OD. Diagram yang disematkan dalam dokumen menyebutkan 40%. Hal ini merupakan konflik pada sumber; jangan memilih salah satu nilai tanpa keputusan bisnis.
+- Ketika posisi manajer berubah, OD menyesuaikan alur kerja agar peran tersebut dapat melanjutkan peninjauan dan perubahan KPI yang diizinkan.
+- Karyawan yang dikecualikan oleh OD tidak menerima notifikasi periode KPI dan tidak diwajibkan mengajukan KPI.
+- Goal Management tidak mencakup penerusan otomatis ke OD pada tenggat, papan Aktivitas/Kanban dengan fitur seret dan lepas, pembuatan KPI di dalam sistem untuk anggota Dewan, maupun permintaan persetujuan peluncuran/pembukaan/penutupan.
 
-**Notification behavior**
+**Perilaku notifikasi**
 
-- Submission sends in-app notification to requestor and Direct Supervisor and email to Direct Supervisor.
-- Approval sends in-app notification to requestor and approver and email to requestor.
-- Revision/send-back sends in-app notification to requestor and approver and email to requestor.
-- Default reminder stages are three weeks to Department Head, two weeks to Senior Manager/Director, and one week to GMO/Director, subject to OD configuration.
+- Pengajuan mengirimkan notifikasi dalam aplikasi kepada pemohon dan Direct Supervisor, serta email kepada Direct Supervisor.
+- Persetujuan mengirimkan notifikasi dalam aplikasi kepada pemohon dan pemberi persetujuan, serta email kepada pemohon.
+- Revisi/pengembalian untuk perbaikan mengirimkan notifikasi dalam aplikasi kepada pemohon dan pemberi persetujuan, serta email kepada pemohon.
+- Tahapan pengingat bawaan adalah tiga minggu kepada Department Head, dua minggu kepada Senior Manager/Director, dan satu minggu kepada GMO/Director, dengan mengikuti konfigurasi OD.
 
-**Use-case scenarios**
+**Skenario kasus penggunaan**
 
-1. A Staff employee with 11 KPIs, incorrect total weight, invalid individual weight, or excessive Learning & Growth weight cannot save or submit.
-2. An employee can save draft without cascade but cannot submit until the confirmed cascade-weight threshold is met.
-3. Supervisor revision with notes produces `Revise Required`, permits correction, and returns to the correct review path.
-4. A completed KPI cannot be edited; a Mid-Year period enables the documented revision process.
+1. Karyawan Staff dengan 11 KPI, total bobot yang salah, bobot per butir yang tidak valid, atau bobot Learning & Growth yang berlebihan tidak dapat menyimpan atau mengajukan KPI.
+2. Karyawan dapat menyimpan draf tanpa menerima KPI turunan, tetapi tidak dapat mengajukan sampai ambang batas bobot KPI turunan yang telah dikonfirmasi terpenuhi.
+3. Revisi oleh Supervisor yang disertai catatan menghasilkan status `Revise Required`, memungkinkan perbaikan, dan mengembalikan KPI ke jalur peninjauan yang benar.
+4. KPI yang telah selesai tidak dapat diubah; periode Mid-Year memungkinkan proses revisi yang terdokumentasi.
 
-## Source ambiguities outside the executable requirement set
+## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
 
-Confirm whether the production default minimum cascade weight is 40% or 50%, and whether it is configurable per period, form, or organisation.
+Konfirmasikan apakah bobot minimum bawaan KPI turunan di lingkungan produksi adalah 40% atau 50%, serta apakah nilainya dapat dikonfigurasi per periode, formulir, atau organisasi.

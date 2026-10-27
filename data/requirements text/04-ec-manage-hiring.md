@@ -1,69 +1,69 @@
-# Requirements Breakdown: EC Manage Hiring
+# Penjabaran Kebutuhan: EC Pengelolaan Perekrutan (Manage Hiring)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD - EC Manage Hiring.md`
-- Processes: Request to Employ (RTE), Salary Build Up (SBU), input of new employee data, and probation evaluation.
-- Roles: Department Head User, OD TM/OD Section, HR Recruitment, approval chain, LM Requester, Senior Manager HCM, HR-CompBen, IT & System, and Finance.
+- Proses: permohonan perekrutan (Request to Employ/RTE), penyusunan gaji (Salary Build Up/SBU), pengisian data karyawan baru, dan evaluasi masa percobaan.
+- Peran: Department Head User, OD TM/OD Section, HR Recruitment, rangkaian pemberi persetujuan, LM Requester, Senior Manager HCM, HR-CompBen, IT & System, dan Finance.
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-### Request to Employ
+### Permohonan perekrutan (Request to Employ)
 
-1. Let Department Head User submit RTE and Position Description documents in PDF after checking approved manning budget.
-2. Route RTE through OD TM/OD Section budget validation, HR Recruitment review, and the stated sequential approval chain: Senior Manager HCM, Senior Manager Business Unit, GMO/GM PD/Chief Geo, Director in Charge, and Director of HC.
-3. Provide approver views and approve/send-back actions. A returned request supports submit again or withdraw.
-4. Support HR Recruitment position search and selection. If no position is available, let OD review a new-position request against manning budget and return the decision to HR Recruitment.
+1. Memungkinkan Department Head User mengajukan dokumen RTE dan Position Description dalam format PDF setelah memeriksa anggaran kebutuhan tenaga kerja yang telah disetujui.
+2. Meneruskan RTE melalui validasi anggaran oleh OD TM/OD Section, tinjauan HR Recruitment, dan rangkaian persetujuan berurutan yang disebutkan: Senior Manager HCM, Senior Manager Business Unit, GMO/GM PD/Chief Geo, Director in Charge, dan Director of HC.
+3. Menyediakan tampilan bagi pemberi persetujuan serta tindakan menyetujui/mengembalikan. Permohonan yang dikembalikan dapat diajukan ulang atau ditarik kembali.
+4. Mendukung pencarian dan pemilihan jabatan oleh HR Recruitment. Jika tidak ada jabatan yang tersedia, memungkinkan OD meninjau permohonan jabatan baru berdasarkan anggaran kebutuhan tenaga kerja dan mengembalikan keputusan kepada HR Recruitment.
 
-### Salary Build Up
+### Penyusunan gaji (Salary Build Up)
 
-1. Let HR Recruitment create an SBU proposal with hiring demographic information, staff/non-staff gender, staff religion/manpower, grade, multiple internal comparisons, tabular previous employment, previous salary/components, manual salary components, and PTAR Offer employment status/work roster selections.
-2. Route SBU through Senior Manager HCM, Director of HC, Senior Manager Business Unit, GMO/GM PD/Chief Geo, and Director in Charge. Each stage approves or sends back; HR Recruitment can resubmit or withdraw.
-3. Make Offering Letter generation available to HR Recruitment only after required SBU approvals finish.
+1. Memungkinkan HR Recruitment membuat usulan SBU dengan informasi demografis perekrutan, jenis kelamin staf/nonstaf, agama/jumlah tenaga kerja staf, golongan, beberapa pembanding internal, riwayat pekerjaan dalam bentuk tabel, gaji/komponen sebelumnya, komponen gaji yang diisi secara manual, serta pilihan status kepegawaian/roster kerja pada PTAR Offer.
+2. Meneruskan SBU melalui Senior Manager HCM, Director of HC, Senior Manager Business Unit, GMO/GM PD/Chief Geo, dan Director in Charge. Setiap tahap menyetujui atau mengembalikan usulan; HR Recruitment dapat mengajukan ulang atau menarik kembali usulan.
+3. Menyediakan pembuatan surat penawaran (Offering Letter) bagi HR Recruitment hanya setelah seluruh persetujuan SBU yang diwajibkan selesai.
 
-### New employee data
+### Data karyawan baru
 
-1. Enable HR Recruitment to create new employee data after a valid position is selected or created.
-2. Capture employment status, organisation data, personal/family/address/education/telephone/national-ID data, HRIS user ID, and email.
-3. Support downstream responsibility: HR-CompBen input of compensation and benefits, IT & System activation in Mata Air, and Finance payroll-data input.
+1. Memungkinkan HR Recruitment membuat data karyawan baru setelah jabatan yang valid dipilih atau dibuat.
+2. Mencatat status kepegawaian, data organisasi, data pribadi/keluarga/alamat/pendidikan/telepon/identitas nasional, ID pengguna HRIS, dan email.
+3. Mendukung tanggung jawab pada tahap lanjutan: pengisian kompensasi dan tunjangan oleh HR-CompBen, aktivasi di Mata Air oleh IT & System, serta pengisian data penggajian oleh Finance.
 
-### Probation evaluation
+### Evaluasi masa percobaan
 
-1. Trigger reminders 30 and 14 days before probation end.
-2. Let Department Head User complete and submit the evaluation; HR Recruitment reviews and configures reviewers; LM Requester and Senior Manager HCM provide review and feedback.
-3. Allow approve, send back, correction, resubmission, compilation of feedback, and notification-letter generation by HR Recruitment. The BRD assigns the final distribution responsibility to Department Head User.
+1. Memicu pengingat 30 dan 14 hari sebelum masa percobaan berakhir.
+2. Memungkinkan Department Head User melengkapi dan mengajukan evaluasi; HR Recruitment meninjau dan mengatur peninjau; LM Requester dan Senior Manager HCM memberikan tinjauan dan umpan balik.
+3. Mengizinkan persetujuan, pengembalian, perbaikan, pengajuan ulang, pengumpulan umpan balik, dan pembuatan surat pemberitahuan oleh HR Recruitment. BRD menetapkan tanggung jawab distribusi akhir kepada Department Head User.
 
-**Shared behavioral rules and preconditions**
+**Aturan perilaku dan prasyarat bersama**
 
-- RTE must include RTE form and Position Description and depends on approved manning budget.
-- SBU cannot advance until the current approver approves. Send back returns the proposal for submit or withdraw.
-- New employee data must use an available position or one created through approved manning-budget review.
-- Required attachments for RTE and new-hire data are validated; the BRD allows PDF or JPG generally, while RTE and PD are specifically described as PDF.
-- Withdrawal sets `Withdrawn`, informs HR Recruitment, and logs the action.
-- Notification recipients, triggers, and message details beyond the stated probation reminders are explicitly marked as needing confirmation in the source.
+- RTE harus menyertakan formulir RTE dan Position Description serta bergantung pada anggaran kebutuhan tenaga kerja yang telah disetujui.
+- SBU tidak dapat berlanjut hingga pemberi persetujuan pada tahap saat ini menyetujuinya. Pengembalian mengembalikan usulan agar dapat diajukan atau ditarik kembali.
+- Data karyawan baru harus menggunakan jabatan yang tersedia atau jabatan yang dibuat melalui tinjauan anggaran kebutuhan tenaga kerja yang telah disetujui.
+- Lampiran wajib untuk RTE dan data karyawan baru divalidasi; BRD secara umum mengizinkan PDF atau JPG, sedangkan RTE dan PD secara khusus disebut menggunakan format PDF.
+- Penarikan kembali menetapkan status `Withdrawn`, memberi tahu HR Recruitment, dan mencatat tindakan tersebut.
+- Penerima, pemicu, dan perincian pesan notifikasi di luar pengingat masa percobaan yang disebutkan secara eksplisit ditandai dalam sumber sebagai hal yang memerlukan konfirmasi.
 
-**Cross-module interactions and dependencies**
+**Interaksi dan dependensi antarmodul**
 
-- Position Management and Organisation Structure supply available-position and organisational data.
-- Compensation/benefits, IT activation, and Finance payroll processing are downstream responsibilities, not fully defined integration contracts in this BRD.
+- Position Management dan Organisation Structure menyediakan data jabatan yang tersedia dan data organisasi.
+- Kompensasi/tunjangan, aktivasi IT, dan pemrosesan penggajian oleh Finance merupakan tanggung jawab tahap lanjutan; kontrak integrasinya belum didefinisikan secara lengkap dalam BRD ini.
 
-**Access, audit, and additional functional behavior**
+**Akses, audit, dan perilaku fungsional tambahan**
 
-- The new-hire sequence continues after HR Recruitment entry: HR Compensation & Benefit enters compensation/benefits; IT & System creates the HRIS account/email and activates the employee in Mata Air; Finance enters payroll data; the current process also records face and fingerprint enrolment.
-- RTE and SBU notifications are concrete source requirements: submission notifies OD TM/OD Section or Senior Manager HCM; send back notifies the requestor; a prior approval notifies the next approver. Probation reminders at 30 and 14 days go to HR Recruitment; probation submission and final review completion also notify HR Recruitment.
-- Sensitive data includes personal and employment information, RTE/PD, SBU salary/proposal information, manning budget, probation evaluations/feedback, and approval comments. Apply RBAC; unauthorised users cannot view, download, or alter the related data or documents.
-- Audit submit, approve, send back, resubmit, data changes, workflow actions, new-employee data entry, and position creation, with user ID, role, activity, time, request/reference ID, and relevant changed data. The operational audit trail is read-only.
-- Preserve the 2021-to-latest historical-data migration requirement. Recruitment sourcing, organisation maintenance, manning-budget maintenance, payroll payment, employment agreements, and the employment decision/policy remain outside this module.
+- Urutan proses karyawan baru berlanjut setelah pengisian oleh HR Recruitment: HR Compensation & Benefit mengisi kompensasi/tunjangan; IT & System membuat akun HRIS/email dan mengaktifkan karyawan di Mata Air; Finance mengisi data penggajian; proses saat ini juga mencatat pendaftaran wajah dan sidik jari.
+- Notifikasi RTE dan SBU merupakan kebutuhan yang dinyatakan secara konkret dalam sumber: pengajuan memberi tahu OD TM/OD Section atau Senior Manager HCM; pengembalian memberi tahu pemohon; persetujuan pada tahap sebelumnya memberi tahu pemberi persetujuan berikutnya. Pengingat masa percobaan pada 30 dan 14 hari dikirim kepada HR Recruitment; pengajuan evaluasi masa percobaan dan penyelesaian tinjauan akhir juga memberi tahu HR Recruitment.
+- Data sensitif mencakup informasi pribadi dan kepegawaian, RTE/PD, informasi gaji/usulan SBU, anggaran kebutuhan tenaga kerja, evaluasi/umpan balik masa percobaan, serta komentar persetujuan. Menerapkan RBAC; pengguna yang tidak berwenang tidak dapat melihat, mengunduh, atau mengubah data maupun dokumen terkait.
+- Mencatat dalam audit aktivitas pengajuan, persetujuan, pengembalian, pengajuan ulang, perubahan data, tindakan alur kerja, pengisian data karyawan baru, dan pembuatan jabatan, beserta ID pengguna, peran, aktivitas, waktu, ID permohonan/referensi, dan data terkait yang berubah. Jejak audit operasional bersifat hanya baca.
+- Mempertahankan kebutuhan migrasi data historis dari 2021 hingga data terbaru. Pencarian kandidat, pemeliharaan organisasi, pemeliharaan anggaran kebutuhan tenaga kerja, pembayaran penggajian, perjanjian kerja, serta keputusan/kebijakan kepegawaian tetap berada di luar modul ini.
 
-**Use-case scenarios**
+**Skenario kasus penggunaan**
 
-1. An RTE with no approved manning budget cannot advance until the budget path is resolved.
-2. An SBU sent back at any approval level can be corrected and resubmitted, then yields an Offering Letter only after final approval.
-3. HR Recruitment cannot create a new employee against an unavailable position without OD approval to create one.
-4. Probation reminders occur at both stated intervals and the completed review reaches the notification-letter step.
+1. RTE tanpa anggaran kebutuhan tenaga kerja yang telah disetujui tidak dapat berlanjut hingga proses terkait anggaran diselesaikan.
+2. SBU yang dikembalikan pada tingkat persetujuan mana pun dapat diperbaiki dan diajukan ulang, lalu menghasilkan Offering Letter hanya setelah persetujuan akhir.
+3. HR Recruitment tidak dapat membuat data karyawan baru untuk jabatan yang tidak tersedia tanpa persetujuan OD untuk membuat jabatan tersebut.
+4. Pengingat masa percobaan dikirim pada kedua interval yang disebutkan dan tinjauan yang selesai mencapai tahap surat pemberitahuan.
 
-## Source ambiguities outside the executable requirement set
+## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
 
-- Define the complete RTE/SBU field catalogue and exact workflow configuration.
-- The source specifies notification recipients and triggers, but does not specify transport, template governance, delivery failure behaviour, or an unambiguous final owner for distributing the probation letter.
-- The source includes an unrelated section named `Benefits Submission Field Details`; it should not be treated as Manage Hiring scope without business confirmation.
+- Menetapkan katalog kolom RTE/SBU yang lengkap dan konfigurasi alur kerja yang tepat.
+- Sumber menentukan penerima dan pemicu notifikasi, tetapi tidak menentukan sarana pengiriman, tata kelola templat, perilaku saat pengiriman gagal, atau penanggung jawab akhir yang tidak ambigu untuk distribusi surat masa percobaan.
+- Sumber memuat bagian yang tidak terkait bernama `Benefits Submission Field Details`; bagian tersebut sebaiknya tidak dianggap sebagai cakupan Manage Hiring tanpa konfirmasi dari pihak bisnis.

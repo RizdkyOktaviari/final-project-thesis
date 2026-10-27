@@ -1,50 +1,50 @@
-# Requirements Breakdown: PMGM Performance Assessment
+# Penjabaran Kebutuhan: PMGM Penilaian Kinerja (Performance Assessment)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD PMGM - Performance Assessment.md`
-- Roles: OD Admin, Employee, Direct Supervisor, and One-Up Supervisor.
-- Lifecycle: template configuration and launch, self rating, supervisor reviews, external normalisation with system import, finalisation, reporting, and audit.
+- Peran: OD Admin, karyawan (Employee), atasan langsung (Direct Supervisor), dan atasan satu tingkat di atas atasan langsung (One-Up Supervisor).
+- Siklus proses: konfigurasi dan peluncuran templat, penilaian diri, peninjauan oleh atasan, normalisasi di luar sistem dengan impor ke sistem, finalisasi, pelaporan, dan audit.
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-1. Allow OD to create, edit, duplicate, preview, launch, close, and configure separate Staff and Non-Staff Performance Assessment templates. Configuration includes general settings, rating scale, route map/workflow, period, notifications, participants, language, sections, and fields.
-2. Let employees use their category/language-specific form, see route-map stage, rate and comment on goals, upload optional attachments, enter aspiration, save draft, and submit after mandatory validation.
-3. Lock employee editing after submission, except when the assessment is sent back.
-4. Let Direct Supervisor review self rating, adjust rating, comment, record strengths and improvement areas, and submit to One-Up Supervisor. Let One-Up Supervisor see self and Direct Supervisor assessments, adjust rating/comments, and complete its stage.
-5. Support one or two review layers for Non-Staff. Use organisation structure for Staff; OD configures Non-Staff route maps per department at launch.
-6. Provide configurable notifications and reminders based on action, outstanding task, due date, recipients, subject, timing, and frequency.
-7. Let OD export PA data for selected departments as one XLSX or CSV file per department; create normalisation batches; import/re-import department results with mandatory remarks and optional attachment; retain prior import history; and individually adjust final rating with mandatory remarks.
-8. Let OD finalise after department normalisation. The system changes PA to `Completed`, locks final rating, and makes only final rating visible to the employee.
-9. Provide PA reporting with filters for period, Staff/Non-Staff, job level, department, employee, and status, with XLSX or CSV export.
-10. Support employee transfer/promotion, employee resignation/termination, and supervisor resignation handling, including OD reviewer replacement or bypass when a supervisor resigns before review.
+1. Memungkinkan OD membuat, mengubah, menggandakan, melihat pratinjau, meluncurkan, menutup, dan mengonfigurasi templat Penilaian Kinerja (Performance Assessment) yang terpisah untuk Staff dan Non-Staff. Konfigurasi mencakup pengaturan umum, skala penilaian, peta rute/alur kerja, periode, notifikasi, peserta, bahasa, bagian, dan kolom.
+2. Memungkinkan karyawan menggunakan formulir sesuai kategori/bahasanya, melihat tahap pada peta rute, memberi nilai dan komentar pada sasaran, mengunggah lampiran opsional, memasukkan aspirasi, menyimpan draf, dan mengajukan setelah lolos validasi wajib.
+3. Mengunci pengeditan oleh karyawan setelah pengajuan, kecuali jika penilaian dikembalikan untuk diperbaiki.
+4. Memungkinkan Direct Supervisor meninjau penilaian diri, menyesuaikan nilai, memberikan komentar, mencatat kelebihan dan aspek yang perlu ditingkatkan, serta mengajukan kepada One-Up Supervisor. Memungkinkan One-Up Supervisor melihat penilaian diri dan penilaian Direct Supervisor, menyesuaikan nilai/komentar, dan menyelesaikan tahapnya.
+5. Mendukung satu atau dua tingkat peninjauan untuk Non-Staff. Menggunakan struktur organisasi untuk Staff; OD mengonfigurasi peta rute Non-Staff per departemen saat peluncuran.
+6. Menyediakan notifikasi dan pengingat yang dapat dikonfigurasi berdasarkan tindakan, tugas yang belum selesai, tenggat, penerima, subjek, waktu, dan frekuensi.
+7. Memungkinkan OD mengekspor data PA untuk departemen terpilih menjadi satu file XLSX atau CSV per departemen; membuat kelompok normalisasi; mengimpor/mengimpor ulang hasil departemen dengan catatan wajib dan lampiran opsional; mempertahankan riwayat impor sebelumnya; serta menyesuaikan nilai akhir secara individual dengan catatan wajib.
+8. Memungkinkan OD melakukan finalisasi setelah normalisasi departemen. Sistem mengubah status PA menjadi `Completed`, mengunci nilai akhir, dan hanya menampilkan nilai akhir kepada karyawan.
+9. Menyediakan laporan PA dengan filter periode, Staff/Non-Staff, jenjang jabatan, departemen, karyawan, dan status, serta ekspor XLSX atau CSV.
+10. Mendukung penanganan mutasi/promosi karyawan, pengunduran diri/pemutusan hubungan kerja karyawan, dan pengunduran diri atasan, termasuk penggantian peninjau atau pelewatan tahap peninjauan oleh OD ketika atasan mengundurkan diri sebelum meninjau.
 
-**Behavioral rules, calculations, and preconditions**
+**Aturan perilaku, perhitungan, dan prasyarat**
 
-- Rating scale is 1 to 6, with a configured name and description. Goal comments are mandatory; attachments optional. Aspiration is employee input, strengths/improvement areas are supervisor input.
-- Save Draft does not advance stage. Submission requires every mandatory field. Template cannot be changed after launch.
-- Direct Supervisor cannot see One-Up Supervisor scoring; One-Up Supervisor sees employee and Direct Supervisor scores. Rating history is OD-only.
-- OD has no approval action in the PA workflow. OD may bulk-move assessments to Normalization and performs normalisation administrative actions only.
-- Overall Form Rating is calculated as `sum(section rating x section weight) / sum(section weight)`. Before completion, employee sees a dash rather than the overall rating.
-- Normalisation discussion occurs outside the system. The most recently successful import is active; all prior files remain in history and audit log.
-- Goal Management activity does not affect PA rating/calculation. Auto-rating for unfinished self-rating, GAP display, signature section, and acknowledge section are out of scope.
+- Skala penilaian adalah 1 hingga 6, dengan nama dan deskripsi yang dikonfigurasi. Komentar pada sasaran wajib diisi; lampiran bersifat opsional. Aspirasi diisi oleh karyawan, sedangkan kelebihan/aspek yang perlu ditingkatkan diisi oleh atasan.
+- Menyimpan draf tidak memajukan tahap. Pengajuan mensyaratkan pengisian setiap kolom wajib. Templat tidak dapat diubah setelah diluncurkan.
+- Direct Supervisor tidak dapat melihat nilai dari One-Up Supervisor; One-Up Supervisor dapat melihat nilai dari karyawan dan Direct Supervisor. Riwayat nilai hanya dapat diakses oleh OD.
+- OD tidak memiliki tindakan persetujuan dalam alur kerja PA. OD dapat memindahkan penilaian secara massal ke tahap Normalization dan hanya menjalankan tindakan administratif normalisasi.
+- Nilai Keseluruhan Formulir (Overall Form Rating) dihitung dengan rumus `sum(section rating x section weight) / sum(section weight)`. Sebelum proses selesai, karyawan melihat tanda hubung sebagai pengganti nilai keseluruhan.
+- Pembahasan normalisasi berlangsung di luar sistem. Impor terakhir yang berhasil menjadi impor aktif; seluruh file sebelumnya tetap tersimpan dalam riwayat dan log audit.
+- Aktivitas Goal Management tidak memengaruhi nilai/perhitungan PA. Penilaian otomatis untuk penilaian diri yang belum selesai, tampilan GAP, bagian tanda tangan, dan bagian konfirmasi penerimaan berada di luar cakupan.
 
-**Access and audit behavior**
+**Perilaku akses dan audit**
 
-- OD sees all assessments, statuses, rating/comment histories, and audit trail; may override reviewer mapping with mandatory remarks.
-- Employees see their assessment and final rating at the allowed stage, not One-Up Supervisor detail or rating history.
-- All rating, comment, approval/send-back, reviewer change, import, re-import, and finalisation events are auditable.
+- OD dapat melihat seluruh penilaian, status, riwayat nilai/komentar, dan jejak audit; OD dapat mengganti pemetaan peninjau dengan catatan wajib.
+- Karyawan dapat melihat penilaiannya dan nilai akhir pada tahap yang diizinkan, tetapi tidak dapat melihat rincian penilaian One-Up Supervisor atau riwayat nilai.
+- Seluruh kejadian pemberian nilai, komentar, persetujuan/pengembalian untuk perbaikan, perubahan peninjau, impor, impor ulang, dan finalisasi dapat diaudit.
 
-**Additional functional behavior**
+**Perilaku fungsional tambahan**
 
-- Direct Supervisor and One-Up Supervisor can save draft and send back before submitting their respective review. Summary Section is available according to stage; Direct Supervisor can set a manual section rating, while the Overall Form Rating remains system-calculated.
-- A configured administrator path uses one Manager review layer; a Director may be the final reviewer when OD configures it. This supplements—not replaces—the Staff hierarchy and Non-Staff route-map rules.
-- A normalisation batch needs only a name and inherits the active PA period; it has no separate open/close period. The source also requires review of import validation results.
-- Employee transfer/promotion retains the submitted goal and adds an `Is Transferred` flag; resignation/termination removes the employee from active participants.
+- Direct Supervisor dan One-Up Supervisor dapat menyimpan draf dan mengembalikan penilaian untuk diperbaiki sebelum mengajukan hasil peninjauan masing-masing. Bagian Ringkasan (Summary Section) tersedia sesuai tahap; Direct Supervisor dapat menetapkan nilai bagian secara manual, sedangkan Nilai Keseluruhan Formulir tetap dihitung oleh sistem.
+- Jalur administrator yang dikonfigurasi menggunakan satu tingkat peninjauan oleh Manager; Director dapat menjadi peninjau akhir apabila OD mengonfigurasinya. Ketentuan ini melengkapi aturan hierarki Staff dan peta rute Non-Staff tanpa menggantikannya.
+- Kelompok normalisasi hanya memerlukan nama dan mengikuti periode PA yang aktif; kelompok ini tidak memiliki periode buka/tutup tersendiri. Dokumen sumber juga mensyaratkan peninjauan hasil validasi impor.
+- Mutasi/promosi karyawan mempertahankan sasaran yang telah diajukan dan menambahkan penanda `Is Transferred`; pengunduran diri/pemutusan hubungan kerja menghapus karyawan dari daftar peserta aktif.
 
-**Use-case scenarios**
+**Skenario kasus penggunaan**
 
-1. A Staff employee submits a valid self-assessment, triggering Direct Supervisor review and form lock.
-2. A Non-Staff participant receives an OD-configured route map with no more than two review layers.
-3. OD exports two departments and receives two separate files, then re-imports a corrected result while history remains available.
-4. Finalisation locks final rating and exposes it, but not detailed review data, to the employee.
+1. Karyawan Staff mengajukan penilaian diri yang valid, sehingga memicu peninjauan oleh Direct Supervisor dan penguncian formulir.
+2. Peserta Non-Staff memperoleh peta rute yang dikonfigurasi OD dengan paling banyak dua tingkat peninjauan.
+3. OD mengekspor dua departemen dan memperoleh dua file terpisah, lalu mengimpor ulang hasil yang telah diperbaiki dengan tetap mempertahankan ketersediaan riwayat.
+4. Finalisasi mengunci nilai akhir dan menampilkannya kepada karyawan, sedangkan rincian data peninjauan tidak ditampilkan.

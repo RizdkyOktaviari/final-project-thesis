@@ -1,45 +1,45 @@
-# Requirements Breakdown: EC Organization Structure
+# Penjabaran Kebutuhan: EC Struktur Organisasi (Organization Structure)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD - EC Organization Structure.md`
-- Purpose: central organisational-unit management and historical organisation visualisation.
-- Roles: Organization Development (create/read/update) and Employee (read-only).
+- Tujuan: pengelolaan unit organisasi secara terpusat dan visualisasi riwayat organisasi.
+- Peran: Organization Development (membuat/membaca/memperbarui) dan Karyawan (Employee, hanya baca).
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-1. Maintain master organisational units and a valid hierarchical Organisation Structure.
-2. Display an organisation chart, employee profile detail, and organisation state as of a selected date or period.
-3. Export Organisation Structure in PDF and PNG.
-4. Search by department name, position name, employee name, or ID NH through integration with related modules.
-5. Retain historical records with effective dating and audit trail for structural changes.
-6. Act as an organisation reference for Employee Central modules; integrate ESC changes that affect employee placement or visualisation.
+1. Mengelola data induk unit organisasi dan Struktur Organisasi dengan hierarki yang valid.
+2. Menampilkan bagan organisasi, detail profil karyawan, dan kondisi organisasi pada tanggal atau periode yang dipilih.
+3. Mengekspor Struktur Organisasi dalam format PDF dan PNG.
+4. Menyediakan pencarian berdasarkan nama departemen, nama posisi, nama karyawan, atau ID NH melalui integrasi dengan modul terkait.
+5. Menyimpan riwayat data dengan penerapan tanggal berlaku dan jejak audit untuk perubahan struktur.
+6. Menjadi referensi organisasi bagi modul Employee Central serta mengintegrasikan perubahan ESC yang memengaruhi penempatan karyawan atau visualisasi.
 
-**Behavioral rules and access controls**
+**Aturan perilaku dan pengendalian akses**
 
-- Every organisation unit requires a unique identity and must belong to a valid hierarchy.
-- OD can access all organisational structures. Other users see only the structure permitted by their access and only in read-only mode.
-- Directorate, Division, Department, and Section code standards follow HR Organization Development policy.
-- A line-reporting adjustment that does not change Organisation Structure may be performed by OD at any time on a Business Unit request from at least Department Head/Manager level.
-- Position management, IPS code management, position hierarchy, recruiting, workforce planning, compensation, authorisation administration, drag-and-drop restructuring, and actual ESC transactions are out of scope.
+- Setiap unit organisasi memerlukan identitas unik dan harus menjadi bagian dari hierarki yang valid.
+- OD dapat mengakses seluruh struktur organisasi. Pengguna lain hanya dapat melihat struktur sesuai hak aksesnya dalam mode hanya baca.
+- Standar kode Direktorat, Divisi, Departemen, dan Seksi mengikuti kebijakan HR Organization Development.
+- OD dapat menyesuaikan garis pelaporan yang tidak mengubah Struktur Organisasi kapan saja berdasarkan permintaan Unit Bisnis dari pihak yang sekurang-kurangnya berada pada tingkat Department Head/Manager.
+- Pengelolaan posisi, pengelolaan kode IPS, hierarki posisi, rekrutmen, perencanaan tenaga kerja, kompensasi, administrasi otorisasi, restrukturisasi melalui seret dan lepas, serta pelaksanaan transaksi ESC berada di luar cakupan.
 
-**Functional process boundary**
+**Batas proses fungsional**
 
-The external approval of an organisation-change proposal remains manual. OD reviews proposal, documentation, hierarchy, and business justification before successive review by Training and Development, Senior Manager HCM, GMO/Director in Charge, and Board of Director. The in-system scope begins at updating the approved organisation structure and preserving history.
+Persetujuan usulan perubahan organisasi di luar sistem tetap dilakukan secara manual. OD meninjau usulan, dokumentasi, hierarki, dan justifikasi bisnis sebelum peninjauan berurutan oleh Training and Development, Senior Manager HCM, GMO/Director in Charge, dan Board of Director. Cakupan proses di dalam sistem dimulai dari pembaruan struktur organisasi yang telah disetujui dan penyimpanan riwayatnya.
 
-**Additional functional behavior**
+**Perilaku fungsional tambahan**
 
-- After manual approval, OD must be able to add/change organisation data directly or import an Organisation Structure CSV/XLSX, with the resulting approved structure becoming the active reference for related modules.
-- For annual or quarterly changes below Department level, the manual approval path may end at GMO/Director in Charge; Department-and-above changes must reach the Director. A rejected proposal returns to the Requester and OD for revision.
-- Organisation Structure does not itself create or manage a Position, IPS code, position hierarchy, employee personal/employment data, manager assignment, recruiting, workforce planning, payroll/benefit, performance, talent, finance-system integration beyond Cost Center reference, security roles, or drag-and-drop restructuring.
+- Setelah persetujuan manual, OD harus dapat menambah/mengubah data organisasi secara langsung atau mengimpor Struktur Organisasi dalam format CSV/XLSX. Struktur yang telah disetujui tersebut menjadi referensi aktif bagi modul terkait.
+- Untuk perubahan tahunan atau triwulanan di bawah tingkat Departemen, alur persetujuan manual dapat berakhir pada GMO/Director in Charge. Perubahan pada tingkat Departemen dan di atasnya harus sampai kepada Director. Usulan yang ditolak dikembalikan kepada pemohon dan OD untuk direvisi.
+- Struktur Organisasi tidak mencakup pembuatan atau pengelolaan Posisi, kode IPS, hierarki posisi, data pribadi/kepegawaian karyawan, penugasan manajer, rekrutmen, perencanaan tenaga kerja, penggajian/tunjangan, kinerja, talenta, integrasi sistem keuangan di luar referensi Pusat Biaya (Cost Center), peran keamanan, atau restrukturisasi melalui seret dan lepas.
 
-**Use-case scenarios**
+**Skenario kasus penggunaan**
 
-1. OD creates or changes an organisation unit only when its parent and hierarchy are valid, then the change is historically traceable.
-2. A user opens the organisation chart at a prior effective date and sees the structure valid then.
-3. An approved ESC transfer is reflected in the relevant organisation display without enabling ESC creation in this module.
-4. An employee can view only authorised organisation information and cannot mutate it.
+1. OD membuat atau mengubah unit organisasi hanya jika induk dan hierarkinya valid, lalu perubahan tersebut dapat ditelusuri dalam riwayat.
+2. Pengguna membuka bagan organisasi pada tanggal berlaku sebelumnya dan melihat struktur yang berlaku saat itu.
+3. Mutasi melalui ESC yang telah disetujui tercermin pada tampilan organisasi terkait, tanpa menyediakan pembuatan ESC di modul ini.
+4. Karyawan hanya dapat melihat informasi organisasi sesuai hak aksesnya dan tidak dapat mengubahnya.
 
-## Source ambiguities outside the executable requirement set
+## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
 
-The BRD has no standalone functional-requirements chapter. The requirements above are distilled from its scope, expected flow, and module-policy sections; detailed create/update field definitions and validation messages are not specified.
+BRD tidak memiliki bab kebutuhan fungsional tersendiri. Kebutuhan di atas dirumuskan dari bagian cakupan, alur yang diharapkan, dan kebijakan modul. Definisi terperinci kolom untuk pembuatan/pembaruan serta pesan validasi tidak ditentukan.

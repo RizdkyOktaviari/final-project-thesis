@@ -1,20 +1,20 @@
-# Requirements Breakdown: PMGM Goal Management Addendum
+# Penjabaran Kebutuhan: Adendum PMGM Pengelolaan Sasaran (Goal Management Addendum)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD20Goal20-%20Adendum.md`
-- This is an addendum to Goal Management. It contains three active business rules and should be read together with `08-pmgm-goal-management.md`.
+- Dokumen ini merupakan adendum Goal Management. Dokumen ini memuat tiga aturan bisnis yang berlaku dan sebaiknya dibaca bersama `08-pmgm-goal-management.md`.
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-1. A manager may cascade KPI to a subordinate only after submitting the manager's own KPI.
-2. For Non-Staff, only a Supervisor may cascade KPI to employees.
-3. Staff and Non-Staff employees may create and save KPI drafts even before receiving a manager cascade.
+1. Manajer hanya dapat menurunkan KPI kepada bawahan setelah mengajukan KPI miliknya sendiri.
+2. Untuk Non-Staff, hanya Supervisor yang dapat menurunkan KPI kepada karyawan.
+3. Karyawan Staff dan Non-Staff dapat membuat dan menyimpan draf KPI bahkan sebelum menerima KPI turunan dari manajer.
 
-**Behavioral specification implication**
+**Implikasi terhadap spesifikasi perilaku**
 
-Separate draft capability from submit capability. Draft creation must not require cascade. Submission must still apply the confirmed cascade and total-weight validations from the main Goal Management BRD.
+Pisahkan kemampuan membuat dan menyimpan draf dari kemampuan mengajukan. Pembuatan draf tidak boleh mensyaratkan penerimaan KPI turunan. Pengajuan tetap harus menerapkan validasi KPI turunan dan total bobot yang telah dikonfirmasi dari BRD utama Goal Management.
 
-## Source ambiguities outside the executable requirement set
+## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
 
-The addendum reaffirms the main BRD's cascade order and draft rule. It does not resolve the 40% versus 50% minimum cascade-weight conflict in the main BRD.
+Adendum ini menegaskan kembali urutan penurunan KPI dan aturan draf pada BRD utama. Adendum ini tidak menyelesaikan konflik bobot minimum KPI turunan sebesar 40% versus 50% pada BRD utama.

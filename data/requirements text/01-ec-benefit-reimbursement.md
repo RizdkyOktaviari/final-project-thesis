@@ -1,64 +1,64 @@
-# Requirements Breakdown: EC Benefit Reimbursement
+# Penjabaran Kebutuhan: EC Penggantian Biaya Tunjangan (Benefit Reimbursement)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD - EC Benefit Reimbursement.md`
-- Focus: Benefit Assistance, specifically Education Assistance.
-- Primary roles: Employee, HR Compensation & Benefit, and Super Admin for permitted backdate submission or approved-claim cancellation.
+- Fokus: bantuan tunjangan (Benefit Assistance), khususnya Bantuan Pendidikan (Education Assistance).
+- Peran utama: Karyawan (Employee), HR Compensation & Benefit, serta Super Admin untuk pengajuan bertanggal mundur yang diizinkan atau pembatalan klaim yang telah disetujui.
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-1. Provide an employee Benefit Assistance submission form with claim date, benefit selection, currency, and system-calculated entitlement amount.
-2. Provide Education Assistance detail rows for eligible dependents. The employee may add up to three dependents and complete student identity, school, grade, education year, and supporting information.
-3. Source eligible dependent data, date of hire, and related validation data from Employee Central. Auto-fill available dependent data after selection.
-4. Calculate entitlement by benefit category, school level, eligible dependent count, applicable ceiling, and prorata rule for new or contract employees. The calculated amount is not editable by the employee.
-5. Validate eligibility, dependent age, dependent-to-claim relationship, claim frequency, duplicate claims, submission period, and remaining ceiling before submission.
-6. Support Super Admin submission on behalf of an employee with a distinct submitted date for authorised backdate cases. Retain both the creator and request owner for audit.
-7. Accept required supporting documents only in PDF or JPG format and retain them with the claim. Provide a downloadable Education Assistance form for HR Compensation & Benefit.
-8. Route submitted claims to HR Compensation & Benefit for review. Reviewers can approve or send back; send back requires a comment and enables employee correction and resubmission.
-9. Allow Super Admin to cancel an approved claim and record the cancellation actor and status.
-10. Provide employee and HR claim history, current status, status dates, activity actors, reporting export in Excel, and an approved-claim dataset for payment administration.
-11. Notify HR on submission; notify the employee on approve, send back, or cancellation; notify the reviewer for pending approval reminders.
+1. Menyediakan formulir pengajuan Benefit Assistance bagi karyawan yang memuat tanggal klaim, pilihan tunjangan, mata uang, dan jumlah hak tunjangan yang dihitung oleh sistem.
+2. Menyediakan baris perincian Bantuan Pendidikan untuk tanggungan yang memenuhi syarat. Karyawan dapat menambahkan hingga tiga tanggungan dan melengkapi identitas siswa, sekolah, kelas, tahun pendidikan, serta informasi pendukung.
+3. Mengambil data tanggungan yang memenuhi syarat, tanggal mulai bekerja, dan data validasi terkait dari Employee Central. Mengisi otomatis data tanggungan yang tersedia setelah tanggungan dipilih.
+4. Menghitung hak tunjangan berdasarkan kategori tunjangan, jenjang sekolah, jumlah tanggungan yang memenuhi syarat, plafon yang berlaku, dan aturan prorata untuk karyawan baru atau karyawan kontrak. Karyawan tidak dapat mengubah jumlah hasil perhitungan.
+5. Memvalidasi kelayakan, usia tanggungan, hubungan tanggungan dengan klaim, frekuensi klaim, klaim duplikat, periode pengajuan, dan sisa plafon sebelum pengajuan.
+6. Mendukung pengajuan oleh Super Admin atas nama karyawan dengan tanggal pengajuan tersendiri untuk kasus bertanggal mundur yang diizinkan. Menyimpan identitas pembuat dan pemilik permohonan untuk keperluan audit.
+7. Menerima dokumen pendukung wajib hanya dalam format PDF atau JPG dan menyimpannya bersama klaim. Menyediakan formulir Bantuan Pendidikan yang dapat diunduh oleh HR Compensation & Benefit.
+8. Meneruskan klaim yang diajukan kepada HR Compensation & Benefit untuk ditinjau. Peninjau dapat menyetujui atau mengembalikan klaim; pengembalian wajib disertai komentar dan memungkinkan karyawan memperbaiki serta mengajukan ulang klaim.
+9. Mengizinkan Super Admin membatalkan klaim yang telah disetujui serta mencatat pelaku pembatalan dan statusnya.
+10. Menyediakan riwayat klaim bagi karyawan dan HR, status terkini, tanggal status, pelaku aktivitas, ekspor laporan dalam format Excel, serta kumpulan data klaim yang telah disetujui untuk administrasi pembayaran.
+11. Memberi tahu HR saat pengajuan; memberi tahu karyawan saat klaim disetujui, dikembalikan, atau dibatalkan; serta mengirim pengingat kepada peninjau untuk persetujuan yang masih tertunda.
 
-**Behavioral rules and preconditions**
+**Aturan perilaku dan prasyarat**
 
-- Only the employee may submit normally. Super Admin is an exception for authorised backdate processing.
-- A benefit type must be eligible for the employee and have complete required information before it can proceed.
-- Education Assistance only uses Employee Central dependents, permits at most three dependents, and excludes dependents older than 23 years.
-- The same dependent cannot be claimed by more than one employee in the same period. A permanent employee cannot make a duplicate claim for the same dependent and period; contract employees may claim again only while ceiling remains.
-- Frequency limits are one PAUD claim and two TK claims per dependent. SD through university may be claimed while entitlement remains.
-- The benefit period runs from 1 July through 15 June of the following year. Normal employee submission is rejected from 16 through 30 June. The system warns at or after cut-off; the source names 15 June as the annual academic-year lock date.
-- Required documents block processing when missing. The BRD refers to PDF or JPG generally, while the Education Claim Form table specifically notes PDF for its attachment field.
-- A request in progress for the same employee and dependent blocks a new equivalent request, except the document also describes contract employees with remaining ceiling. Implementation needs a precise status and eligibility rule to reconcile these statements.
-- Withdraw changes the request to `Withdrawn`, notifies HR Compensation & Benefit, and records the action. One earlier rule limits withdraw to `Sent Back`, while the exception section describes withdrawal more generally; this needs confirmation before implementation.
+- Dalam proses normal, hanya karyawan yang dapat mengajukan klaim. Super Admin menjadi pengecualian untuk pemrosesan bertanggal mundur yang diizinkan.
+- Jenis tunjangan harus sesuai dengan kelayakan karyawan dan seluruh informasi wajib harus lengkap sebelum proses dapat dilanjutkan.
+- Bantuan Pendidikan hanya menggunakan data tanggungan dari Employee Central, mengizinkan paling banyak tiga tanggungan, dan tidak mencakup tanggungan yang berusia lebih dari 23 tahun.
+- Tanggungan yang sama tidak dapat diklaim oleh lebih dari satu karyawan pada periode yang sama. Karyawan tetap tidak dapat membuat klaim duplikat untuk tanggungan dan periode yang sama; karyawan kontrak dapat mengajukan klaim kembali hanya jika masih memiliki sisa plafon.
+- Batas frekuensi adalah satu klaim PAUD dan dua klaim TK per tanggungan. Klaim untuk jenjang SD hingga perguruan tinggi dapat diajukan selama masih ada hak tunjangan.
+- Periode tunjangan berlangsung dari 1 Juli hingga 15 Juni tahun berikutnya. Pengajuan normal oleh karyawan ditolak dari 16 hingga 30 Juni. Sistem memberi peringatan pada atau setelah batas akhir; sumber menyebut 15 Juni sebagai tanggal penguncian tahun akademik setiap tahun.
+- Ketiadaan dokumen wajib menghalangi pemrosesan. BRD secara umum menyebut PDF atau JPG, sedangkan tabel Education Claim Form secara khusus mencantumkan PDF untuk kolom lampirannya.
+- Permohonan yang sedang diproses untuk karyawan dan tanggungan yang sama menghalangi permohonan baru yang setara, tetapi dokumen juga menjelaskan ketentuan bagi karyawan kontrak yang memiliki sisa plafon. Implementasi memerlukan aturan status dan kelayakan yang tepat untuk menyelaraskan pernyataan tersebut.
+- Penarikan kembali mengubah status permohonan menjadi `Withdrawn`, memberi tahu HR Compensation & Benefit, dan mencatat tindakan tersebut. Salah satu aturan sebelumnya membatasi penarikan kembali pada status `Sent Back`, sedangkan bagian pengecualian menjelaskan penarikan kembali secara lebih umum; hal ini perlu dikonfirmasi sebelum implementasi.
 
-**Functional interactions, access, and integration**
+**Interaksi fungsional, akses, dan integrasi**
 
-- Employee Central is the source for employee, dependent, and date-of-hire information used in eligibility and prorata calculations.
-- Approved claims become input for HR Compensation & Benefit payment administration. The BRD does not require direct payroll payment execution.
-- Employee sees own claims; HR Compensation & Benefit sees claims within its authority; Super Admin has only the stated exceptional capabilities.
-- History must record request status, dates, actors, and change activity. Submission data must align with attached evidence and be verified by HR.
+- Employee Central menjadi sumber informasi karyawan, tanggungan, dan tanggal mulai bekerja yang digunakan dalam perhitungan kelayakan dan prorata.
+- Klaim yang telah disetujui menjadi masukan untuk administrasi pembayaran oleh HR Compensation & Benefit. BRD tidak mewajibkan pelaksanaan pembayaran penggajian secara langsung.
+- Karyawan melihat klaim miliknya sendiri; HR Compensation & Benefit melihat klaim dalam lingkup kewenangannya; Super Admin hanya memiliki kemampuan khusus yang disebutkan.
+- Riwayat harus mencatat status permohonan, tanggal, pelaku, dan aktivitas perubahan. Data pengajuan harus sesuai dengan bukti terlampir dan diverifikasi oleh HR.
 
-**Additional functional behavior**
+**Perilaku fungsional tambahan**
 
-- Limit each supporting document to 10 MB. The source accepts PDF or JPG at the general upload rule, but the Education Claim Form specifically labels its mandatory attachment as PDF; retain this as an unresolved format conflict.
-- Preserve the field behaviour of the Education Claim Form: Currency, entitlement, selected dependent data, student name, age, date of birth, gender, and education year are system-derived/read-only where indicated; the employee supplies the student identity number, school, optional grade, school name/address, attachment, and optional remarks.
-- Retain the rule that benefit already received is not returned merely because the employee later resigns.
-- Preserve the future policy configuration requirement for Education Assistance category by job level, while leaving benefit-policy maintenance itself outside this module.
-- Migrate Benefit Reimbursement history from 2021 through the latest available source data. Do not include Condolence Assistance, employee/dependent maintenance, policy maintenance, direct payroll payment, or offline post-cut-off processing in this module.
-- Send-back and cancellation notifications include the reviewer comment. The pending-approval reminder is sent to HR Compensation & Benefit.
-- The audit trail must record at least submit, edit, approve, send back, resubmit, and withdraw with user, role, activity time, and request ID.
+- Membatasi ukuran setiap dokumen pendukung hingga 10 MB. Sumber menerima PDF atau JPG dalam aturan umum unggahan, tetapi Education Claim Form secara khusus menyebut lampiran wajibnya sebagai PDF; hal ini tetap dicatat sebagai konflik format yang belum terselesaikan.
+- Mempertahankan perilaku kolom pada Education Claim Form: mata uang, hak tunjangan, data tanggungan yang dipilih, nama siswa, usia, tanggal lahir, jenis kelamin, dan tahun pendidikan berasal dari sistem atau bersifat hanya baca sesuai penandaan; karyawan mengisi nomor identitas siswa, sekolah, kelas opsional, nama/alamat sekolah, lampiran, dan catatan opsional.
+- Mempertahankan aturan bahwa tunjangan yang telah diterima tidak dikembalikan hanya karena karyawan kemudian mengundurkan diri.
+- Mempertahankan kebutuhan konfigurasi kebijakan mendatang untuk kategori Bantuan Pendidikan berdasarkan jenjang jabatan, sementara pemeliharaan kebijakan tunjangan itu sendiri tetap berada di luar modul ini.
+- Memigrasikan riwayat Benefit Reimbursement dari 2021 hingga data sumber terbaru yang tersedia. Bantuan Kedukaan (Condolence Assistance), pemeliharaan data karyawan/tanggungan, pemeliharaan kebijakan, pembayaran penggajian secara langsung, dan pemrosesan luring setelah batas akhir tidak termasuk dalam modul ini.
+- Notifikasi pengembalian dan pembatalan menyertakan komentar peninjau. Pengingat persetujuan yang tertunda dikirim kepada HR Compensation & Benefit.
+- Jejak audit harus mencatat setidaknya pengajuan, pengeditan, persetujuan, pengembalian, pengajuan ulang, dan penarikan kembali, beserta pengguna, peran, waktu aktivitas, dan ID permohonan.
 
-**Use-case scenarios**
+**Skenario kasus penggunaan**
 
-1. An eligible employee submits Education Assistance for an eligible dependent with mandatory evidence and receives a status trail.
-2. A dependent over 23, an over-limit PAUD/TK claim, a duplicate permanent-employee claim, or a submission in the 16-30 June closed window is rejected before submission.
-3. HR sends back with a required comment; the employee corrects and resubmits.
-4. A contract employee with available ceiling follows the intended repeat-claim rule once the ambiguity above is resolved.
-5. Super Admin backdates a claim and the audit trail distinguishes the admin creator from the employee owner.
+1. Karyawan yang memenuhi syarat mengajukan Bantuan Pendidikan untuk tanggungan yang memenuhi syarat dengan bukti wajib dan memperoleh riwayat status.
+2. Tanggungan berusia di atas 23 tahun, klaim PAUD/TK yang melebihi batas, klaim duplikat karyawan tetap, atau pengajuan pada periode penutupan 16-30 Juni ditolak sebelum pengajuan diteruskan.
+3. HR mengembalikan klaim dengan komentar wajib; karyawan memperbaiki dan mengajukan ulang klaim.
+4. Karyawan kontrak yang memiliki sisa plafon mengikuti aturan pengajuan klaim berulang yang dimaksud setelah ambiguitas di atas diselesaikan.
+5. Super Admin membuat klaim bertanggal mundur dan jejak audit membedakan admin yang membuat klaim dari karyawan pemilik klaim.
 
-## Source ambiguities outside the executable requirement set
+## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
 
-- Confirm the complete allowed attachment formats for the Education Claim Form.
-- Confirm whether withdrawal is valid only after `Sent Back` or at all unfinished stages.
-- Define the exact statuses that constitute an active duplicate claim and the contract-employee exception.
+- Mengonfirmasi seluruh format lampiran yang diizinkan untuk Education Claim Form.
+- Mengonfirmasi apakah penarikan kembali hanya sah setelah `Sent Back` atau pada seluruh tahap yang belum selesai.
+- Menetapkan status yang secara tepat menandakan klaim duplikat aktif dan pengecualian bagi karyawan kontrak.

@@ -1,50 +1,50 @@
-# Requirements Breakdown: EC Position Management
+# Penjabaran Kebutuhan: EC Pengelolaan Posisi (Position Management)
 
-## Source and scope
+## Sumber dan cakupan
 
 - Source: `data/raw/BRD - EC Position Management.md`
-- Purpose: manage the position lifecycle, position hierarchy, organisational-unit attributes, history, charting, migration, import/export, and shared reference data.
-- Roles: OD Admin has position lifecycle and chart/import/export permissions; Comben manages cost code; employees view their own position-chart data.
+- Tujuan: mengelola siklus hidup posisi, hierarki posisi, atribut unit organisasi, riwayat, penyajian bagan, migrasi, impor/ekspor, dan data referensi bersama.
+- Peran: OD Admin memiliki hak akses untuk mengelola siklus hidup posisi serta bagan/impor/ekspor; Comben mengelola kode biaya; karyawan melihat data bagan posisinya sendiri.
 
-## Functional Requirements
+## Kebutuhan Fungsional
 
-1. Create, read, update, activate, and deactivate positions, with general creation and `Add Position Below` creation from a selected Position Chart node.
-2. Maintain Position Code, Position Title, organisational-unit association, Higher-Level Position, and subordinate relationships.
-3. Display Position Chart and support search by Position Code, Position Title, incumbent employee name, and employee ID.
-4. Apply effective dating to changes and retain historical organisation/position views for a chosen effective date.
-5. Manage Company, Directorate, Division, Department, Section, and cost code/cost centre data within the allocated role boundaries.
-6. Bulk import SAP SuccessFactors position data, export Position Chart as PDF and PNG, and expose positions as a single reference source for related EC modules.
-7. Record all changes in audit trail, including actor, time, and changed data.
+1. Membuat, membaca, memperbarui, mengaktifkan, dan menonaktifkan posisi, baik melalui pembuatan umum maupun `Add Position Below` dari simpul Bagan Posisi yang dipilih.
+2. Mengelola Kode Posisi (Position Code), Nama Posisi (Position Title), keterkaitan dengan unit organisasi, Posisi Atasan (Higher-Level Position), dan hubungan dengan posisi bawahan.
+3. Menampilkan Bagan Posisi serta mendukung pencarian berdasarkan Kode Posisi, Nama Posisi, nama karyawan pemangku posisi, dan ID karyawan.
+4. Menerapkan tanggal berlaku pada perubahan serta mempertahankan tampilan riwayat organisasi/posisi untuk tanggal berlaku yang dipilih.
+5. Mengelola data Perusahaan, Direktorat, Divisi, Departemen, Seksi, dan kode biaya/pusat biaya sesuai batas kewenangan masing-masing peran.
+6. Mengimpor data posisi SAP SuccessFactors secara massal, mengekspor Bagan Posisi dalam format PDF dan PNG, serta menyediakan posisi sebagai sumber referensi tunggal bagi modul EC terkait.
+7. Mencatat seluruh perubahan dalam jejak audit, termasuk pelaku, waktu, dan data yang berubah.
 
-**Behavioral rules and preconditions**
+**Aturan perilaku dan prasyarat**
 
-- Position Code is unique. Position Title must fit the active organisation structure and business need.
-- Only OD manages position lifecycle and hierarchy. General users have authorised read-only views.
-- Each position has at most one active Higher-Level Position for the same effective period. The hierarchy must be valid and must not be circular.
-- `Create Position` requires manual completion of the data. `Add Position Below` inherits/auto-fills hierarchy from the selected parent chart node.
-- Changes preserve prior data through effective dating. A position with employee, organisational, or transaction history cannot be deleted.
-- Deactivation is permitted only when there is no active incumbent, active candidate, or active subordinate position.
-- Reporting-line changes update both Position Chart and Organisation Chart according to effective date.
-- Position must reference valid Directorate, Division, Department, and Section data.
+- Kode Posisi bersifat unik. Nama Posisi harus sesuai dengan struktur organisasi aktif dan kebutuhan bisnis.
+- Hanya OD yang mengelola siklus hidup dan hierarki posisi. Pengguna umum memiliki tampilan hanya baca sesuai hak aksesnya.
+- Setiap posisi memiliki paling banyak satu Posisi Atasan yang aktif pada periode berlaku yang sama. Hierarki harus valid dan tidak boleh membentuk siklus.
+- `Create Position` mengharuskan pengisian data secara manual. `Add Position Below` mewarisi/mengisi hierarki secara otomatis dari simpul induk yang dipilih pada bagan.
+- Perubahan mempertahankan data sebelumnya melalui penerapan tanggal berlaku. Posisi yang memiliki riwayat karyawan, organisasi, atau transaksi tidak dapat dihapus.
+- Penonaktifan hanya diperbolehkan jika tidak ada pemangku posisi aktif, kandidat aktif, maupun posisi bawahan aktif.
+- Perubahan garis pelaporan memperbarui Bagan Posisi dan Bagan Organisasi sesuai tanggal berlaku.
+- Posisi harus merujuk pada data Direktorat, Divisi, Departemen, dan Seksi yang valid.
 
-**Additional functional behavior**
+**Perilaku fungsional tambahan**
 
-- Creation and edit validation must cover mandatory data, data format, Position Code uniqueness, organisational consistency, valid higher-level relationship, and the applicable Position Management business rules before storage.
-- An edit may cover Position Title, Job Code, Cost Center, Location, Position Level, or Reporting Line within the user's authority. A successful edit updates related position and organisation structure information and writes effective-dated audit history.
-- `Add Position Below` must at least auto-fill Higher-Level Position, Division, and Department from the selected chart node before the user completes the new position data.
-- OD Admin may import/export position data and charts; Comben manages Cost Code/Cost Center; employees have authorised read-only Position Chart access. Source migration is SAP SuccessFactors position data.
+- Validasi pembuatan dan pengeditan harus mencakup data wajib, format data, keunikan Kode Posisi, konsistensi organisasi, hubungan dengan posisi atasan yang valid, serta aturan bisnis Pengelolaan Posisi yang berlaku sebelum data disimpan.
+- Pengeditan dapat mencakup Nama Posisi, Kode Pekerjaan (Job Code), Pusat Biaya (Cost Center), Lokasi, Tingkat Posisi (Position Level), atau Garis Pelaporan (Reporting Line) sesuai kewenangan pengguna. Pengeditan yang berhasil memperbarui informasi posisi dan struktur organisasi terkait serta mencatat riwayat audit dengan tanggal berlaku.
+- `Add Position Below` setidaknya harus mengisi Posisi Atasan, Divisi, dan Departemen secara otomatis dari simpul bagan yang dipilih sebelum pengguna melengkapi data posisi baru.
+- OD Admin dapat mengimpor/mengekspor data posisi dan bagan; Comben mengelola Kode Biaya/Pusat Biaya (Cost Code/Cost Center); karyawan memiliki akses hanya baca ke Bagan Posisi sesuai kewenangannya. Sumber migrasi adalah data posisi SAP SuccessFactors.
 
-**Scope exclusions**
+**Hal-hal di luar cakupan**
 
-Job Code Framework auto-generation, recruitment, RTE, ESC transactions, personal/employment data, manning budget, payroll/compensation, approval-workflow management, contract processes, talent pools, and drag-and-drop reporting-line changes are not included.
+Pembuatan Job Code Framework secara otomatis, rekrutmen, RTE, transaksi ESC, data pribadi/kepegawaian, anggaran kebutuhan tenaga kerja, penggajian/kompensasi, pengelolaan alur kerja persetujuan, proses kontrak, kelompok talenta, dan perubahan garis pelaporan melalui seret dan lepas tidak termasuk dalam cakupan.
 
-**Use-case scenarios**
+**Skenario kasus penggunaan**
 
-1. OD creates a general position with a unique code and valid organisational references.
-2. OD adds a subordinate position from the chart and receives the expected inherited hierarchy.
-3. A position with active incumbent or subordinate cannot be deactivated; a historical position cannot be deleted.
-4. A selected historical date displays the correct chart and prior position state.
+1. OD membuat posisi melalui pembuatan umum dengan kode unik dan referensi organisasi yang valid.
+2. OD menambahkan posisi bawahan dari bagan dan memperoleh hierarki yang diwarisi sesuai harapan.
+3. Posisi dengan pemangku atau posisi bawahan aktif tidak dapat dinonaktifkan; posisi yang memiliki riwayat tidak dapat dihapus.
+4. Pemilihan tanggal lampau menampilkan bagan dan kondisi posisi sebelumnya yang sesuai.
 
-## Source ambiguities outside the executable requirement set
+## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
 
-The BRD does not contain a dedicated detailed functional-requirements chapter or position field catalogue. The breakdown is based on in-scope items, expected process flows, roles, and policy rules.
+BRD tidak memiliki bab khusus yang merinci kebutuhan fungsional atau katalog kolom posisi. Penjabaran ini didasarkan pada hal-hal dalam cakupan, alur proses yang diharapkan, peran, dan aturan kebijakan.
