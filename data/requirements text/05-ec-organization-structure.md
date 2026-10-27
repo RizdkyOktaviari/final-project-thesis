@@ -1,45 +1,74 @@
-# Penjabaran Kebutuhan: EC Struktur Organisasi (Organization Structure)
+# Kebutuhan Riset: Pengelolaan Struktur Organisasi (EC Organization Structure)
 
-## Sumber dan cakupan
+## Sumber dan ruang lingkup
 
 - Source: `data/raw/BRD - EC Organization Structure.md`
-- Tujuan: pengelolaan unit organisasi secara terpusat dan visualisasi riwayat organisasi.
-- Peran: Organization Development (membuat/membaca/memperbarui) dan Karyawan (Employee, hanya baca).
+- Tujuan: mengelola data induk unit organisasi secara terpusat serta menampilkan struktur dan riwayat organisasi berdasarkan tanggal berlaku.
+- Aktor sistem: Organization Development (OD) untuk membuat, membaca, dan memperbarui data; karyawan untuk membaca informasi sesuai hak akses.
+- Batas proses: usulan, peninjauan, dan persetujuan perubahan organisasi berlangsung secara manual. Bagian proses di dalam aplikasi mencakup pembaruan struktur yang telah disetujui, penyimpanan, visualisasi, dan penelusuran riwayat.
 
-## Kebutuhan Fungsional
+## Skenario kebutuhan
 
-1. Mengelola data induk unit organisasi dan Struktur Organisasi dengan hierarki yang valid.
-2. Menampilkan bagan organisasi, detail profil karyawan, dan kondisi organisasi pada tanggal atau periode yang dipilih.
-3. Mengekspor Struktur Organisasi dalam format PDF dan PNG.
-4. Menyediakan pencarian berdasarkan nama departemen, nama posisi, nama karyawan, atau ID NH melalui integrasi dengan modul terkait.
-5. Menyimpan riwayat data dengan penerapan tanggal berlaku dan jejak audit untuk perubahan struktur.
-6. Menjadi referensi organisasi bagi modul Employee Central serta mengintegrasikan perubahan ESC yang memengaruhi penempatan karyawan atau visualisasi.
+### REQ-ORG-001: Memperbarui struktur organisasi yang telah disetujui
 
-**Aturan perilaku dan pengendalian akses**
+**Rujukan:** §2.2 In Scope; §2.4 User Roles and Accessibilities; §4.1 Manage Organizational Structure Business Process, Flow Internal, Update Organization Structure; §5 Organization Structure Policies / Business Rules.
 
-- Setiap unit organisasi memerlukan identitas unik dan harus menjadi bagian dari hierarki yang valid.
-- OD dapat mengakses seluruh struktur organisasi. Pengguna lain hanya dapat melihat struktur sesuai hak aksesnya dalam mode hanya baca.
-- Standar kode Direktorat, Divisi, Departemen, dan Seksi mengikuti kebijakan HR Organization Development.
-- OD dapat menyesuaikan garis pelaporan yang tidak mengubah Struktur Organisasi kapan saja berdasarkan permintaan Unit Bisnis dari pihak yang sekurang-kurangnya berada pada tingkat Department Head/Manager.
-- Pengelolaan posisi, pengelolaan kode IPS, hierarki posisi, rekrutmen, perencanaan tenaga kerja, kompensasi, administrasi otorisasi, restrukturisasi melalui seret dan lepas, serta pelaksanaan transaksi ESC berada di luar cakupan.
+**Kebutuhan:** Setelah tahapan persetujuan manual yang berlaku selesai, OD harus dapat menambahkan atau mengubah data organisasi melalui aplikasi. Sistem harus mendukung pembaruan langsung maupun impor berkas struktur organisasi dalam format CSV atau XLSX. Setiap unit yang ditambahkan atau diubah harus memiliki identitas unik dan hubungan hierarki yang valid. Sistem harus menyimpan perubahan struktur yang telah disetujui sehingga struktur terbaru menjadi referensi aktif bagi sistem dan modul terkait. Sistem harus mempertahankan riwayat perubahan menggunakan tanggal berlaku dan jejak audit.
 
-**Batas proses fungsional**
+### REQ-ORG-002: Melihat struktur organisasi pada tanggal tertentu
 
-Persetujuan usulan perubahan organisasi di luar sistem tetap dilakukan secara manual. OD meninjau usulan, dokumentasi, hierarki, dan justifikasi bisnis sebelum peninjauan berurutan oleh Training and Development, Senior Manager HCM, GMO/Director in Charge, dan Board of Director. Cakupan proses di dalam sistem dimulai dari pembaruan struktur organisasi yang telah disetujui dan penyimpanan riwayatnya.
+**Rujukan:** §2.2 In Scope; §2.5 Risks and Mitigation, Mitigasi; §5 Organization Structure Policies / Business Rules.
 
-**Perilaku fungsional tambahan**
+**Kebutuhan:** Pengguna harus dapat memilih tanggal atau periode struktur organisasi yang ingin dilihat. Sistem harus menampilkan bagan organisasi sesuai struktur yang berlaku pada tanggal tersebut, termasuk ketika pengguna memilih tanggal historis. Sistem juga harus menyediakan tampilan detail profil karyawan dalam ruang lingkup visualisasi organisasi. OD dapat melihat seluruh struktur organisasi perusahaan, sedangkan karyawan dan pengguna lain hanya dapat membaca informasi sesuai hak akses yang diberikan.
 
-- Setelah persetujuan manual, OD harus dapat menambah/mengubah data organisasi secara langsung atau mengimpor Struktur Organisasi dalam format CSV/XLSX. Struktur yang telah disetujui tersebut menjadi referensi aktif bagi modul terkait.
-- Untuk perubahan tahunan atau triwulanan di bawah tingkat Departemen, alur persetujuan manual dapat berakhir pada GMO/Director in Charge. Perubahan pada tingkat Departemen dan di atasnya harus sampai kepada Director. Usulan yang ditolak dikembalikan kepada pemohon dan OD untuk direvisi.
-- Struktur Organisasi tidak mencakup pembuatan atau pengelolaan Posisi, kode IPS, hierarki posisi, data pribadi/kepegawaian karyawan, penugasan manajer, rekrutmen, perencanaan tenaga kerja, penggajian/tunjangan, kinerja, talenta, integrasi sistem keuangan di luar referensi Pusat Biaya (Cost Center), peran keamanan, atau restrukturisasi melalui seret dan lepas.
+### REQ-ORG-003: Mencari informasi dalam struktur organisasi
 
-**Skenario kasus penggunaan**
+**Rujukan:** §5 Organization Structure Policies / Business Rules.
 
-1. OD membuat atau mengubah unit organisasi hanya jika induk dan hierarkinya valid, lalu perubahan tersebut dapat ditelusuri dalam riwayat.
-2. Pengguna membuka bagan organisasi pada tanggal berlaku sebelumnya dan melihat struktur yang berlaku saat itu.
-3. Mutasi melalui ESC yang telah disetujui tercermin pada tampilan organisasi terkait, tanpa menyediakan pembuatan ESC di modul ini.
-4. Karyawan hanya dapat melihat informasi organisasi sesuai hak aksesnya dan tidak dapat mengubahnya.
+**Kebutuhan:** Pengguna harus dapat mencari informasi struktur organisasi berdasarkan nama departemen, nama posisi, nama karyawan, atau ID NH. Sistem harus menyediakan pencarian tersebut melalui integrasi dengan modul terkait dan membatasi informasi yang dapat diakses sesuai kewenangan pengguna.
 
-## Ambiguitas sumber di luar himpunan kebutuhan yang dapat dieksekusi
+### REQ-ORG-004: Mengekspor struktur organisasi
 
-BRD tidak memiliki bab kebutuhan fungsional tersendiri. Kebutuhan di atas dirumuskan dari bagian cakupan, alur yang diharapkan, dan kebijakan modul. Definisi terperinci kolom untuk pembuatan/pembaruan serta pesan validasi tidak ditentukan.
+**Rujukan:** §2.2 In Scope; §5 Organization Structure Policies / Business Rules.
+
+**Kebutuhan:** Sistem harus menyediakan fungsi ekspor struktur organisasi ke format PDF dan PNG. Fungsi ini menggunakan informasi struktur organisasi yang dapat diakses oleh pengguna sesuai hak akses yang berlaku.
+
+### REQ-ORG-005: Menyediakan referensi organisasi dan mencerminkan perubahan ESC
+
+**Rujukan:** §2.2 In Scope; §5 Organization Structure Policies / Business Rules.
+
+**Kebutuhan:** Sistem harus menyediakan struktur organisasi sebagai referensi bagi modul Employee Central lainnya. Jika perubahan data karyawan melalui proses Employee Status Change (ESC), seperti promosi, transfer, atau reklasifikasi, memengaruhi penempatan atau visualisasi organisasi, sistem harus mencerminkan perubahan yang relevan sesuai konfigurasi yang berlaku.
+
+## Ketentuan pendukung
+
+### KON-ORG-001: Identitas unit, hierarki, dan standar kode
+
+**Rujukan:** §2.5 Risks and Mitigation, Mitigasi; §5 Organization Structure Policies / Business Rules.
+
+**Ketentuan:** Setiap unit organisasi harus memiliki identitas unik dan berada dalam hierarki yang valid. Sistem harus memvalidasi hubungan unit induk dan unit bawahan untuk mencegah hierarki yang tidak valid. Standar kode Directorate, Division, Department, dan Section harus mengikuti kebijakan HR Organization Development. Perubahan organisasi harus mempertahankan riwayat melalui tanggal berlaku dan jejak audit agar perubahan tetap dapat ditelusuri.
+
+### KON-ORG-002: Prasyarat persetujuan manual
+
+**Rujukan:** §4.1 Manage Organizational Structure Business Process, Flow External dan Catatan.
+
+**Ketentuan:** Pengaju perubahan harus menyiapkan proposal, bagan organisasi baru, dan justifikasi perubahan untuk ditinjau OD Section. OD menilai kelengkapan dokumen, kesesuaian struktur, dan alasan bisnis sebelum proposal diteruskan kepada Manager Training & Development, Senior Manager HCM, serta GM Operations/GMO atau Director in Charge sesuai jalur yang berlaku. BRD juga mencantumkan peninjauan Board of Director. Untuk perubahan tahunan atau kuartalan pada tingkat di bawah Department, persetujuan cukup sampai GMO atau Director in Charge sesuai jenjang organisasi; perubahan pada tingkat Department dan di atasnya harus mencapai Direktur. Jika proposal tidak disetujui pada salah satu tahap, proposal kembali kepada pengaju dan OD untuk direvisi serta diajukan kembali. Seluruh peninjauan dan persetujuan tersebut berlangsung di luar aplikasi; hanya Department TD-OD yang melakukan pembaruan dalam sistem setelah persetujuan lengkap.
+
+### KON-ORG-003: Penyesuaian jalur pelaporan dan kewenangan akses
+
+**Rujukan:** §2.4 User Roles and Accessibilities; §4.1 Manage Organizational Structure Business Process, Catatan; §5 Organization Structure Policies / Business Rules.
+
+**Ketentuan:** OD berwenang membuat, membaca, dan memperbarui data organisasi, serta mengakses seluruh struktur organisasi perusahaan. Pengguna lain hanya boleh membaca informasi sesuai kewenangannya dan tidak memperoleh hak mengubah struktur. Kebijakan sumber memperbolehkan OD menyesuaikan jalur pelaporan yang tidak mengubah struktur organisasi sewaktu-waktu atas permintaan Business Unit, paling rendah pada tingkat Department Head/Manager. Ketentuan ini merupakan konteks kewenangan bisnis; ruang lingkup modul tetap mengecualikan pengelolaan manager assignment dan jalur pelaporan berbasis posisi.
+
+## Batas cakupan
+
+Modul ini tidak mencakup pembuatan atau pengelolaan posisi, Integrated Position System (IPS) Code, hierarki posisi, penugasan manajer atau jalur pelaporan berbasis posisi, maupun transaksi ESC. Pengelolaan data pribadi dan hubungan kerja karyawan, rekrutmen, orientasi karyawan baru, perencanaan tenaga kerja dan anggarannya, kompensasi, payroll, manfaat, target dan penilaian kinerja, perencanaan suksesi, serta pengelolaan talenta juga berada di luar cakupan.
+
+Integrasi sistem keuangan selain penyediaan referensi Cost Center, administrasi peran keamanan dan otorisasi pengguna, serta perubahan struktur melalui seret dan lepas (drag and drop) tidak termasuk cakupan. Persetujuan proposal organisasi tetap merupakan proses manual yang mendahului pembaruan dalam aplikasi.
+
+## Ambiguitas dan batas interpretasi
+
+- BRD tidak memiliki bab kebutuhan fungsional atau katalog data pembuatan dan perubahan unit yang rinci. Skenario diturunkan dari ruang lingkup, alur To-Be, peran, mitigasi risiko, dan kebijakan modul. Rincian field, pesan validasi, dan perilaku gagal impor belum ditentukan.
+- Ketentuan tingkat persetujuan mengikuti Catatan pada §4.1. Hubungan operasional antara istilah Board of Director pada alur dan Direktur pada catatan harus diperjelas jika peneliti akan memodelkan jalur manual secara lebih rinci; dokumen ini tidak menambah tahapan otomatis.
+- Sumber menyebut penyesuaian jalur pelaporan sebagai kebijakan OD, tetapi mengecualikan pengelolaan jalur pelaporan berbasis posisi dari modul. Pernyataan tersebut dipertahankan sebagai batas antarmodul, bukan dasar untuk menambahkan fungsi perubahan hierarki posisi di sini.
+- Pengaruh ESC pada visualisasi mengikuti konfigurasi yang disebutkan sumber. Detail pemetaan perubahan, waktu sinkronisasi, dan pesan integrasi belum ditetapkan dalam BRD ini.
+

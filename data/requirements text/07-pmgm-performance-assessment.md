@@ -1,50 +1,126 @@
-# Penjabaran Kebutuhan: PMGM Penilaian Kinerja (Performance Assessment)
+# Kebutuhan Riset: Penilaian Kinerja (PMGM Performance Assessment)
 
-## Sumber dan cakupan
+## Sumber dan ruang lingkup
 
 - Source: `data/raw/BRD PMGM - Performance Assessment.md`
-- Peran: OD Admin, karyawan (Employee), atasan langsung (Direct Supervisor), dan atasan satu tingkat di atas atasan langsung (One-Up Supervisor).
-- Siklus proses: konfigurasi dan peluncuran templat, penilaian diri, peninjauan oleh atasan, normalisasi di luar sistem dengan impor ke sistem, finalisasi, pelaporan, dan audit.
+- Aktor: administrator Organization Development (OD), karyawan, atasan langsung (Direct Supervisor), dan atasan satu tingkat di atas atasan langsung (One-Up Supervisor). Department Head atau Senior Manager membahas normalisasi di luar sistem.
+- Cakupan: konfigurasi dan peluncuran formulir, penilaian diri, penilaian atasan, administrasi normalisasi, finalisasi, pelaporan, dan jejak audit.
+- Istilah: PA berarti Performance Assessment. Nama status dan kolom tertentu dipertahankan untuk ketertelusuran.
 
-## Kebutuhan Fungsional
+## Skenario kebutuhan
 
-1. Memungkinkan OD membuat, mengubah, menggandakan, melihat pratinjau, meluncurkan, menutup, dan mengonfigurasi templat Penilaian Kinerja (Performance Assessment) yang terpisah untuk Staff dan Non-Staff. Konfigurasi mencakup pengaturan umum, skala penilaian, peta rute/alur kerja, periode, notifikasi, peserta, bahasa, bagian, dan kolom.
-2. Memungkinkan karyawan menggunakan formulir sesuai kategori/bahasanya, melihat tahap pada peta rute, memberi nilai dan komentar pada sasaran, mengunggah lampiran opsional, memasukkan aspirasi, menyimpan draf, dan mengajukan setelah lolos validasi wajib.
-3. Mengunci pengeditan oleh karyawan setelah pengajuan, kecuali jika penilaian dikembalikan untuk diperbaiki.
-4. Memungkinkan Direct Supervisor meninjau penilaian diri, menyesuaikan nilai, memberikan komentar, mencatat kelebihan dan aspek yang perlu ditingkatkan, serta mengajukan kepada One-Up Supervisor. Memungkinkan One-Up Supervisor melihat penilaian diri dan penilaian Direct Supervisor, menyesuaikan nilai/komentar, dan menyelesaikan tahapnya.
-5. Mendukung satu atau dua tingkat peninjauan untuk Non-Staff. Menggunakan struktur organisasi untuk Staff; OD mengonfigurasi peta rute Non-Staff per departemen saat peluncuran.
-6. Menyediakan notifikasi dan pengingat yang dapat dikonfigurasi berdasarkan tindakan, tugas yang belum selesai, tenggat, penerima, subjek, waktu, dan frekuensi.
-7. Memungkinkan OD mengekspor data PA untuk departemen terpilih menjadi satu file XLSX atau CSV per departemen; membuat kelompok normalisasi; mengimpor/mengimpor ulang hasil departemen dengan catatan wajib dan lampiran opsional; mempertahankan riwayat impor sebelumnya; serta menyesuaikan nilai akhir secara individual dengan catatan wajib.
-8. Memungkinkan OD melakukan finalisasi setelah normalisasi departemen. Sistem mengubah status PA menjadi `Completed`, mengunci nilai akhir, dan hanya menampilkan nilai akhir kepada karyawan.
-9. Menyediakan laporan PA dengan filter periode, Staff/Non-Staff, jenjang jabatan, departemen, karyawan, dan status, serta ekspor XLSX atau CSV.
-10. Mendukung penanganan mutasi/promosi karyawan, pengunduran diri/pemutusan hubungan kerja karyawan, dan pengunduran diri atasan, termasuk penggantian peninjau atau pelewatan tahap peninjauan oleh OD ketika atasan mengundurkan diri sebelum meninjau.
+### REQ-PA-001: Mengonfigurasi dan meluncurkan penilaian kinerja
 
-**Aturan perilaku, perhitungan, dan prasyarat**
+**Rujukan:** WHO, Organization Development (OD) Admin; Expected New System Business Flow, Template and Launch, butir 1 sampai 3; Business Rules, butir 25.
 
-- Skala penilaian adalah 1 hingga 6, dengan nama dan deskripsi yang dikonfigurasi. Komentar pada sasaran wajib diisi; lampiran bersifat opsional. Aspirasi diisi oleh karyawan, sedangkan kelebihan/aspek yang perlu ditingkatkan diisi oleh atasan.
-- Menyimpan draf tidak memajukan tahap. Pengajuan mensyaratkan pengisian setiap kolom wajib. Templat tidak dapat diubah setelah diluncurkan.
-- Direct Supervisor tidak dapat melihat nilai dari One-Up Supervisor; One-Up Supervisor dapat melihat nilai dari karyawan dan Direct Supervisor. Riwayat nilai hanya dapat diakses oleh OD.
-- OD tidak memiliki tindakan persetujuan dalam alur kerja PA. OD dapat memindahkan penilaian secara massal ke tahap Normalization dan hanya menjalankan tindakan administratif normalisasi.
-- Nilai Keseluruhan Formulir (Overall Form Rating) dihitung dengan rumus `sum(section rating x section weight) / sum(section weight)`. Sebelum proses selesai, karyawan melihat tanda hubung sebagai pengganti nilai keseluruhan.
-- Pembahasan normalisasi berlangsung di luar sistem. Impor terakhir yang berhasil menjadi impor aktif; seluruh file sebelumnya tetap tersimpan dalam riwayat dan log audit.
-- Aktivitas Goal Management tidak memengaruhi nilai/perhitungan PA. Penilaian otomatis untuk penilaian diri yang belum selesai, tampilan GAP, bagian tanda tangan, dan bagian konfirmasi penerimaan berada di luar cakupan.
+**Kebutuhan:** OD harus dapat membuat, mengubah, menggandakan, dan meninjau pratinjau templat PA yang terpisah untuk Staff dan Non-Staff. OD mengatur pengaturan umum, skala penilaian, alur peninjauan, periode, notifikasi, peserta, bahasa, bagian formulir, dan kolom formulir. Setelah menentukan peserta dan meninjau pratinjau, OD meluncurkan templat untuk membuka periode PA. Sistem harus mencegah perubahan templat yang sudah diluncurkan. OD harus dapat menutup periode atau templat PA sesuai kewenangannya.
 
-**Perilaku akses dan audit**
+### REQ-PA-002: Mengisi dan mengajukan penilaian diri
 
-- OD dapat melihat seluruh penilaian, status, riwayat nilai/komentar, dan jejak audit; OD dapat mengganti pemetaan peninjau dengan catatan wajib.
-- Karyawan dapat melihat penilaiannya dan nilai akhir pada tahap yang diizinkan, tetapi tidak dapat melihat rincian penilaian One-Up Supervisor atau riwayat nilai.
-- Seluruh kejadian pemberian nilai, komentar, persetujuan/pengembalian untuk perbaikan, perubahan peninjau, impor, impor ulang, dan finalisasi dapat diaudit.
+**Rujukan:** WHO, Employee (Staff & Non-Staff); Expected New System Business Flow, Self-Rating, butir 4 sampai 7; Business Rules, butir 6 sampai 9.
 
-**Perilaku fungsional tambahan**
+**Kebutuhan:** Karyawan membuka formulir PA sesuai kategori dan preferensi bahasanya. Sistem harus menampilkan informasi karyawan, tanggal penilaian, serta alur yang menunjukkan tahap saat ini dan tahap berikutnya. Karyawan mengisi nilai dalam rentang 1 sampai 6, komentar wajib pada setiap sasaran, dan aspirasi; karyawan dapat mengunggah lampiran opsional. Karyawan dapat menyimpan draf tanpa memindahkan PA ke tahap berikutnya. Ketika karyawan mengajukan penilaian diri, sistem harus memvalidasi seluruh kolom wajib dan menampilkan peringatan jika ada data yang belum diisi. Jika persyaratan pengajuan terpenuhi, sistem harus mengubah status menjadi `Pending Direct Supervisor Review` dan mengunci perubahan formulir oleh karyawan.
 
-- Direct Supervisor dan One-Up Supervisor dapat menyimpan draf dan mengembalikan penilaian untuk diperbaiki sebelum mengajukan hasil peninjauan masing-masing. Bagian Ringkasan (Summary Section) tersedia sesuai tahap; Direct Supervisor dapat menetapkan nilai bagian secara manual, sedangkan Nilai Keseluruhan Formulir tetap dihitung oleh sistem.
-- Jalur administrator yang dikonfigurasi menggunakan satu tingkat peninjauan oleh Manager; Director dapat menjadi peninjau akhir apabila OD mengonfigurasinya. Ketentuan ini melengkapi aturan hierarki Staff dan peta rute Non-Staff tanpa menggantikannya.
-- Kelompok normalisasi hanya memerlukan nama dan mengikuti periode PA yang aktif; kelompok ini tidak memiliki periode buka/tutup tersendiri. Dokumen sumber juga mensyaratkan peninjauan hasil validasi impor.
-- Mutasi/promosi karyawan mempertahankan sasaran yang telah diajukan dan menambahkan penanda `Is Transferred`; pengunduran diri/pemutusan hubungan kerja menghapus karyawan dari daftar peserta aktif.
+### REQ-PA-003: Meninjau penilaian oleh atasan langsung
 
-**Skenario kasus penggunaan**
+**Rujukan:** WHO, Direct Supervisor; Expected New System Business Flow, Direct Supervisor Review, butir 8 sampai 10; Business Rules, butir 10.
 
-1. Karyawan Staff mengajukan penilaian diri yang valid, sehingga memicu peninjauan oleh Direct Supervisor dan penguncian formulir.
-2. Peserta Non-Staff memperoleh peta rute yang dikonfigurasi OD dengan paling banyak dua tingkat peninjauan.
-3. OD mengekspor dua departemen dan memperoleh dua file terpisah, lalu mengimpor ulang hasil yang telah diperbaiki dengan tetap mempertahankan ketersediaan riwayat.
-4. Finalisasi mengunci nilai akhir dan menampilkannya kepada karyawan, sedangkan rincian data peninjauan tidak ditampilkan.
+**Kebutuhan:** Atasan langsung menerima notifikasi dan meninjau nilai serta komentar penilaian diri bawahannya. Sistem harus memungkinkan atasan langsung menyesuaikan nilai, memberikan komentar, serta mengisi kekuatan dan area perbaikan karyawan. Atasan langsung dapat menyimpan draf penilaian, mengembalikan penilaian melalui `Send Back`, atau mengajukan hasil peninjauan. Pada alur yang menggunakan One-Up Supervisor, pengajuan atasan langsung harus meneruskan PA kepada One-Up Supervisor. Sistem harus mencegah atasan langsung melihat penilaian One-Up Supervisor.
+
+### REQ-PA-004: Menyelesaikan peninjauan oleh One-Up Supervisor
+
+**Rujukan:** WHO, One Up Supervisor; Expected New System Business Flow, One-Up Supervisor Review, butir 11 dan 12; Business Rules, butir 10 sampai 12.
+
+**Kebutuhan:** One-Up Supervisor harus dapat melihat penilaian diri karyawan dan penilaian atasan langsung. Sesuai kewenangannya dalam alur, One-Up Supervisor dapat menyesuaikan nilai, memberikan komentar, mengisi kekuatan dan area perbaikan, menyimpan draf, mengembalikan penilaian, serta menyelesaikan peninjauan. Setelah peninjau terakhir mengajukan hasil penilaian, sistem harus mengubah status PA menjadi `Ready for Normalization`. OD tidak melakukan persetujuan penilaian dalam alur PA. Sumber menggunakan nama aksi `Approve` pada uraian peran dan `Submit` pada uraian alur; nama dan makna transisi ini perlu dikonfirmasi sebelum digunakan sebagai acuan penilaian konsistensi.
+
+### REQ-PA-005: Memperbaiki penilaian yang dikembalikan
+
+**Rujukan:** WHO, Employee (Staff & Non-Staff), Direct Supervisor, dan One Up Supervisor; Business Rules, butir 8 dan 9.
+
+**Kebutuhan:** Peninjau yang berwenang dapat mengembalikan PA melalui `Send Back`. Karyawan menerima catatan pengembalian, memperbaiki penilaian, dan mengajukannya kembali selama periode serta tahap mengizinkan. Sistem harus membuka kembali pengeditan formulir karyawan ketika PA dikembalikan. Sebelum pengajuan ulang, sistem harus tetap memvalidasi kelengkapan kolom wajib.
+
+### REQ-PA-006: Mengirim notifikasi dan memantau proses penilaian
+
+**Rujukan:** WHO, Organization Development (OD) Admin; Expected New System Business Flow, Notification and Monitoring, butir 13; WHAT, tabel In Scope.
+
+**Kebutuhan:** Sistem harus mengirimkan notifikasi dan pengingat secara kolektif kepada karyawan dan peninjau berdasarkan tindakan, pekerjaan yang belum diselesaikan, serta tenggat setiap tahap. OD harus dapat mengatur waktu, penerima, subjek, frekuensi, dan eskalasi notifikasi. Sistem harus memungkinkan OD memantau status PA seluruh karyawan, karyawan yang dipindahkan, atasan yang mengundurkan diri, penilaian yang melewati tenggat, serta departemen yang belum menyelesaikan normalisasi.
+
+### REQ-PA-007: Mengekspor data untuk normalisasi departemen
+
+**Rujukan:** Expected New System Business Flow, Normalization, butir 14 dan 15; Business Rules, butir 16 dan 17.
+
+**Kebutuhan:** OD memilih satu atau beberapa departemen untuk mengekspor data PA. Sistem harus menghasilkan satu berkas terpisah bagi setiap departemen dalam format XLSX atau CSV. Department Head atau Senior Manager membahas dan melakukan normalisasi di luar sistem, kemudian menyerahkan hasil normalisasi kepada OD.
+
+### REQ-PA-008: Mengimpor dan memperbarui hasil normalisasi
+
+**Rujukan:** WHO, Organization Development (OD) Admin; Expected New System Business Flow, Normalization, butir 16 sampai 18; Business Rules, butir 18 dan 19.
+
+**Kebutuhan:** Pada impor pertama, OD membuat kelompok normalisasi dengan mengisi nama normalisasi. Sistem harus menggunakan periode PA yang sedang aktif tanpa periode pembukaan atau penutupan tersendiri untuk kelompok tersebut. OD mengimpor atau mengimpor ulang hasil normalisasi per departemen dengan keterangan wajib dan lampiran opsional, lalu meninjau hasil validasi impor. Sistem harus menjadikan hasil impor terakhir yang berhasil sebagai nilai normalisasi aktif. Sistem harus mempertahankan seluruh berkas sebelumnya dalam riwayat impor dan log audit.
+
+### REQ-PA-009: Menyesuaikan nilai akhir secara individual
+
+**Rujukan:** Expected New System Business Flow, Normalization, butir 19; Business Rules, butir 16 dan 19.
+
+**Kebutuhan:** Jika hanya beberapa karyawan memerlukan penyesuaian hasil normalisasi, OD harus dapat mengubah nilai akhir karyawan tersebut secara individual. OD wajib mengisi keterangan perubahan dan dapat menyertakan lampiran. Sistem harus menyimpan seluruh versi perubahan sebagai log audit. Kewenangan penyesuaian nilai individual ini hanya diberikan kepada OD.
+
+### REQ-PA-010: Memfinalisasi hasil penilaian
+
+**Rujukan:** Expected New System Business Flow, Finalization and Report, butir 20 dan 21; Business Rules, butir 16.
+
+**Kebutuhan:** Setelah seluruh departemen menyelesaikan normalisasi, OD melakukan finalisasi. Sistem harus mengubah status PA menjadi `Completed` dan mengunci nilai akhir. Setelah PA berstatus `Completed`, sistem harus menampilkan nilai akhir kepada karyawan. Sistem harus membatasi hasil yang ditampilkan kepada karyawan pada nilai akhir, tanpa penilaian detail atau riwayat perubahan nilai.
+
+### REQ-PA-011: Mengakses dan mengekspor laporan penilaian
+
+**Rujukan:** Expected New System Business Flow, Finalization and Report, butir 22; WHO, Organization Development (OD) Admin.
+
+**Kebutuhan:** Sistem harus memasukkan nilai akhir ke dalam laporan PA. OD harus dapat memfilter laporan berdasarkan periode, kategori Staff atau Non-Staff, tingkat jabatan, departemen, karyawan, dan status PA. Sistem harus menyediakan unduhan laporan dalam format XLSX atau CSV.
+
+### REQ-PA-012: Menangani perubahan status karyawan
+
+**Rujukan:** Expected New System Business Flow, Employee and Reviewer Changes, butir 23 dan 24; Business Rules, butir 5 dan 20; WHAT IF, Mitigation.
+
+**Kebutuhan:** Ketika karyawan mengalami perpindahan atau promosi, sistem harus mempertahankan sasaran yang telah diajukan, memberikan penanda `Is Transferred`, dan menggunakan atasan baru untuk penilaian. Sistem harus memperbarui hubungan atasan dan bawahan berdasarkan struktur organisasi terbaru. OD dapat menyesuaikan peninjau karena perpindahan, promosi, perubahan organisasi, atau kebutuhan operasional yang sah, dengan keterangan wajib dan pencatatan dalam jejak audit. Jika karyawan mengundurkan diri atau mengalami pemutusan hubungan kerja, sistem harus mengeluarkannya dari peserta PA aktif.
+
+### REQ-PA-013: Menangani atasan yang mengundurkan diri
+
+**Rujukan:** Expected New System Business Flow, Employee and Reviewer Changes, butir 24; Business Rules, butir 5 dan 21.
+
+**Kebutuhan:** Jika atasan mengundurkan diri setelah memberikan penilaian, sistem harus tetap menggunakan nilai yang sudah diberikan. Jika atasan mengundurkan diri sebelum memberikan penilaian, sumber menyediakan pilihan sistem melewati peninjau tersebut atau OD menentukan peninjau pengganti. Perubahan peninjau oleh OD harus disertai keterangan dan disimpan dalam jejak audit. Kriteria pemilihan antara kedua jalur tersebut belum dirinci dalam sumber dan harus dikonfirmasi sebelum salah satunya digunakan sebagai acuan penilaian konsistensi.
+
+## Ketentuan pendukung
+
+### KON-PA-001: Menentukan alur peninjauan menurut kategori peserta
+
+**Rujukan:** Expected New System Business Flow, Template and Launch; Business Rules, butir 1 sampai 4 dan 12.
+
+**Ketentuan:** Templat dan peluncuran PA Staff harus terpisah dari Non-Staff. Alur Staff mengikuti struktur organisasi Mata Air Hub. OD mengonfigurasi alur Non-Staff secara manual per departemen saat peluncuran berdasarkan matriks yang berlaku. Non-Staff menggunakan paling banyak dua lapis peninjauan, atau satu lapis jika hanya satu peninjau memenuhi kriteria. Jalur Administrator menggunakan satu lapis peninjauan oleh Manager; Director dapat menjadi peninjau pada lapis terakhir apabila dikonfigurasi OD. Tindakan massal OD hanya digunakan untuk memindahkan PA ke tahap `Normalization`, bukan sebagai persetujuan penilaian.
+
+### KON-PA-002: Menyediakan data penilaian
+
+**Rujukan:** Business Rules, butir 6 sampai 8; WHO, Employee (Staff & Non-Staff).
+
+**Ketentuan:** Sistem harus menyediakan skala nilai 1 sampai 6 melalui daftar pilihan, beserta nama dan deskripsi setiap nilai. Komentar pada setiap sasaran bersifat wajib dan lampiran bersifat opsional. Karyawan mengisi aspirasi; atasan mengisi kekuatan dan area perbaikan. Penyimpanan draf tidak mengubah tahap proses. Pengajuan harus memenuhi kelengkapan kolom wajib.
+
+### KON-PA-003: Menghitung ringkasan nilai
+
+**Rujukan:** Business Rules, butir 13 sampai 15; WHO, One Up Supervisor; WHAT, tabel In Scope.
+
+**Ketentuan:** Business Rules menetapkan bagian ringkasan sesuai peran dan tahap, nilai bagian yang dapat dimasukkan secara manual oleh atasan langsung, serta perhitungan otomatis nilai keseluruhan dengan rumus `Overall Form Rating = Σ(Section Rating × Section Weight) / Σ(Section Weight)`. Sebelum PA berstatus `Completed`, sistem harus menampilkan tanda `-` sebagai nilai keseluruhan pada tampilan karyawan. Bagian peran One-Up Supervisor menetapkan ringkasan sebagai hanya baca. Tabel In Scope berbeda karena menyebut nilai keseluruhan dapat diubah secara manual. Kedua rumusan dipertahankan; kewenangan perubahan nilai keseluruhan perlu dikonfirmasi sebelum ketentuan ini digunakan sebagai acuan penilaian konsistensi.
+
+### KON-PA-004: Membatasi akses dan merekam jejak audit
+
+**Rujukan:** WHO, Organization Development (OD) Admin dan Direct Supervisor; Business Rules, butir 5, 10, 11, 16, dan 19; WHAT, tabel In Scope.
+
+**Ketentuan:** Sistem harus memberi OD akses ke seluruh PA, status, riwayat nilai, riwayat komentar, dan jejak audit. Ekspor untuk normalisasi, impor, impor ulang, penyesuaian nilai individual, dan finalisasi hanya dapat dilakukan OD. Karyawan mengakses penilaiannya sendiri sesuai tahap. Atasan langsung dapat melihat penilaian diri bawahan, sedangkan One-Up Supervisor dapat melihat penilaian diri dan penilaian atasan langsung. Business Rules butir 11 membatasi riwayat perubahan nilai hanya kepada OD, sedangkan uraian peran Direct Supervisor menyebut akses terhadap riwayat persetujuan dan riwayat nilai yang diizinkan. Perbedaan akses riwayat nilai ini belum terselesaikan dan perlu dikonfirmasi sebelum menjadi acuan penilaian konsistensi. Sistem harus mencatat perubahan nilai, komentar, persetujuan atau penyelesaian peninjauan, pengembalian, perubahan peninjau, impor, impor ulang, dan finalisasi dalam jejak audit.
+
+## Batas cakupan
+
+Aktivitas pada Goal Management tidak memengaruhi nilai atau perhitungan PA. Integrasi Activity Plan dengan PA, pemberian nilai otomatis ketika penilaian diri belum selesai, tampilan selisih antara nilai diri dan nilai atasan, bagian tanda tangan, serta bagian pengakuan (`Acknowledge Section`) berada di luar cakupan. Pembahasan normalisasi departemen dilakukan di luar sistem. Rujukan batas ini adalah WHAT, tabel Out Scope, dan Business Rules butir 16 serta 22 sampai 24.
+
+## Ambiguitas dan batas interpretasi
+
+- Tabel In Scope menyebut `Overall Form Rating` dapat diubah secara manual, sedangkan Business Rules butir 13 dan 15 menetapkan perhitungan otomatis serta nilai manual pada tingkat bagian. KON-PA-003 mencatat kedua rumusan tanpa memilih salah satunya sebagai keputusan bisnis.
+- Uraian peran Direct Supervisor mengizinkan akses riwayat nilai yang diperbolehkan, sedangkan Business Rules butir 11 membatasi seluruh riwayat perubahan kepada OD. KON-PA-004 mempertahankan kedua pernyataan.
+- Uraian peran One-Up Supervisor menyebut aksi `Approve`, sedangkan alur One-Up Supervisor Review menyebut `Submit` oleh peninjau terakhir. REQ-PA-004 menggunakan istilah menyelesaikan peninjauan; nama dan arti transisinya perlu diselaraskan jika menjadi objek diagram.
+- Sumber menyediakan pilihan melewati peninjau atau menunjuk pengganti jika atasan mengundurkan diri sebelum menilai, tetapi belum merinci kondisi pemilihan masing-masing jalur. REQ-PA-013 tidak menentukan pilihan secara sepihak.
+
