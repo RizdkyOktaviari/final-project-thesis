@@ -3,19 +3,19 @@
 **IT SYSTEM DEVELOPMENT**  
 **BUSINESS REQUIREMENT ASSESSMENT**
 
-- **Project:** Mata Air Hub - Employee Central
+- **Project:** Sistem HRIS - Employee Central
 - **Module:** Foundation
 - **Assessment Date:** 17 Juni 2026
 - **Document version (footer):** 1.0
-- **Business User Expert:** Janel Runtu; Waode Shelly Adinda; Darren Nurachmad; Anny Nasution; Agung Wahyudiono
+- **Business User Expert:** Narasumber Bisnis D; Narasumber Bisnis E; Koordinator Proyek A; Narasumber Bisnis A; Narasumber Bisnis B
 
 ## Business Requirement Record
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 17 Jun 2026 |  | Maheswara Sinatriyo | 0.1 | Drafting |
-| 4 Aug 2026 |  | Maheswara Sinatriyo | 1.0 | Issued for Review |
-| 21 Sep 2026 |  | Maheswara Sinatriyo | 1.1 | Update After Revision |
+| 17 Jun 2026 |  | Analis Bisnis A | 0.1 | Drafting |
+| 4 Aug 2026 |  | Analis Bisnis A | 1.0 | Issued for Review |
+| 21 Sep 2026 |  | Analis Bisnis A | 1.1 | Update After Revision |
 
 ## Log Changes
 
@@ -36,8 +36,8 @@
 
 | Field | Value |
 | --- | --- |
-| Project Description | Mata Air Hub - Employee Central |
-| Business User Expert | Janel Runtu / Waode Shelly Adinda / Darren Nurachmad / Anny Nasution / Agung Wahyudiono |
+| Project Description | Sistem HRIS - Employee Central |
+| Business User Expert | Narasumber Bisnis D / Narasumber Bisnis E / Koordinator Proyek A / Narasumber Bisnis A / Narasumber Bisnis B |
 | Assessment Date | 17 Juni 2026 |
 | Module Description | Foundation |
 
@@ -58,10 +58,10 @@
 | Menyediakan framework workflow approval yang dapat digunakan secara konsisten oleh seluruh modul Human Capital. | Meningkatkan efisiensi proses persetujuan melalui workflow yang terstandarisasi dan terdokumentasi. |
 | Menyediakan mekanisme proxy untuk mendukung delegasi tugas dan proses approval selama pengguna tidak dapat mengakses sistem. | Mengurangi risiko keterlambatan proses bisnis akibat ketidakhadiran approver melalui fitur proxy delegation. |
 | Menyediakan fondasi konfigurasi yang fleksibel dan mudah dikelola untuk mendukung kebutuhan bisnis perusahaan. | Mempermudah pengelolaan dan pengembangan modul Human Capital lainnya yang bergantung pada konfigurasi foundation |
-| Menyediakan platform Human Capital Management yang terintegrasi sebagai pengganti SAP SuccessFactors Employee Central untuk mengelola data organisasi, posisi, dan karyawan secara terpusat | Meningkatkan konsistensi dan akurasi data Human Capital melalui penggunaan satu sumber data utama (single source of truth) |
+| Menyediakan platform Human Capital Management yang terintegrasi sebagai pengganti Sistem HRIS sebelumnya untuk mengelola data organisasi, posisi, dan karyawan secara terpusat | Meningkatkan konsistensi dan akurasi data Human Capital melalui penggunaan satu sumber data utama (single source of truth) |
 | Membangun fondasi data dan proses yang dapat digunakan Bersama oleh seluruh modul Human Capital | Mengurangi duplikasi data dan mempermudah integrasi antar modul maupun sistem pendukung lainnya. |
 | Menyediakan framework workflow, approval, dan notifikasi yang dapat digunakan secara konsisten pada seluruh proses Human Capital. | Mempercepat proses administrasi dan mengurangi ketergantungan pada proses manual berbasis email atau dokumen. |
-| Mendukung migrasi data dan proses bisnis dari SAP SuccessFactors ke platform yang lebih fleksibel dan dapat dikembangkan sesuai kebutuhan perusahaan. | Mengurangi ketergantungan terhadap platform pihak ketiga serta meningkatkan fleksibilitas dalam pengembangan fitur dan proses bisnis. |
+| Mendukung migrasi data dan proses bisnis dari Sistem HRIS sebelumnya ke platform yang lebih fleksibel dan dapat dikembangkan sesuai kebutuhan perusahaan. | Mengurangi ketergantungan terhadap platform pihak ketiga serta meningkatkan fleksibilitas dalam pengembangan fitur dan proses bisnis. |
 | Menyediakan mekanisme keamanan, audit trail, dan pengelolaan hak akses yang sesuai dengan struktur organisasi perusahaan. | Meningkatkan keamanan data dan memastikan akses informasi dilakukan sesuai kewenangan pengguna. |
 | Menyediakan fondasi integrasi dengan sistem internal maupun eksternal perusahaan. | Mempermudah pertukaran data antar aplikasi dan mendukung digitalisasi proses Human Capital secara menyeluruh. |
 | Mendukung pengelolaan data organisasi dan kepegawaian yang scalable untuk kebutuhan bisnis saat ini maupun pengembangan di masa mendatang. | Menurunkan biaya operasional jangka panjang serta meningkatkan kemampuan sistem untuk beradaptasi terhadap perubahan kebutuhan bisnis. |
@@ -107,11 +107,11 @@ Penyediaan framework, kebijakan, dan konfigurasi bersama yang akan digunakan ole
 
 ##### Integration
 
-- Integrasi data master dengan sistem eksternal seperti Mata Air V2, Entra ID, dan Training Event Calendar (TEC).
+- Integrasi data master dengan sistem eksternal seperti Sistem HRIS V2, Entra ID, dan Training Event Calendar (TEC).
 
 ##### Data Migration
 
-- Migrasi data master dari SAP SuccessFactors Employee Central ke platform baru. Hanya mencakup proses Transform, Load & Validate.
+- Migrasi data master dari Sistem HRIS sebelumnya ke platform baru. Hanya mencakup proses Transform, Load & Validate.
 
 ##### Data Protection
 
@@ -177,43 +177,43 @@ Pembuatan Modul Employee centrail lainnya termasuk:
 
 | Risks | Level (Hi, Med, Low) |
 | --- | --- |
-| Perbedaan business rule antara SAP SuccessFactors dan aplikasi baru. | Hi |
+| Perbedaan business rule antara Sistem HRIS sebelumnya dan aplikasi baru. | Hi |
 | Pengguna mengalami kesulitan beradaptasi dengan aplikasi baru. | Med |
-| Integrasi dengan sistem lain (Mata-Air, dll.) tidak berjalan dengan baik. | Hi |
-| Fitur yang tersedia pada SAP SuccessFactors tidak seluruhnya teridentifikasi saat analisis kebutuhan. | Med |
-| Performa aplikasi custom tidak setara dengan SAP SuccessFactors ketika jumlah pengguna meningkat. | Med |
+| Integrasi dengan sistem lain (Sistem HRIS, dll.) tidak berjalan dengan baik. | Hi |
+| Fitur yang tersedia pada Sistem HRIS sebelumnya tidak seluruhnya teridentifikasi saat analisis kebutuhan. | Med |
+| Performa aplikasi custom tidak setara dengan Sistem HRIS sebelumnya ketika jumlah pengguna meningkat. | Med |
 
 #### Mitigasi
 
 - Melakukan business process mapping dan gap analysis terhadap seluruh proses yang akan dimigrasikan.
 - Menyediakan pelatihan, user guide, dan masa pendampingan setelah implementasi.
 - Melakukan integration testing end-to-end dan monitoring pasca implementasi.
-- Melakukan requirement validation bersama business user dan SME terhadap seluruh proses yang ada pada SAP SuccessFactors.
+- Melakukan requirement validation bersama business user dan SME terhadap seluruh proses yang ada pada Sistem HRIS sebelumnya.
 - Melakukan performance testing dan capacity planning sebelum implementasi.
 
 ## Current Condition
 
 ### Overall Condition
 
-Saat ini PTAR menggunakan SAP SuccessFactors Employee Central sebagai sistem utama untuk mengelola data organisasi, data posisi, dan data kepegawaian. Sistem digunakan untuk mendukung proses Human Capital seperti pengelolaan struktur organisasi, position management, hiring, perubahan status karyawan, benefit, termination, dan reporting.
+Saat ini Perusahaan A menggunakan Sistem HRIS sebelumnya sebagai sistem utama untuk mengelola data organisasi, data posisi, dan data kepegawaian. Sistem digunakan untuk mendukung proses Human Capital seperti pengelolaan struktur organisasi, position management, hiring, perubahan status karyawan, benefit, termination, dan reporting.
 
 Namun demikian, terdapat beberapa tantangan yang dihadapi, antara lain:
 
-- Tingginya biaya lisensi dan pemeliharaan SAP SuccessFactors.
+- Tingginya biaya lisensi dan pemeliharaan Sistem HRIS sebelumnya.
 - Keterbatasan fleksibilitas dalam melakukan penyesuaian proses bisnis dan pengembangan fitur baru.
-- Ketergantungan terhadap konfigurasi dan vendor SAP.
+- Ketergantungan terhadap konfigurasi dan vendor Sistem HRIS sebelumnya.
 - Integrasi dengan aplikasi internal memerlukan effort dan biaya tambahan.
-- Beberapa proses bisnis telah dipindahkan ke aplikasi lain seperti Mata-Air sehingga sebagian fungsi Employee Central tidak lagi digunakan secara optimal.
+- Beberapa proses bisnis telah dipindahkan ke aplikasi lain seperti Sistem HRIS sehingga sebagian fungsi Employee Central tidak lagi digunakan secara optimal.
 
 ### Proxy Flow
 
 1. Proses dimulai ketika User membutuhkan akses proxy untuk mewakili User lain.
 2. User meminta bantuan kepada Partner untuk membuat User A sebagai proxy dari User B.
-3. Partner melakukan konfigurasi proxy pada sistem SAP untuk User A berdasarkan permintaan yang diberikan oleh User.
+3. Partner melakukan konfigurasi proxy pada sistem Sistem HRIS sebelumnya untuk User A berdasarkan permintaan yang diberikan oleh User.
 4. Partner menetapkan durasi akses proxy berdasarkan kesepakatan dengan User. Durasi proxy ditentukan dalam satuan jam.
 5. Setelah konfigurasi selesai, User A dapat menggunakan akses proxy untuk mewakili User B selama periode yang telah ditentukan.
 6. Apabila pekerjaan yang membutuhkan akses proxy telah selesai sebelum periode proxy berakhir, User A menghubungi Partner untuk meminta penutupan akses proxy.
-7. Partner melakukan penutupan atau deaktivasi akses proxy User A pada sistem SAP.
+7. Partner melakukan penutupan atau deaktivasi akses proxy User A pada sistem Sistem HRIS sebelumnya.
 8. Setelah akses proxy ditutup, User A tidak lagi dapat menggunakan akses proxy untuk mewakili User B.
 
 **Proxy Flow (As-Is) — diagram dalam format Mermaid**
@@ -230,17 +230,17 @@ flowchart TD
 
 **Proxy Flow (As-Is) — visual source**
 
-![Proxy Flow As-Is](BRD%20-%20EC%20Foundation_assets/proxy-flow-as-is.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Proxy Flow As-Is]
 
 ## Expected Business Improvement
 
 ### General Expectation
 
-PTAR membutuhkan platform Human Capital Management yang dapat menggantikan fungsi SAP SuccessFactors Employee Central sebagai sumber data utama (*single source of truth*) untuk pengelolaan data organisasi, posisi, dan karyawan. Selain itu, sistem baru diharapkan mampu menyediakan kapabilitas foundation yang setara dengan SAP SuccessFactors, termasuk pengelolaan **Multi Company**, **Workflow Approval**, dan **Proxy Management** secara terintegrasi untuk mendukung operasional Human Capital di seluruh entitas perusahaan.
+Perusahaan A membutuhkan platform Human Capital Management yang dapat menggantikan fungsi Sistem HRIS sebelumnya sebagai sumber data utama (*single source of truth*) untuk pengelolaan data organisasi, posisi, dan karyawan. Selain itu, sistem baru diharapkan mampu menyediakan kapabilitas foundation yang setara dengan Sistem HRIS sebelumnya, termasuk pengelolaan **Multi Company**, **Workflow Approval**, dan **Proxy Management** secara terintegrasi untuk mendukung operasional Human Capital di seluruh entitas perusahaan.
 
 Sistem baru diharapkan dapat:
 
-- Mendukung dan mengakomodasi proses bisnis Human Capital yang saat ini dijalankan melalui SAP SuccessFactors Employee Central.
+- Mendukung dan mengakomodasi proses bisnis Human Capital yang saat ini dijalankan melalui Sistem HRIS sebelumnya.
 - Mendukung pengelolaan lebih dari satu entitas perusahaan (*Multi Company*) dalam satu platform terintegrasi dengan tetap menjaga pemisahan data dan kewenangan akses sesuai struktur organisasi yang berlaku.
 - Menyediakan framework *Workflow Approval* yang fleksibel, terstandarisasi, dan dapat digunakan secara konsisten oleh seluruh modul Human Capital.
 - Menyediakan mekanisme *Proxy Management* untuk mendukung delegasi tugas dan proses persetujuan ketika pengguna yang berwenang tidak dapat mengakses sistem.
@@ -297,7 +297,7 @@ flowchart TD
 
 **Proxy Flow (To-Be) — visual source**
 
-![Proxy Flow To-Be](BRD%20-%20EC%20Foundation_assets/proxy-flow-to-be.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Proxy Flow To-Be]
 
 ## General Principles
 
@@ -360,7 +360,7 @@ flowchart TD
 
 ### Security & Access Rules
 
-- Aplikasi akan digunakan oleh seluruh karyawan PTAR sesuai peran dan kewenangan masing-masing.
+- Aplikasi akan digunakan oleh seluruh karyawan Perusahaan A sesuai peran dan kewenangan masing-masing.
 - Pengelolaan data organisasi dan data kepegawaian dilakukan oleh fungsi Human Capital yang ditunjuk.
 - Hak akses pengguna diberikan berdasarkan role yang ditetapkan perusahaan.
 - Pengguna hanya dapat mengakses data yang sesuai dengan kewenangan dan ruang lingkup organisasinya.
@@ -386,18 +386,18 @@ flowchart TD
 - Sistem harus mendukung integrasi dengan aplikasi internal perusahaan.
 - Master data yang berasal dari sistem lain harus mengikuti sumber data utama (source of truth) yang telah ditetapkan.
 - Data yang gagal diproses melalui integrasi harus tercatat dalam log integrasi.
-- Data master yang aktif pada SAP SuccessFactors harus dimigrasikan ke sistem baru.
+- Data master yang aktif pada Sistem HRIS sebelumnya harus dimigrasikan ke sistem baru.
 - Histori data yang disepakati oleh business owner harus dimigrasikan sesuai periode yang ditentukan.
 - Data hasil migrasi harus melalui proses validasi dan rekonsiliasi sebelum go-live.
 - Sistem baru harus menjaga integritas hubungan antara Organization, Position, dan Employee setelah proses migrasi.
-- Penyediaan data hasil export dari SAP SuccessFactors merupakan prasyarat yang harus diselesaikan oleh pihak internal PTAR sebelum proses pemuatan (import) ke sistem baru dapat dijalankan
+- Penyediaan data hasil export dari Sistem HRIS sebelumnya merupakan prasyarat yang harus diselesaikan oleh pihak internal Perusahaan A sebelum proses pemuatan (import) ke sistem baru dapat dijalankan
 
 ### Data Migration
 
-- Migrasi data dari SAP SuccessFactors Employee Central harus mengikuti strategi migrasi yang telah disepakati.
+- Migrasi data dari Sistem HRIS sebelumnya harus mengikuti strategi migrasi yang telah disepakati.
 - Data yang dimigrasikan harus melalui proses validasi dan rekonsiliasi sebelum digunakan pada sistem baru.
 - Detail data yang dimigrasikan akan ditentukan pada BRD masing-masing modul.
-- Penyediaan data sumber hasil ekspor SAP SuccessFactors merupakan tanggung jawab pihak PTAR sesuai ruang lingkup proyek.
+- Penyediaan data sumber hasil ekspor Sistem HRIS sebelumnya merupakan tanggung jawab pihak Perusahaan A sesuai ruang lingkup proyek.
 
 ### Module Responsibility
 
@@ -678,15 +678,15 @@ Sistem harus menyediakan mekanisme enkripsi terhadap data yang diklasifikasikan 
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Maheswara Sinatriyo | Tercantum pada dokumen asli | 21 September 2026 |
-| Project Coordinator | Janel Runtu |  |  |
-| Business User Expert | Waode Shelly Adinda |  |  |
-| Business User Expert | Darren Nurachmad |  |  |
-| Business User Expert | Anny Nasution |  |  |
-| Business User Expert | Agung Wahyudiono |  |  |
+| Business Analyst | Analis Bisnis A | Tercantum pada dokumen asli | 21 September 2026 |
+| Project Coordinator | Narasumber Bisnis D |  |  |
+| Business User Expert | Narasumber Bisnis E |  |  |
+| Business User Expert | Koordinator Proyek A |  |  |
+| Business User Expert | Narasumber Bisnis A |  |  |
+| Business User Expert | Narasumber Bisnis B |  |  |
 
 **Business Analyst signature — visual source**
 
-![Business Analyst Signature](BRD%20-%20EC%20Foundation_assets/business-analyst-signature.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Business Analyst Signature]
 
 *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*

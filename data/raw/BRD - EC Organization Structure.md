@@ -2,9 +2,9 @@
 
 **IT SYSTEM DEVELOPMENT — BUSINESS REQUIREMENT ASSESSMENT**
 
-- **Project:** Mata Air Hub
+- **Project:** Sistem HRIS
 - **Module:** Employee Central - Organization Structure
-- **Business User Expert:** Cahya Darujati / Irna Hasibuan
+- **Business User Expert:** Narasumber Bisnis F / Narasumber Bisnis C
 - **Assessment Date:** 3 Juni 2026 - 9 Juni 2026
 - **Document version (tertera di footer):** 1.1
 
@@ -12,11 +12,11 @@
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 11 Jun 2026 | | Maheswara Sinatriyo | 0.1 | Drafting |
-| 19 Jun 2026 | | Maheswara Sinatriyo | 1.0 | Issued for Review |
-| 24 Jun 2026 | | Maheswara Sinatriyo | 1.1 | Updated based on Review Comments |
-| 9 Jul 2026 | | Maheswara Sinatriyo | 1.2 | Updated based on Review |
-| 13 Jul 2026 | | Hadisan | 1.3 | Updated based on Review |
+| 11 Jun 2026 | | Analis Bisnis A | 0.1 | Drafting |
+| 19 Jun 2026 | | Analis Bisnis A | 1.0 | Issued for Review |
+| 24 Jun 2026 | | Analis Bisnis A | 1.1 | Updated based on Review Comments |
+| 9 Jul 2026 | | Analis Bisnis A | 1.2 | Updated based on Review |
+| 13 Jul 2026 | | Penelaah A | 1.3 | Updated based on Review |
 
 ### 1.1 Log Changes
 
@@ -145,7 +145,7 @@ Pembuatan dan pengelolaan **Struktur Organisasi** termasuk:
 - Do it step by step from beginning to the end of process.
 - Example on essay (in Bahasa):
 
-  > “Dept. Head user mengajukan persetujuan perubahan organisasi kepada Senior Manager user, GMO/Director in Charge, Vice President dan President Director. Usulan perubahan organisasi yang sudah mendapatkan persetujuan lengkap akan di sampaikan ke tim Organization Development untuk dilakukan perubahan/penyesuaian di aplikasi/sistem.”
+  > “Dept. Head user mengajukan persetujuan perubahan organisasi kepada Senior Manager user, Kepala Operasional/Director in Charge, Vice President dan President Director. Usulan perubahan organisasi yang sudah mendapatkan persetujuan lengkap akan di sampaikan ke tim Organization Development untuk dilakukan perubahan/penyesuaian di aplikasi/sistem.”
 
 - More complete the explanation will affect the next visual modelling process.
 
@@ -228,7 +228,7 @@ Pembuatan dan pengelolaan **Struktur Organisasi** termasuk:
 - Seluruh proses review dan persetujuan dilakukan secara **manual** sebelum perubahan diterapkan pada sistem.
 - Pembaruan Struktur Organisasi pada sistem hanya dilakukan oleh **Department TD-OD** setelah seluruh tahapan persetujuan selesai.
 - Apabila usulan ditolak/tidak disetujui pada salah satu tahapan persetujuan, maka usulan perubahan organisasi akan dikembalikan kepada **Requester** untuk dilakukan revisi bersama dan diajukan kembali.
-- Persetujuan perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **di bawah Department**, cukup sampai dengan General Manager Operasional (GMO) atau Director in Charge sesuai jenjang organisasi yang berlaku. Sedangkan untuk perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **Department Up**, persetujuannya harus sampai ke Direktur.
+- Persetujuan perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **di bawah Department**, cukup sampai dengan General Manager Operasional (Kepala Operasional) atau Director in Charge sesuai jenjang organisasi yang berlaku. Sedangkan untuk perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **Department Up**, persetujuannya harus sampai ke Direktur.
 - Aktivitas **Update Organization Chart** merupakan proses yang dilakukan di aplikasi/sistem melalui modul **Position Management** setelah seluruh persetujuan telah dipenuhi.
 - Penyesuaian jalur pelaporan (line reporting) yang tidak merubah Struktur Organisasi **dapat dilakukan sewaktu-waktu** oleh Tim Organization Development, berdasarkan permintaan dari Business Unit, serendah-rendahnya level Department Head (Manager).
 
@@ -236,7 +236,7 @@ Pembuatan dan pengelolaan **Struktur Organisasi** termasuk:
 
 ### 3.2 Manage Organizational Structure Business Process Flow
 
-![Manage Organizational Structure Business Process Flow (Current System)](BRD%20-%20EC%20Organization%20Structure_assets/organization_structure_flow.png)
+[Ilustrasi sumber dihapus dari korpus publik: Manage Organizational Structure Business Process Flow (Current System)]
 
 ## 4. Expected New System Business Flow
 
@@ -326,13 +326,13 @@ Pembuatan dan pengelolaan **Struktur Organisasi** termasuk:
 - Seluruh proses review dan persetujuan dilakukan secara **manual** sebelum perubahan diterapkan pada sistem.
 - Pembaruan Struktur Organisasi pada sistem hanya dilakukan oleh **Department TD-OD** setelah seluruh tahapan persetujuan selesai.
 - Apabila usulan ditolak/tidak disetujui pada salah satu tahapan persetujuan, maka usulan perubahan organisasi akan dikembalikan kepada **Requester** untuk dilakukan revisi bersama dan diajukan kembali.
-- Persetujuan perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **di bawah Department**, cukup sampai dengan General Manager Operasional (GMO) atau Director in Charge sesuai jenjang organisasi yang berlaku. Sedangkan untuk perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **Department Up**, persetujuannya harus sampai ke Direktur.
+- Persetujuan perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **di bawah Department**, cukup sampai dengan General Manager Operasional (Kepala Operasional) atau Director in Charge sesuai jenjang organisasi yang berlaku. Sedangkan untuk perubahan Struktur Organisasi secara Tahunan atau Quartalan pada level **Department Up**, persetujuannya harus sampai ke Direktur.
 - Aktivitas **Update Organization Chart** merupakan proses yang dilakukan di aplikasi/sistem setelah seluruh persetujuan telah dipenuhi.
 - Penyesuaian jalur pelaporan (line reporting) yang tidak merubah Struktur Organisasi **dapat dilakukan sewaktu-waktu** oleh Tim Organization Development, berdasarkan permintaan dari Business Unit, serendah-rendahnya level Department Head (Manager).
 
 ### 4.2 Manage Organizational Structure Business Process Flow
 
-![Manage Organizational Structure Business Process Flow (Expected New System)](BRD%20-%20EC%20Organization%20Structure_assets/organization_structure_flow.png)
+[Ilustrasi sumber dihapus dari korpus publik: Manage Organizational Structure Business Process Flow (Expected New System)]
 
 ## 5. Module Policy
 
@@ -343,7 +343,7 @@ Pembuatan dan pengelolaan **Struktur Organisasi** termasuk:
 - Tim Organization Development (OD) dapat mengakses dan melihat seluruh struktur organisasi perusahaan.
 - Pengguna lain hanya dapat mengakses informasi struktur organisasi sesuai hak akses yang diberikan (read-only).
 - Sistem harus menyediakan visualisasi Org. Chart berdasarkan struktur organisasi yang berlaku pada tanggal yang dipilih.
-- Sistem harus menyediakan fungsi pencarian berdasarkan nama department, nama posisi, nama karyawan, ID NH melalui integrasi dengan modul terkait.
+- Sistem harus menyediakan fungsi pencarian berdasarkan nama department, nama posisi, nama karyawan, ID Pegawai melalui integrasi dengan modul terkait.
 - Struktur organisasi menjadi data referensi bagi modul Employee Central lainnya.
 - Standarisasi kode organisasi (Directorate, Division, Department, dan Section) akan mengikuti kebijakan yang ditetapkan oleh HR Organization Development.
 - Integrasi dengan modul ESC: Perubahan data karyawan melalui proses Employee Status Change (ESC), seperti promosi, transfer, atau reclassification, dapat memengaruhi visualisasi dan penempatan data pada struktur organisasi sesuai konfigurasi yang berlaku.
@@ -352,8 +352,8 @@ Pembuatan dan pengelolaan **Struktur Organisasi** termasuk:
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Maheswara Sinatriyo | ![Tanda tangan Business Analyst](BRD%20-%20EC%20Organization%20Structure_assets/business_analyst_signature.jpeg) | 13 Juli 2026 |
-| Project Coordinator | Darren Nurachmad | | |
-| Business User Expert | Irna Hasibuan | | |
+| Business Analyst | Analis Bisnis A | [Ilustrasi sumber dihapus dari korpus publik: Tanda tangan Business Analyst] | 13 Juli 2026 |
+| Project Coordinator | Koordinator Proyek A | | |
+| Business User Expert | Narasumber Bisnis C | | |
 
 *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*

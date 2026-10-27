@@ -28,3 +28,7 @@ The requirements corpus used for thesis experiments is documented in
 [`data/README.md`](data/README.md). It separates original BRD material from
 derived requirement breakdowns so that an experiment can be reproduced without
 modifying the source evidence.
+
+## Privasi korpus
+
+Dokumen di `data/` merupakan **salinan anonim untuk riset**, bukan BRD asli. Nama organisasi, aplikasi, dan narasumber diganti dengan label umum. Aset visual sumber tidak tersedia di cabang publik. Penghapusan pada revisi sekarang **tidak menghapus riwayat Git terdahulu**, sehingga repository ini tidak boleh dianggap telah bebas sepenuhnya dari paparan dokumen sebelumnya. Pastikan izin penggunaan dan publikasi korpus sebelum membagikannya.

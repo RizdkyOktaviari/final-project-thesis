@@ -1,8 +1,8 @@
 # IT SYSTEM DEVELOPMENT — BUSINESS REQUIREMENT ASSESSMENT
 
-![Agincourt Resources](BRD-EC-Employee-Status-Change-assets/image18.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Perusahaan A]
 
-**Project:** Mata Air Hub  
+**Project:** Sistem HRIS  
 **Module:** Employee Status Change  
 **Document:** Business Requirement Assessment  
 **Document version (footer):** 1.1
@@ -11,10 +11,10 @@
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 16 Jul 2026 |  | Maheswara Sinatriyo | 0.1 | Drafting |
-| 20 Jul 2026 |  | Maheswara Sinatriyo | 1.0 | Issued for Review |
-| 06 Aug 2026 |  | Maheswara Sinatriyo | 1.1 | Update based on review |
-| 22 Aug 2026 |  | Maheswara Sinatriyo | 1.2 | Update based on review |
+| 16 Jul 2026 |  | Analis Bisnis A | 0.1 | Drafting |
+| 20 Jul 2026 |  | Analis Bisnis A | 1.0 | Issued for Review |
+| 06 Aug 2026 |  | Analis Bisnis A | 1.1 | Update based on review |
+| 22 Aug 2026 |  | Analis Bisnis A | 1.2 | Update based on review |
 
 ## Log Changes
 
@@ -36,8 +36,8 @@ Describe the changes which impact to the Module
 
 ## Project Information
 
-- **Project Description:** Mata Air Hub
-- **Business User Expert:** Anny Nasution/Irna Hasibuan
+- **Project Description:** Sistem HRIS
+- **Business User Expert:** Narasumber Bisnis A/Narasumber Bisnis C
 - **Assessment Date:** 15 Juli 2026
 - **Module Description:** Employee Status Change
 
@@ -338,7 +338,7 @@ Setiap kali terdapat ESC baru, ESC tersebut menjadi informasi terbaru yang dapat
 5. Setelah seluruh approval selesai, **HR Admin** dapat melakukan generate dan mendistribusikan **Individual Employee Status Change Report** via email.
 6. Sistem menampilkan status proses serta mengirimkan notifikasi selama proses approval berlangsung.
 
-![Employee Status Change Visibility](BRD-EC-Employee-Status-Change-assets/image1.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Employee Status Change Visibility]
 
 
 ## Expected New System Business Flow
@@ -390,11 +390,11 @@ Setiap kali terdapat ESC baru, ESC tersebut menjadi informasi terbaru yang dapat
 
 ### Employee Status Change (Standard Workflow) Activity Diagram
 
-![Employee Status Change (Standard Workflow) Activity Diagram](BRD-EC-Employee-Status-Change-assets/image2.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Employee Status Change (Standard Workflow) Activity Diagram]
 
 ### Employee Status Change (Promotion & Transfer) Activity Diagram
 
-![Employee Status Change (Promotion & Transfer) Activity Diagram](BRD-EC-Employee-Status-Change-assets/image3.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Employee Status Change (Promotion & Transfer) Activity Diagram]
 
 
 ## Business Rules
@@ -881,53 +881,53 @@ The Individual Employee Status Change Report is now available.
 
 ### Manage My Team
 
-![Manage My Team](BRD-EC-Employee-Status-Change-assets/image4.png)
+[Ilustrasi sumber dihapus dari korpus publik: Manage My Team]
 
 ### Employee Files – Employee Status Change (No Data)
 
-![Employee Files – Employee Status Change (No Data)](BRD-EC-Employee-Status-Change-assets/image5.png)
+[Ilustrasi sumber dihapus dari korpus publik: Employee Files – Employee Status Change (No Data)]
 
 ### Employee Files – Employee Status Change (With Last History)
 
-![Employee Files – Employee Status Change (With Last History)](BRD-EC-Employee-Status-Change-assets/image6.png)
+[Ilustrasi sumber dihapus dari korpus publik: Employee Files – Employee Status Change (With Last History)]
 
 ### Employee Status Change Request Form
 
-![Employee Status Change Request Form](BRD-EC-Employee-Status-Change-assets/image7.png)
+[Ilustrasi sumber dihapus dari korpus publik: Employee Status Change Request Form]
 
 ### Employee Status Change History & Details
 
-![Employee Status Change History & Details](BRD-EC-Employee-Status-Change-assets/image8.png)
+[Ilustrasi sumber dihapus dari korpus publik: Employee Status Change History & Details]
 
 ### ESC Pending Requests
 
-![ESC Pending Requests](BRD-EC-Employee-Status-Change-assets/image9.png)
+[Ilustrasi sumber dihapus dari korpus publik: ESC Pending Requests]
 
 ### ESC Monitoring
 
-![ESC Monitoring](BRD-EC-Employee-Status-Change-assets/image10.png)
+[Ilustrasi sumber dihapus dari korpus publik: ESC Monitoring]
 
 ### ESC Approval
 
-![ESC Approval](BRD-EC-Employee-Status-Change-assets/image11.png)
+[Ilustrasi sumber dihapus dari korpus publik: ESC Approval]
 
 ### ESC Update
 
-![ESC Update](BRD-EC-Employee-Status-Change-assets/image12.png)
+[Ilustrasi sumber dihapus dari korpus publik: ESC Update]
 
 ### ESC Approval (OD View)
 
-![ESC Approval (OD View)](BRD-EC-Employee-Status-Change-assets/image13.png)
+[Ilustrasi sumber dihapus dari korpus publik: ESC Approval (OD View)]
 
 ### Workflow Approval
 
-![Workflow Approval](BRD-EC-Employee-Status-Change-assets/image14.png)
+[Ilustrasi sumber dihapus dari korpus publik: Workflow Approval]
 
-![Workflow Approval](BRD-EC-Employee-Status-Change-assets/image15.png)
+[Ilustrasi sumber dihapus dari korpus publik: Workflow Approval]
 
 ### Delegate
 
-![Delegate](BRD-EC-Employee-Status-Change-assets/image16.png)
+[Ilustrasi sumber dihapus dari korpus publik: Delegate]
 
 
 ## Validation Rules
@@ -1189,9 +1189,9 @@ Audit Trail bersifat **read-only**, tidak dapat diubah maupun dihapus oleh pengg
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Maheswara Sinatriyo | ![Business Analyst signature](BRD-EC-Employee-Status-Change-assets/image17.jpeg) | 22 Agustus 2026 |
-| Project Coordinator | Darren Nurachmad |  |  |
-| Business User Expert | Anny Nasution |  |  |
-| Business User Expert | Irna Hasibuan |  |  |
+| Business Analyst | Analis Bisnis A | [Ilustrasi sumber dihapus dari korpus publik: Business Analyst signature] | 22 Agustus 2026 |
+| Project Coordinator | Koordinator Proyek A |  |  |
+| Business User Expert | Narasumber Bisnis A |  |  |
+| Business User Expert | Narasumber Bisnis C |  |  |
 
 > **By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.**

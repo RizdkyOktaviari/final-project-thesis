@@ -4,7 +4,7 @@
 
 - Source: `data/raw/BRD - EC Foundation.md`
 - Cakupan: layanan bersama untuk perusahaan, akses perwakilan (proxy), alur persetujuan, autentikasi dan otorisasi, perlindungan data, audit, integrasi, dan migrasi.
-- Aktor: HR Administrator, System Administrator atau administrator sesuai kewenangan, pemohon proxy (Requestor), pengguna yang diwakili (Target User), pemberi persetujuan, dan penerima delegasi. PTAR menyediakan data hasil ekspor SAP SuccessFactors untuk migrasi.
+- Aktor: HR Administrator, System Administrator atau administrator sesuai kewenangan, pemohon proxy (Requestor), pengguna yang diwakili (Target User), pemberi persetujuan, dan penerima delegasi. Perusahaan A menyediakan data hasil ekspor Sistem HRIS sebelumnya untuk migrasi.
 - Kedudukan modul: Foundation menyediakan konfigurasi dan layanan bersama bagi modul Employee Central; setiap modul pemakai menetapkan rincian transaksi dan kolom bisnisnya sendiri.
 
 ## Skenario kebutuhan
@@ -85,7 +85,7 @@
 
 **Rujukan:** Business Rules & Policy / Integration dan Data Migration; Functional Requirements / Data Migration.
 
-**Kebutuhan:** PTAR harus menyediakan data hasil ekspor SAP SuccessFactors sebelum proses impor ke sistem baru. Sistem harus menyediakan validasi sebelum impor dan mekanisme untuk mengimpor data migrasi sesuai strategi yang disepakati. Sistem harus menyediakan hasil validasi dan rekonsiliasi serta mencatat log proses migrasi. Data hasil migrasi harus divalidasi dan direkonsiliasi sebelum digunakan pada sistem baru dan sebelum sistem mulai beroperasi. Data induk aktif serta riwayat yang disepakati pemilik bisnis harus mengikuti cakupan dan periode pada BRD masing-masing modul.
+**Kebutuhan:** Perusahaan A harus menyediakan data hasil ekspor Sistem HRIS sebelumnya sebelum proses impor ke sistem baru. Sistem harus menyediakan validasi sebelum impor dan mekanisme untuk mengimpor data migrasi sesuai strategi yang disepakati. Sistem harus menyediakan hasil validasi dan rekonsiliasi serta mencatat log proses migrasi. Data hasil migrasi harus divalidasi dan direkonsiliasi sebelum digunakan pada sistem baru dan sebelum sistem mulai beroperasi. Data induk aktif serta riwayat yang disepakati pemilik bisnis harus mengikuti cakupan dan periode pada BRD masing-masing modul.
 
 ## Ketentuan pendukung
 
@@ -117,7 +117,7 @@
 
 **Rujukan:** General Principles; Business Rules & Policy / Module Responsibility, Change Control, Integration, dan Data Migration; Foundation Dependency.
 
-**Ketentuan:** Foundation harus menyediakan kapabilitas perusahaan, alur persetujuan, proxy, keamanan, audit, integrasi, migrasi, dan perlindungan data bersama. Organization Structure, Position Management, Hiring, dan ESC menggunakan konfigurasi perusahaan; Hiring, ESC, Benefit, dan Termination menggunakan alur persetujuan; seluruh proses persetujuan dapat menggunakan proxy; seluruh modul menggunakan keamanan, audit, dan integrasi. Setiap modul pemakai menetapkan kolom, validasi, hak akses, migrasi, integrasi, pelaporan, serta kriteria penerimaannya. Penyimpangan dari kebijakan Foundation harus melalui permintaan perubahan yang disetujui. Migrasi harus menjaga hubungan antara organisasi, posisi, dan pegawai; PTAR bertanggung jawab menyediakan data ekspor, sementara cakupan dan periode riwayat mengikuti kesepakatan pemilik bisnis.
+**Ketentuan:** Foundation harus menyediakan kapabilitas perusahaan, alur persetujuan, proxy, keamanan, audit, integrasi, migrasi, dan perlindungan data bersama. Organization Structure, Position Management, Hiring, dan ESC menggunakan konfigurasi perusahaan; Hiring, ESC, Benefit, dan Termination menggunakan alur persetujuan; seluruh proses persetujuan dapat menggunakan proxy; seluruh modul menggunakan keamanan, audit, dan integrasi. Setiap modul pemakai menetapkan kolom, validasi, hak akses, migrasi, integrasi, pelaporan, serta kriteria penerimaannya. Penyimpangan dari kebijakan Foundation harus melalui permintaan perubahan yang disetujui. Migrasi harus menjaga hubungan antara organisasi, posisi, dan pegawai; Perusahaan A bertanggung jawab menyediakan data ekspor, sementara cakupan dan periode riwayat mengikuti kesepakatan pemilik bisnis.
 
 ## Batas cakupan
 

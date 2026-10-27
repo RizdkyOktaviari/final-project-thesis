@@ -6,7 +6,7 @@ Folder ini memuat sepuluh dokumen kebutuhan turunan dari BRD Employee Central da
 
 Bentuk narasi mengikuti bagian Requirements pada gambar acuan: aktor disebutkan secara eksplisit, tindakan dan respons sistem dinyatakan dalam kalimat, serta urutan, kondisi, dan hasil dituliskan apabila didukung sumber. Narasi menggunakan kata **harus** untuk kewajiban sistem dan **dapat** untuk kemampuan atau pilihan yang diizinkan. Nama peran, kolom, fitur, format berkas, status, serta judul bagian sumber dipertahankan apabila diperlukan untuk ketertelusuran.
 
-Penyusunan menggunakan penjabaran kebutuhan pada [snapshot 0f0cd909](https://github.com/RizdkyOktaviari/final-project-thesis/commit/0f0cd9099d1d2f2486605ac04e2f52de2af4c559) dan pemeriksaan bagian BRD terkait dalam `data/raw/`. Pembaruan terjemahan pada [snapshot 94bf431e](https://github.com/RizdkyOktaviari/final-project-thesis/commit/94bf431ed3a0438bf26631192ac0e65d3632a6c8) juga diperiksa sebelum format riset diterapkan di atasnya; tidak ditemukan penambahan aturan bisnis pada pembaruan terjemahan tersebut. Tanggal pembaruan format adalah 27 Oktober 2026. Dokumen sumber tetap menjadi rujukan untuk menilai kesetiaan narasi; perubahan bahasa dan struktur tidak dengan sendirinya menjadi validasi oleh pemilik proses bisnis.
+Penyusunan menggunakan penjabaran kebutuhan pada snapshot internal 0f0cd909 dan pemeriksaan bagian BRD terkait dalam `data/raw/`. Pembaruan terjemahan pada snapshot internal 94bf431e juga diperiksa sebelum format riset diterapkan di atasnya; tidak ditemukan penambahan aturan bisnis pada pembaruan terjemahan tersebut. Tanggal pembaruan format adalah 27 Oktober 2026. Dokumen sumber tetap menjadi rujukan untuk menilai kesetiaan narasi; perubahan bahasa dan struktur tidak dengan sendirinya menjadi validasi oleh pemilik proses bisnis.
 
 ## Struktur setiap dokumen
 
@@ -48,7 +48,7 @@ Jumlah tersebut menunjukkan unit penulisan dalam versi ini. Jumlah itu bukan jum
 4. Periksa bagian ambiguitas. Kasus yang hasil penilaiannya bergantung pada aturan bertentangan perlu ditunda, ditandai belum terkonfirmasi, atau diselesaikan melalui keputusan penelaah yang terdokumentasi. Konflik internal BRD harus dibedakan dari ketidaksesuaian antara BRD dan diagram.
 5. Tetapkan acuan penilaian bersama penelaah yang memahami domain sebelum menghitung akurasi atau kesalahan metode. Simpan keputusan, versi sumber, ID skenario, diagram, dan alasan label agar hasil dapat ditelusuri.
 
-Korpus ini menyediakan teks kebutuhan terstruktur. Pasangan sequence diagram, hasil pemeriksaan otomatis, dan label acuan kebenaran tidak dibentuk hanya melalui penerjemahan ini. Gambar pada BRD, termasuk diagram proses, logo, dan tanda tangan, tetap merupakan bukti sumber sesuai konteksnya, bukan otomatis data berlabel untuk evaluasi.
+Korpus ini menyediakan teks kebutuhan terstruktur. Pasangan sequence diagram, hasil pemeriksaan otomatis, dan label acuan kebenaran tidak dibentuk hanya melalui penerjemahan ini. Gambar asli tidak disertakan dalam korpus publik. Diagram penelitian harus disiapkan ulang dalam bentuk anonim atau sintetis dan tidak otomatis menjadi data berlabel untuk evaluasi.
 
 ## Konflik dan kesenjangan sumber yang dipertahankan
 
@@ -68,7 +68,11 @@ Daftar rinci, bukti yang berlawanan, dan unit terdampak berada pada masing-masin
 
 ## Batas audit dan pemeriksaan struktur
 
-Audit mencakup pemetaan ruang lingkup, aktor dan hak akses, aturan bisnis, kebutuhan fungsional, validasi, keamanan, audit, integrasi, migrasi, pelaporan, serta pemicu notifikasi. Metadata administrasi dokumen, piksel gambar, tanda tangan, redaksi lengkap surel, dan contoh pesan kesalahan tidak disalin kata demi kata; seluruhnya tetap dirujuk melalui `data/raw/`. Uraian As-Is dipertahankan sebagai konteks apabila diperlukan, dengan penanda agar tidak otomatis menjadi kewajiban To-Be.
+Audit mencakup pemetaan ruang lingkup, aktor dan hak akses, aturan bisnis, kebutuhan fungsional, validasi, keamanan, audit, integrasi, migrasi, pelaporan, serta pemicu notifikasi. Metadata administrasi dokumen, piksel gambar dan tanda tangan tidak disertakan; redaksi lengkap surel dan contoh pesan kesalahan tidak disalin kata demi kata. BRD di `data/raw/` adalah salinan anonim. Uraian As-Is dipertahankan sebagai konteks apabila diperlukan, dengan penanda agar tidak otomatis menjadi kewajiban To-Be.
 
-Pemeriksaan struktur memverifikasi bahwa setiap dokumen modul memiliki satu `Source:` yang merujuk BRD yang tersedia, ID `REQ` dan `KON` unik serta berurutan dalam modulnya, setiap unit memiliki rujukan dan paragraf yang sesuai, dan referensi ID antarskenario dapat ditemukan. Pemetaan jumlah unit diperiksa terhadap isi berkas. Dokumen sumber dan berkas di luar folder sasaran tidak diubah oleh pembaruan ini. Pemeriksaan tersebut menguji struktur dan ketertelusuran dokumen; konfirmasi semantik serta label eksperimen tetap memerlukan penelaahan domain.
+Pemeriksaan struktur memverifikasi bahwa setiap dokumen modul memiliki satu `Source:` yang merujuk BRD yang tersedia, ID `REQ` dan `KON` unik serta berurutan dalam modulnya, setiap unit memiliki rujukan dan paragraf yang sesuai, dan referensi ID antarskenario dapat ditemukan. Pemetaan jumlah unit diperiksa terhadap isi berkas. Versi publik BRD sumber dan dokumentasi korpus telah dianonimkan pada pembaruan berikutnya. Pemeriksaan tersebut menguji struktur dan ketertelusuran dokumen; konfirmasi semantik serta label eksperimen tetap memerlukan penelaahan domain.
 
+
+## Catatan publikasi
+
+Versi `data/raw/` merupakan **salinan teranonimkan**, bukan dokumen asli. Nama organisasi, produk internal, nama narasumber, serta aset gambar sumber telah diganti atau dikeluarkan untuk mengurangi risiko identifikasi. Penghapusan dari cabang saat ini tidak membersihkan commit lama; riwayat Git dan izin publikasi tetap perlu peninjauan terpisah.

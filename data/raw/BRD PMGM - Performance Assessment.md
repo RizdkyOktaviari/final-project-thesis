@@ -1,8 +1,8 @@
-![Agincourt Resources](BRD%20PMGM%20-%20Performance%20Assessment_assets/agincourt_resources_logo.png)
+[Ilustrasi sumber dihapus dari korpus publik: Perusahaan A]
 
 # IT SYSTEM DEVELOPMENT — BUSINESS REQUIREMENT ASSESSMENT
 
-**Project:** MATA AIR HUB - PMGM  
+**Project:** Sistem HRIS - PMGM  
 **Module:** Performance Assessment  
 **Document Version:** 0.1
 
@@ -10,7 +10,7 @@
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 18 Aug 2026 |  | Evander Rantung | 0.1 | Draft |
+| 18 Aug 2026 |  | Analis Bisnis B | 0.1 | Draft |
 |  |  |  |  |  |
 |  |  |  |  |  |
 
@@ -36,7 +36,7 @@ Describe the changes which impact to the Module
 
 | Field | Value |
 | --- | --- |
-| Project Description | MATA AIR HUB - PMGM |
+| Project Description | Sistem HRIS - PMGM |
 | Business User Expert |  |
 | Assessment Date | 1 Jul 2026 |
 | Module Description | Performance Assessment |
@@ -172,7 +172,7 @@ Describe the changes which impact to the Module
 “Mr. X mengisi formulir exit form kemudian memintakan approval kepada department head. Setelah di approve, form kemudian diserahkan pada security pada saat user x berada di gerbang dan akan keluar dari area camp.”
 - More complete the explanation will affect the next visual modelling process.
 
-Pada sistem SAP saat ini, proses Performance Appraisal sudah tersedia mulai dari Self-Rating, review oleh Direct Supervisor dan One-Up Supervisor, hingga penetapan Final Rating. Namun, masih terdapat beberapa keterbatasan sebagai berikut:
+Pada sistem Sistem HRIS sebelumnya saat ini, proses Performance Appraisal sudah tersedia mulai dari Self-Rating, review oleh Direct Supervisor dan One-Up Supervisor, hingga penetapan Final Rating. Namun, masih terdapat beberapa keterbatasan sebagai berikut:
 
 1. Konfigurasi template, field, section, dan bobot penilaian masih ditentukan oleh vendor NTT sehingga OD Section belum dapat mengelolanya secara mandiri.
 2. Periode PA masih terbuka sepanjang waktu dan belum dapat diluncurkan berdasarkan jadwal maupun participant tertentu.
@@ -188,14 +188,14 @@ Pada sistem SAP saat ini, proses Performance Appraisal sudah tersedia mulai dari
 - Do it step by step from beginning to the end of process
 - More complete the explanation will affect the next visual modelling process.
 
-![Performance Assessment business flow](BRD%20PMGM%20-%20Performance%20Assessment_assets/performance_assessment_business_flow.png)
+[Ilustrasi sumber dihapus dari korpus publik: Performance Assessment business flow]
 
 
 ### Template and Launch
 
 1. OD Section membuat dan mengonfigurasi template Performance Assessment (PA) secara terpisah untuk kategori Staff dan Non-Staff.
 2. Konfigurasi template mencakup General Setting, Rating Scale, Route Map, periode, notification, participant, serta pengaturan section dan field.
-3. Staff mengikuti struktur organisasi dari Mata Air Hub. Non-Staff menggunakan Route Map yang dikonfigurasi secara manual oleh OD Section per department pada saat launch berdasarkan matriks yang berlaku. Non-Staff menggunakan maksimal dua layer review, namun jika hanya terdapat satu reviewer yang memenuhi kriteria, proses review dilakukan menggunakan satu layer.OD Section menentukan participant, melakukan preview, kemudian melakukan launch template untuk membuka periode PA.
+3. Staff mengikuti struktur organisasi dari Sistem HRIS. Non-Staff menggunakan Route Map yang dikonfigurasi secara manual oleh OD Section per department pada saat launch berdasarkan matriks yang berlaku. Non-Staff menggunakan maksimal dua layer review, namun jika hanya terdapat satu reviewer yang memenuhi kriteria, proses review dilakukan menggunakan satu layer.OD Section menentukan participant, melakukan preview, kemudian melakukan launch template untuk membuka periode PA.
 
 ### Self-Rating
 
@@ -242,7 +242,7 @@ Pada sistem SAP saat ini, proses Performance Appraisal sudah tersedia mulai dari
 ## Business Rules
 
 1. Template dan launch PA untuk Staff dan Non-Staff dibuat secara terpisah.
-2. Staff mengikuti struktur organisasi dari Mata Air Hub. Non-Staff menggunakan Route Map yang dikonfigurasi manual oleh OD Section per department pada saat launch berdasarkan matriks yang berlaku.
+2. Staff mengikuti struktur organisasi dari Sistem HRIS. Non-Staff menggunakan Route Map yang dikonfigurasi manual oleh OD Section per department pada saat launch berdasarkan matriks yang berlaku.
 3. Non-Staff menggunakan maksimal dua layer review, namun bisa juga hanya satu layer apabila hanya terdapat satu reviewer yang memenuhi kriteria.
 4. Administrator menggunakan satu layer review oleh Manager. Director dapat menjadi reviewer pada layer terakhir apabila dikonfigurasi oleh OD Section.
 5. OD Section dapat mengubah reviewer apabila terdapat transfer, promotion, perubahan organisasi, supervisor resign, atau kebutuhan operasional lainnya. Perubahan wajib disertai remarks dan disimpan dalam audit trail.
@@ -272,12 +272,12 @@ Pada sistem SAP saat ini, proses Performance Appraisal sudah tersedia mulai dari
 
 **Business Analyst signature:**
 
-![Business Analyst signature](BRD%20PMGM%20-%20Performance%20Assessment_assets/business_analyst_signature.png)
+[Ilustrasi sumber dihapus dari korpus publik: Business Analyst signature]
 
 | Role | Name | Date |
 | --- | --- | --- |
-| Business Analyst | Evander Sebo Rantung | Aug 2026 |
-| Project Coordinator | Darren Nurachmad |  |
-| Business User Expert | Irna Hasibuan |  |
+| Business Analyst | Analis Bisnis B | Aug 2026 |
+| Project Coordinator | Koordinator Proyek A |  |
+| Business User Expert | Narasumber Bisnis C |  |
 
 *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*

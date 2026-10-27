@@ -6,8 +6,8 @@
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 16 Jul 2026 | | Evander Rantung | 0.1 | Draft |
-| 03 Sep 2026 | | Evander Rantung | 0.2 | Amandemen |
+| 16 Jul 2026 | | Analis Bisnis B | 0.1 | Draft |
+| 03 Sep 2026 | | Analis Bisnis B | 0.2 | Amandemen |
 
 ### LOG Changes
 
@@ -22,13 +22,13 @@
 
 | Date | Requested by | Description | Severity (major/minor) | Status |
 | --- | --- | --- | --- | --- |
-| 8/28/2026 | PTAR | Penambahan business rules terkait cascade dan submit KPI modul *Goal Management* | Major | |
+| 8/28/2026 | Perusahaan A | Penambahan business rules terkait cascade dan submit KPI modul *Goal Management* | Major | |
 
 ### Project Information
 
 | Field | Value |
 | --- | --- |
-| Project Description | MATA AIR HUB - PMGM |
+| Project Description | Sistem HRIS - PMGM |
 | Business User Expert | |
 | Assessment Date | 1 Jul 2026 |
 | Module Description | Goal Management |
@@ -45,8 +45,8 @@
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Evander Sebo Rantung | | Sep 2026 |
-| Project Coordinator | Darren Nurachmad | | |
-| Business User Expert | Irna Hasibuan | | |
+| Business Analyst | Analis Bisnis B | | Sep 2026 |
+| Project Coordinator | Koordinator Proyek A | | |
+| Business User Expert | Narasumber Bisnis C | | |
 
 *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*

@@ -1,6 +1,6 @@
 # IT SYSTEM DEVELOPMENT — BUSINESS REQUIREMENT ASSESSMENT
 
-**Project:** MATA AIR HUB - PMGM  
+**Project:** Sistem HRIS - PMGM  
 **Module:** Goal Management  
 **Dokumen sumber:** BRD PMGM - Goal Management.docx (14 halaman)  
 **Versi tercantum pada footer:** 0.1  
@@ -10,8 +10,8 @@
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 16 Jul 2026 |  | Evander Rantung | 0.1 | Draft |
-| 03 Aug 2026 |  | Evander Rantung | 0.2 | Revision |
+| 16 Jul 2026 |  | Analis Bisnis B | 0.1 | Draft |
+| 03 Aug 2026 |  | Analis Bisnis B | 0.2 | Revision |
 
 ### 1.1 LOG Changes
 
@@ -25,13 +25,13 @@
 
 | Date | Requested by | Description | Severity (major/minor) | Status |
 | --- | --- | --- | --- | --- |
-| 8/28/2026 | PTAR | Penambahan business rules terkait cascade dan submit KPI, poin 8-10 (Halaman 12). | Major |  |
+| 8/28/2026 | Perusahaan A | Penambahan business rules terkait cascade dan submit KPI, poin 8-10 (Halaman 12). | Major |  |
 
 ## 2. Project Description
 
 | Field | Value |
 | --- | --- |
-| Project Description | MATA AIR HUB - PMGM |
+| Project Description | Sistem HRIS - PMGM |
 | Business User Expert |  |
 | Assessment Date | 1 Jul 2026 |
 | Module Description | Goal Management |
@@ -201,7 +201,7 @@
 - Example on essay (in Bahasa): “Mr. X mengisi formulir exit form kemudian memintakan approval kepada department head. Setelah di approve, form kemudian diserahkan pada security pada saat user x berada di gerbang dan akan keluar dari area camp.”
 - More complete the explanation will affect the next visual modelling process.
 
-Pada sistem SAP saat ini, proses Goal Management belum memiliki mekanisme KPI Submission, sehingga KPI yang telah disusun tidak melalui proses submit sebelum memasuki tahap review. Selain itu, sistem belum menerapkan validasi KPI sesuai business rule perusahaan, seperti validasi jumlah KPI, bobot KPI, maupun ketentuan lainnya, sehingga penyusunan KPI belum terkontrol. Sistem juga belum memiliki mekanisme lock KPI, sehingga karyawan masih dapat mengubah atau menghapus KPI kapan saja meskipun KPI telah memasuki proses review atau telah disepakati.
+Pada sistem Sistem HRIS sebelumnya saat ini, proses Goal Management belum memiliki mekanisme KPI Submission, sehingga KPI yang telah disusun tidak melalui proses submit sebelum memasuki tahap review. Selain itu, sistem belum menerapkan validasi KPI sesuai business rule perusahaan, seperti validasi jumlah KPI, bobot KPI, maupun ketentuan lainnya, sehingga penyusunan KPI belum terkontrol. Sistem juga belum memiliki mekanisme lock KPI, sehingga karyawan masih dapat mengubah atau menghapus KPI kapan saja meskipun KPI telah memasuki proses review atau telah disepakati.
 
 ## 5. Expected New System Business Flow
 
@@ -213,7 +213,7 @@ Pada sistem SAP saat ini, proses Goal Management belum memiliki mekanisme KPI Su
 
 ### 5.1 Goals Management — Diagram
 
-![Goal Management business flow](BRD_PMGM_Goal_Management_assets/goal_management_business_flow.jpg)
+[Ilustrasi sumber dihapus dari korpus publik: Goal Management business flow]
 
 > **Catatan ketidaksesuaian pada sumber:** Diagram menuliskan syarat bobot cascade **40%**, sedangkan ringkasan aturan pada poin 9 menyebut nilai default **50%** (dapat dikonfigurasi OD Section). Kedua informasi dipertahankan sesuai dokumen asal.
 
@@ -297,7 +297,7 @@ Pada sistem SAP saat ini, proses Goal Management belum memiliki mekanisme KPI Su
 
    - 3 minggu sebelum due date dikirimkan kepada Department Head.
    - 2 minggu sebelum due date dikirimkan kepada Senior Manager/Director.
-   - 1 minggu sebelum due date dikirimkan kepada GMO/Director.
+   - 1 minggu sebelum due date dikirimkan kepada Kepala Operasional/Director.
 
    Jenjang organisasi akan mengikuti KaryawanStruktur Organisasi.
 27. Detail notifikasi (format, durasi, penerima, dan isi) dapat dikonfigurasi oleh OD Section.
@@ -350,9 +350,9 @@ Penomoran pada kolom referensi mempertahankan nomor aktif yang ditampilkan pada 
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Evander Sebo Rantung | Tercantum pada dokumen asli | 28 Jul 2026 |
-| Project Coordinator | Darren Nurachmad |  |  |
-| Business User Expert | Irna Hasibuan |  |  |
+| Business Analyst | Analis Bisnis B | Tercantum pada dokumen asli | 28 Jul 2026 |
+| Project Coordinator | Koordinator Proyek A |  |  |
+| Business User Expert | Narasumber Bisnis C |  |  |
 
 > By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.
 

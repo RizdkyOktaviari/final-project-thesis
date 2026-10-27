@@ -25,7 +25,7 @@
 
 **Rujukan:** §5 Organization Structure Policies / Business Rules.
 
-**Kebutuhan:** Pengguna harus dapat mencari informasi struktur organisasi berdasarkan nama departemen, nama posisi, nama karyawan, atau ID NH. Sistem harus menyediakan pencarian tersebut melalui integrasi dengan modul terkait dan membatasi informasi yang dapat diakses sesuai kewenangan pengguna.
+**Kebutuhan:** Pengguna harus dapat mencari informasi struktur organisasi berdasarkan nama departemen, nama posisi, nama karyawan, atau ID Pegawai. Sistem harus menyediakan pencarian tersebut melalui integrasi dengan modul terkait dan membatasi informasi yang dapat diakses sesuai kewenangan pengguna.
 
 ### REQ-ORG-004: Mengekspor struktur organisasi
 
@@ -51,7 +51,7 @@
 
 **Rujukan:** §4.1 Manage Organizational Structure Business Process, Flow External dan Catatan.
 
-**Ketentuan:** Pengaju perubahan harus menyiapkan proposal, bagan organisasi baru, dan justifikasi perubahan untuk ditinjau OD Section. OD menilai kelengkapan dokumen, kesesuaian struktur, dan alasan bisnis sebelum proposal diteruskan kepada Manager Training & Development, Senior Manager HCM, serta GM Operations/GMO atau Director in Charge sesuai jalur yang berlaku. BRD juga mencantumkan peninjauan Board of Director. Untuk perubahan tahunan atau kuartalan pada tingkat di bawah Department, persetujuan cukup sampai GMO atau Director in Charge sesuai jenjang organisasi; perubahan pada tingkat Department dan di atasnya harus mencapai Direktur. Jika proposal tidak disetujui pada salah satu tahap, proposal kembali kepada pengaju dan OD untuk direvisi serta diajukan kembali. Seluruh peninjauan dan persetujuan tersebut berlangsung di luar aplikasi; hanya Department TD-OD yang melakukan pembaruan dalam sistem setelah persetujuan lengkap.
+**Ketentuan:** Pengaju perubahan harus menyiapkan proposal, bagan organisasi baru, dan justifikasi perubahan untuk ditinjau OD Section. OD menilai kelengkapan dokumen, kesesuaian struktur, dan alasan bisnis sebelum proposal diteruskan kepada Manager Training & Development, Senior Manager HCM, serta Kepala Operasional atau Director in Charge sesuai jalur yang berlaku. BRD juga mencantumkan peninjauan Board of Director. Untuk perubahan tahunan atau kuartalan pada tingkat di bawah Department, persetujuan cukup sampai Kepala Operasional atau Director in Charge sesuai jenjang organisasi; perubahan pada tingkat Department dan di atasnya harus mencapai Direktur. Jika proposal tidak disetujui pada salah satu tahap, proposal kembali kepada pengaju dan OD untuk direvisi serta diajukan kembali. Seluruh peninjauan dan persetujuan tersebut berlangsung di luar aplikasi; hanya Department TD-OD yang melakukan pembaruan dalam sistem setelah persetujuan lengkap.
 
 ### KON-ORG-003: Penyesuaian jalur pelaporan dan kewenangan akses
 

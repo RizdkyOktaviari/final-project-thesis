@@ -93,7 +93,7 @@
 
 **Rujukan:** Expected New System Business Flow, Template and Launch; Business Rules, butir 1 sampai 4 dan 12.
 
-**Ketentuan:** Templat dan peluncuran PA Staff harus terpisah dari Non-Staff. Alur Staff mengikuti struktur organisasi Mata Air Hub. OD mengonfigurasi alur Non-Staff secara manual per departemen saat peluncuran berdasarkan matriks yang berlaku. Non-Staff menggunakan paling banyak dua lapis peninjauan, atau satu lapis jika hanya satu peninjau memenuhi kriteria. Jalur Administrator menggunakan satu lapis peninjauan oleh Manager; Director dapat menjadi peninjau pada lapis terakhir apabila dikonfigurasi OD. Tindakan massal OD hanya digunakan untuk memindahkan PA ke tahap `Normalization`, bukan sebagai persetujuan penilaian.
+**Ketentuan:** Templat dan peluncuran PA Staff harus terpisah dari Non-Staff. Alur Staff mengikuti struktur organisasi Sistem HRIS. OD mengonfigurasi alur Non-Staff secara manual per departemen saat peluncuran berdasarkan matriks yang berlaku. Non-Staff menggunakan paling banyak dua lapis peninjauan, atau satu lapis jika hanya satu peninjau memenuhi kriteria. Jalur Administrator menggunakan satu lapis peninjauan oleh Manager; Director dapat menjadi peninjau pada lapis terakhir apabila dikonfigurasi OD. Tindakan massal OD hanya digunakan untuk memindahkan PA ke tahap `Normalization`, bukan sebagai persetujuan penilaian.
 
 ### KON-PA-002: Menyediakan data penilaian
 

@@ -8,8 +8,8 @@ Business Requirement Assessment Document — Document version: 1.1
 
 | **Start Date** | **End Date** | **Author** | **Version Doc** | **Change Reference** |
 | --- | --- | --- | --- | --- |
-| 07 Aug 2026 |  | Maheswara Sinatriyo | 0.1 | Drafting |
-| 11 Sep 2026 |  | Maheswara Sinatriyo | 1.0 | Submitted for Review |
+| 07 Aug 2026 |  | Analis Bisnis A | 0.1 | Drafting |
+| 11 Sep 2026 |  | Analis Bisnis A | 1.0 | Submitted for Review |
 
 ## Log Changes
 
@@ -32,9 +32,9 @@ Describe the changes which impact to the Module
 
 | Item | Value |
 | --- | --- |
-| Project Description | Mata Air Hub |
+| Project Description | Sistem HRIS |
 | Module Description | Personal Data |
-| Business User Expert | Anny Nasution/Irna Hasibuan |
+| Business User Expert | Narasumber Bisnis A/Narasumber Bisnis C |
 | Assessment Date | 15 Juli 2026 – 3 Sep 2026 |
 
 ## Requirement Identification
@@ -346,7 +346,7 @@ Sistem melakukan validasi terhadap pengajuan yang masih aktif atau memberikan in
 
 2.  **Employee mengisi data perubahan** (Application Process)
 
-    - Employee membuka menu **Personal Data** pada Mata Air Hub.
+    - Employee membuka menu **Personal Data** pada Sistem HRIS.
 
     - Employee melakukan perubahan data sesuai kebutuhan.
 
@@ -364,7 +364,7 @@ Sistem melakukan validasi terhadap pengajuan yang masih aktif atau memberikan in
 
 4.  **HR memberikan keputusan** (Application Process)
 
-    - Jika pengajuan **disetujui (Approve)**, sistem akan memperbarui data personal karyawan pada **SAP Employee Central** dan menyelesaikan proses pengajuan.
+    - Jika pengajuan **disetujui (Approve)**, sistem akan memperbarui data personal karyawan pada **Sistem HRIS terintegrasi** dan menyelesaikan proses pengajuan.
 
     - Jika pengajuan **dikembalikan (Send Back)**, sistem mengembalikan pengajuan kepada employee disertai komentar atau alasan perbaikan (kembali ke poin 2).
 
@@ -372,7 +372,7 @@ Sistem melakukan validasi terhadap pengajuan yang masih aktif atau memberikan in
 
     - Setelah pengajuan disetujui, sistem memperbarui data personal karyawan, menyimpan riwayat perubahan (history), dan mengakhiri proses pengajuan.
 
-![Current System Business Flow - Update Personal Data](BRD-EC-Personal-Data_assets/image1.png)
+[Ilustrasi sumber dihapus dari korpus publik: Current System Business Flow - Update Personal Data]
 
 ## Expected New System Business Flow
 
@@ -394,7 +394,7 @@ Sistem melakukan validasi terhadap pengajuan yang masih aktif atau memberikan in
 
 2.  **Employee mengisi data perubahan** (Application Process)
 
-    - Employee membuka menu **Personal Data** pada Mata Air Hub.
+    - Employee membuka menu **Personal Data** pada Sistem HRIS.
 
     - Employee melakukan perubahan data sesuai kebutuhan.
 
@@ -412,7 +412,7 @@ Sistem melakukan validasi terhadap pengajuan yang masih aktif atau memberikan in
 
 4.  **HR memberikan keputusan** (Application Process)
 
-    - Jika pengajuan **disetujui (Approve)**, sistem akan memperbarui data personal karyawan pada **Mata Air Hub** dan menyelesaikan proses pengajuan.
+    - Jika pengajuan **disetujui (Approve)**, sistem akan memperbarui data personal karyawan pada **Sistem HRIS** dan menyelesaikan proses pengajuan.
 
     - Jika pengajuan **dikembalikan (Send Back)**, sistem mengembalikan pengajuan kepada employee disertai komentar atau alasan perbaikan (kembali ke poin 2).
 
@@ -422,7 +422,7 @@ Sistem melakukan validasi terhadap pengajuan yang masih aktif atau memberikan in
 
     - Data akan berubah ketika Effective date berlaku
 
-![Expected New System Business Flow - Update Personal Data](BRD-EC-Personal-Data_assets/image2.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Expected New System Business Flow - Update Personal Data]
 
 ## Business Rules
 
@@ -464,7 +464,7 @@ Sistem melakukan validasi terhadap pengajuan yang masih aktif atau memberikan in
 
 - Time management menampilkan informasi Roster Type dan Work Schedule.
 
-- Roster/Work Schedule pada Mata Air Hub mengikuti jam kerja yang tercantum dalam kontrak employee.
+- Roster/Work Schedule pada Sistem HRIS mengikuti jam kerja yang tercantum dalam kontrak employee.
 
 ### Business Rules – Supporting Document
 
@@ -1294,47 +1294,47 @@ The updated Personal Data information is now available in the application.
 
 ### User Profile – Personal Data
 
-![User Profile - Personal Data](BRD-EC-Personal-Data_assets/image3.png)
+[Ilustrasi sumber dihapus dari korpus publik: User Profile - Personal Data]
 
 ### User Profile – Job Data
 
-![User Profile - Job Data](BRD-EC-Personal-Data_assets/image4.png)
+[Ilustrasi sumber dihapus dari korpus publik: User Profile - Job Data]
 
 ### User Profile – Compensation
 
-![User Profile - Compensation](BRD-EC-Personal-Data_assets/image5.png)
+[Ilustrasi sumber dihapus dari korpus publik: User Profile - Compensation]
 
 ### User Profile – Time Management
 
-![User Profile - Time Management](BRD-EC-Personal-Data_assets/image6.png)
+[Ilustrasi sumber dihapus dari korpus publik: User Profile - Time Management]
 
 ### User Profile – General Information
 
-![User Profile - General Information](BRD-EC-Personal-Data_assets/image7.png)
+[Ilustrasi sumber dihapus dari korpus publik: User Profile - General Information]
 
 ### User Profile – Background Information
 
-![User Profile - Background Information](BRD-EC-Personal-Data_assets/image8.png)
+[Ilustrasi sumber dihapus dari korpus publik: User Profile - Background Information]
 
 ### Personal Data Change Request
 
-![Personal Data Change Request](BRD-EC-Personal-Data_assets/image9.png)
+[Ilustrasi sumber dihapus dari korpus publik: Personal Data Change Request]
 
 ### Personal Data Change Monitoring
 
-![Personal Data Change Monitoring](BRD-EC-Personal-Data_assets/image10.png)
+[Ilustrasi sumber dihapus dari korpus publik: Personal Data Change Monitoring]
 
 ### Workflow Details
 
-![Workflow Details](BRD-EC-Personal-Data_assets/image11.png)
+[Ilustrasi sumber dihapus dari korpus publik: Workflow Details]
 
 ### Workflow Details with Eligibility Claim
 
-![Workflow Details with Eligibility Claim](BRD-EC-Personal-Data_assets/image12.png)
+[Ilustrasi sumber dihapus dari korpus publik: Workflow Details with Eligibility Claim]
 
 ### Form Example
 
-![Personal Information Form Example](BRD-EC-Personal-Data_assets/image13.png)
+[Ilustrasi sumber dihapus dari korpus publik: Personal Information Form Example]
 
 ## Validation Rules
 
@@ -1494,9 +1494,9 @@ Dokumen yang telah tersimpan tidak dapat diubah atau dihapus oleh employee setel
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Maheswara Sinatriyo | ![Business Analyst Signature](BRD-EC-Personal-Data_assets/image14.jpeg) | 14 Sep 2026 |
-| Project Coordinator | Darren Nurachmad |  |  |
-| Business User Expert | Anny Nasution |  |  |
-| Business User Expert | Irna Hasibuan |  |  |
+| Business Analyst | Analis Bisnis A | [Ilustrasi sumber dihapus dari korpus publik: Business Analyst Signature] | 14 Sep 2026 |
+| Project Coordinator | Koordinator Proyek A |  |  |
+| Business User Expert | Narasumber Bisnis A |  |  |
+| Business User Expert | Narasumber Bisnis C |  |  |
 
 ***\*By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.***

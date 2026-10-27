@@ -14,9 +14,9 @@ underlying business requirements are internally consistent.
 | Source BRDs | Complete | 10 Markdown BRDs under `data/raw/` |
 | Derived requirement texts | Complete | 10 numbered files under `data/requirements text/` |
 | Source-to-derived traceability | Complete | Each derived file contains one `Source:` path to its BRD |
-| Local visual assets | Complete | 63 PNG/JPG/JPEG files retained beside the relevant source material |
-| Local image-link integrity | Passed | Every Markdown image reference resolves after URL decoding |
-| Image decodability | Passed | All local PNG/JPG/JPEG assets expose readable image dimensions |
+| Local visual assets | Removed | Original 63 visual assets excluded from the public branch |
+| Local image-link integrity | Not applicable | Source images replaced by removal markers |
+| Image decodability | Not applicable | No source image assets are included |
 
 The detailed mapping and reuse rules are maintained in
 [`data/README.md`](../../data/README.md).
@@ -24,8 +24,7 @@ The detailed mapping and reuse rules are maintained in
 ## Research-use limitations
 
 - The BRDs are source evidence. They include drafts, revisions, diagrams,
-  signatures, and business-language inconsistencies; these are not silently
-  corrected in `raw/`.
+  business-language inconsistencies. Identifying signatures and personal metadata have been anonymized in `raw/`.
 - The requirement texts are derived analysis artefacts. They retain open
   conflicts as explicit source gaps rather than treating an analyst's
   interpretation as ground truth.
@@ -39,7 +38,10 @@ The detailed mapping and reuse rules are maintained in
 ## Conclusion
 
 The repository is complete and traceable for its current supplied corpus:
-every requirement breakdown has a BRD source, and every local Markdown image
-reference resolves. The remaining work is research design—defining the
+every requirement breakdown has an anonymized BRD source; original visual assets are withheld. The remaining work is research design—defining the
 experiment, labels, and evaluation protocol—not recovery of missing repository
 assets.
+
+## Privacy qualification
+
+This is an anonymized working copy, not the original source BRD. Earlier Git commits may still expose raw text and images, so public access to historical blobs must be considered separately. Anonymity and publication permissions have not been independently certified.

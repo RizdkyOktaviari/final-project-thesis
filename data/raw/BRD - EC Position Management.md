@@ -1,7 +1,7 @@
 # Business Requirement Assessment — Position Management
 
 **IT SYSTEM DEVELOPMENT**  
-**Project:** Mata Air Hub  
+**Project:** Sistem HRIS  
 **Module:** Position Management  
 **Document:** Business Requirement Assessment Document  
 **Document version (footer):** 1.1
@@ -10,10 +10,10 @@
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 16 Jun 2026 | | Maheswara Sinatriyo | 0.1 | Drafting |
-| 19 Jun 2026 | | Maheswara Sinatriyo | 1.0 | Issued for Review |
-| 24 Jun 2026 | | Maheswara Sinatriyo | 1.1 | Updated based on Review Comments |
-| 7 Jul 2026 | | Maheswara Sinatriyo | 1.2 | Updated based on Review |
+| 16 Jun 2026 | | Analis Bisnis A | 0.1 | Drafting |
+| 19 Jun 2026 | | Analis Bisnis A | 1.0 | Issued for Review |
+| 24 Jun 2026 | | Analis Bisnis A | 1.1 | Updated based on Review Comments |
+| 7 Jul 2026 | | Analis Bisnis A | 1.2 | Updated based on Review |
 
 ### 1.1 Log Changes
 
@@ -37,8 +37,8 @@
 
 | Field | Value |
 | --- | --- |
-| Project Description | Mata Air Hub |
-| Business User Expert | Cahya Darujati / Irna Hasibuan |
+| Project Description | Sistem HRIS |
+| Business User Expert | Narasumber Bisnis F / Narasumber Bisnis C |
 | Assessment Date | 3 Juni 2026 - 9 Juni 2026 |
 | Module Description | Position Management |
 
@@ -80,7 +80,7 @@
 6. Pencarian posisi berdasarkan **Position Code**, nama posisi, dan nama karyawan, dan employee ID.
 7. Pembuatan dan pengelolaan **Organizational Unit** (Company, Directorate, Division, Department, Section, cost code/cost center).
 8. Penyimpanan riwayat perubahan posisi (**historical records**) dan audit trail (who, when, what changed).
-9. Migrasi data posisi dari sistem SAP SF ke Mata Air Hub.
+9. Migrasi data posisi dari sistem Sistem HRIS sebelumnya SF ke Sistem HRIS.
 10. Bulk Import data Posisi.
 11. Export positon chart dengan format PDF, & Image(png).
 12. Integrasi data posisi sebagai referensi bagi modul Employee Central lainnya.
@@ -215,7 +215,7 @@ flowchart TD
 
 **Diagram asli:**
 
-![Manage Position Flow](assets/manage-position-flow.png)
+[Ilustrasi sumber dihapus dari korpus publik: Manage Position Flow]
 
 ## 4. Expected New System Business Flow
 
@@ -266,7 +266,7 @@ flowchart TD
 
 **Diagram asli:**
 
-![Create Position Flow](assets/create-position-flow.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Create Position Flow]
 
 ### 4.2 Add Position Below
 
@@ -308,7 +308,7 @@ flowchart TD
 
 **Diagram asli:**
 
-![Add Position Below (Subordinate) Flow](assets/add-position-below-flow.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Add Position Below (Subordinate) Flow]
 
 ### 4.3 Edit Position
 
@@ -348,7 +348,7 @@ flowchart TD
 
 **Diagram asli:**
 
-![Edit Position Flow](assets/edit-position-flow.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Edit Position Flow]
 
 ## 5. Module Policy
 
@@ -372,14 +372,14 @@ flowchart TD
 16. Posisi yang dibuat harus terhubung dengan unit organisasi yang valid (Directorate, Division, Department, Section) sesuai struktur organisasi yang berlaku.
 17. Sistem harus menyediakan kemampuan pencarian posisi berdasarkan Position Code, Position Title, maupun nama karyawan, dan ID karyawan yang menempati posisi tersebut.
 18. Sistem harus menyediakan histori struktur organisasi dan posisi berdasarkan tanggal efektif tertentu (**historical organization view**).
-19. Data posisi yang digunakan oleh proses bisnis lain harus menjadi referensi tunggal (**single source of truth**) bagi modul Mata Air Hub terkait.
+19. Data posisi yang digunakan oleh proses bisnis lain harus menjadi referensi tunggal (**single source of truth**) bagi modul Sistem HRIS terkait.
 
 ## 6. Approval / Signatures
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Maheswara Sinatriyo | ![Tanda tangan Business Analyst](assets/business-analyst-signature.jpeg) | 7 Juli 2026 |
-| Project Coordinator | Darren Nurachmad | | |
-| Business User Expert | Irna Hasibuan | | |
+| Business Analyst | Analis Bisnis A | [Ilustrasi sumber dihapus dari korpus publik: Tanda tangan Business Analyst] | 7 Juli 2026 |
+| Project Coordinator | Koordinator Proyek A | | |
+| Business User Expert | Narasumber Bisnis C | | |
 
 > *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*

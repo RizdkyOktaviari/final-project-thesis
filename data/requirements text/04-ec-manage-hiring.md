@@ -19,7 +19,7 @@
 
 **Rujukan:** Expected New System Business Flow (To-Be), Request to Employ (RTE), langkah 2 sampai 6; Functional Requirements, RTE Review & Approval Workflow; Notification/Notifikasi, RTE Approval Required.
 
-**Kebutuhan:** OD TM/OD Section harus meninjau RTE dan memvalidasi ketersediaan anggaran tenaga kerja. Jika OD menyetujui pengajuan, sistem harus meneruskannya kepada HR Recruitment untuk meninjau persyaratan rekrutmen. Jika HR Recruitment menyetujui pengajuan, sistem harus meneruskannya secara berurutan kepada Senior Manager HCM, Senior Manager Business Unit, GMO/GM PD/Chief Geo, Director in Charge, dan Director of HC. Sistem harus menampilkan informasi pengajuan kepada pemberi persetujuan pada tahap yang menjadi kewenangannya. Setelah persetujuan pada suatu tahap diberikan, sistem harus meneruskan pengajuan dan memberi notifikasi kepada pemberi persetujuan berikutnya. Proses RTE selesai setelah Director of HC memberikan persetujuan akhir.
+**Kebutuhan:** OD TM/OD Section harus meninjau RTE dan memvalidasi ketersediaan anggaran tenaga kerja. Jika OD menyetujui pengajuan, sistem harus meneruskannya kepada HR Recruitment untuk meninjau persyaratan rekrutmen. Jika HR Recruitment menyetujui pengajuan, sistem harus meneruskannya secara berurutan kepada Senior Manager HCM, Senior Manager Business Unit, Kepala Operasional/Kepala Divisi/Kepala Teknis, Director in Charge, dan Director of HC. Sistem harus menampilkan informasi pengajuan kepada pemberi persetujuan pada tahap yang menjadi kewenangannya. Setelah persetujuan pada suatu tahap diberikan, sistem harus meneruskan pengajuan dan memberi notifikasi kepada pemberi persetujuan berikutnya. Proses RTE selesai setelah Director of HC memberikan persetujuan akhir.
 
 ### REQ-HIR-003: Memperbaiki atau menarik RTE yang dikembalikan
 
@@ -31,13 +31,13 @@
 
 **Rujukan:** Expected New System Business Flow (To-Be), Salary Build Up (SBU), langkah 1; Functional Requirements, SBU Form; Business Rules, SBU Information; Validation Rules, Salary Build Up (SBU) Validation; Notification/Notifikasi, SBU Submission.
 
-**Kebutuhan:** HR Recruitment harus dapat menyusun usulan kompensasi melalui formulir SBU dan menyiapkan alur persetujuannya. Sistem harus menyediakan informasi demografi penerimaan karyawan, grade, pembanding internal, riwayat pekerjaan, gaji sebelumnya, komponen gaji, dan penawaran PTAR sebagaimana dijabarkan pada KON-HIR-001. HR Recruitment dapat menambahkan lebih dari satu pembanding internal dan memasukkan komponen gaji secara manual. Sebelum pengajuan dikirim untuk ditinjau, sistem harus memeriksa kelengkapan informasi usulan rekrutmen yang diwajibkan. Sistem harus meneruskan usulan SBU kepada Senior Manager HCM dan memberikan notifikasi pengajuan kepadanya.
+**Kebutuhan:** HR Recruitment harus dapat menyusun usulan kompensasi melalui formulir SBU dan menyiapkan alur persetujuannya. Sistem harus menyediakan informasi demografi penerimaan karyawan, grade, pembanding internal, riwayat pekerjaan, gaji sebelumnya, komponen gaji, dan penawaran Perusahaan A sebagaimana dijabarkan pada KON-HIR-001. HR Recruitment dapat menambahkan lebih dari satu pembanding internal dan memasukkan komponen gaji secara manual. Sebelum pengajuan dikirim untuk ditinjau, sistem harus memeriksa kelengkapan informasi usulan rekrutmen yang diwajibkan. Sistem harus meneruskan usulan SBU kepada Senior Manager HCM dan memberikan notifikasi pengajuan kepadanya.
 
 ### REQ-HIR-005: Menyetujui SBU dan membuat surat penawaran
 
 **Rujukan:** Expected New System Business Flow (To-Be), Salary Build Up (SBU), langkah 2 sampai 8; Business Rules, Salary Build Up (SBU); Functional Requirements, SBU Review & Approval Workflow; Notification/Notifikasi, SBU Approval Required.
 
-**Kebutuhan:** Sistem harus menampilkan usulan SBU kepada pemberi persetujuan sesuai urutan Senior Manager HCM, Director of HC, Senior Manager Business Unit, GMO/GM PD/Chief Geo, dan Director in Charge. Setiap pemberi persetujuan meninjau usulan pada tahap kewenangannya. Sistem hanya boleh meneruskan SBU ke tahap berikutnya setelah tahap yang sedang berjalan memperoleh persetujuan, lalu harus memberi notifikasi kepada pemberi persetujuan berikutnya. Setelah seluruh persetujuan yang diwajibkan selesai, sistem harus memungkinkan HR Recruitment membuat surat penawaran (Offering Letter). Proses SBU selesai setelah surat penawaran dibuat.
+**Kebutuhan:** Sistem harus menampilkan usulan SBU kepada pemberi persetujuan sesuai urutan Senior Manager HCM, Director of HC, Senior Manager Business Unit, Kepala Operasional/Kepala Divisi/Kepala Teknis, dan Director in Charge. Setiap pemberi persetujuan meninjau usulan pada tahap kewenangannya. Sistem hanya boleh meneruskan SBU ke tahap berikutnya setelah tahap yang sedang berjalan memperoleh persetujuan, lalu harus memberi notifikasi kepada pemberi persetujuan berikutnya. Setelah seluruh persetujuan yang diwajibkan selesai, sistem harus memungkinkan HR Recruitment membuat surat penawaran (Offering Letter). Proses SBU selesai setelah surat penawaran dibuat.
 
 ### REQ-HIR-006: Memperbaiki atau menarik SBU yang dikembalikan
 
@@ -61,7 +61,7 @@
 
 **Rujukan:** Functional Requirements, Employee Data Processing dan Data Integration & Dependency, Employee Data Dependency; Current System Business Flow (As-Is), Input New Employee data, langkah 7 sampai 9.
 
-**Kebutuhan:** Sistem harus mendukung pemrosesan data karyawan baru oleh unit yang bertanggung jawab setelah pencatatan oleh HR Recruitment. HR Compensation & Benefit harus dapat memasukkan data kompensasi dan manfaat. IT & System harus dapat menjalankan aktivasi data karyawan baru di Mata Air sesuai alur yang berlaku. Finance harus dapat memasukkan data payroll sesuai ruang lingkup yang ditetapkan.
+**Kebutuhan:** Sistem harus mendukung pemrosesan data karyawan baru oleh unit yang bertanggung jawab setelah pencatatan oleh HR Recruitment. HR Compensation & Benefit harus dapat memasukkan data kompensasi dan manfaat. IT & System harus dapat menjalankan aktivasi data karyawan baru di Sistem HRIS sesuai alur yang berlaku. Finance harus dapat memasukkan data payroll sesuai ruang lingkup yang ditetapkan.
 
 ### REQ-HIR-010: Mengingatkan evaluasi masa percobaan
 
@@ -87,7 +87,7 @@
 
 **Rujukan:** In Scope, Salary Build Up (SBU); Business Rules, SBU Information; Functional Requirements, SBU Form.
 
-**Ketentuan:** Informasi demografi penerimaan karyawan harus disajikan berdasarkan Division, Department, dan Section. Informasi jenis kelamin harus mencakup kategori Staff dan Non-Staff, sedangkan informasi agama dan jumlah tenaga kerja hanya mencakup Staff. Grade merupakan informasi referensi yang dapat dilihat, tetapi tidak dapat diubah oleh pemberi persetujuan. Internal Comparison harus mendukung lebih dari satu pembanding. Previous Employment harus berupa tabel yang menampung lebih dari satu riwayat perusahaan atau tempat kerja. Gaji dan komponen gaji sebelumnya harus ditampilkan sebelum bagian PTAR Offer. Penambahan komponen gaji dilakukan secara manual. Employment Status dan Work Roster Cycle pada PTAR Offer harus tersedia sebagai pilihan daftar.
+**Ketentuan:** Informasi demografi penerimaan karyawan harus disajikan berdasarkan Division, Department, dan Section. Informasi jenis kelamin harus mencakup kategori Staff dan Non-Staff, sedangkan informasi agama dan jumlah tenaga kerja hanya mencakup Staff. Grade merupakan informasi referensi yang dapat dilihat, tetapi tidak dapat diubah oleh pemberi persetujuan. Internal Comparison harus mendukung lebih dari satu pembanding. Previous Employment harus berupa tabel yang menampung lebih dari satu riwayat perusahaan atau tempat kerja. Gaji dan komponen gaji sebelumnya harus ditampilkan sebelum bagian Penawaran Perusahaan. Penambahan komponen gaji dilakukan secara manual. Employment Status dan Work Roster Cycle pada Penawaran Perusahaan harus tersedia sebagai pilihan daftar.
 
 ### KON-HIR-002: Kewenangan persetujuan dan dokumen pendukung
 

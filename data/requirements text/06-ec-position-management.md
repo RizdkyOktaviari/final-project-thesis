@@ -49,7 +49,7 @@
 
 **Rujukan:** §2.2.1 In Scope, butir 9 sampai 11; §2.4 Roles and Accessibilities, Organization Development (OD) Admin.
 
-**Kebutuhan:** Sistem harus memungkinkan OD Admin mengimpor data posisi secara massal dan menjalankan ekspor data posisi sesuai kewenangannya. Sistem juga harus menyediakan ekspor Position Chart dalam format PDF dan PNG. Sistem harus mendukung migrasi data posisi dari SAP SuccessFactors ke Mata Air Hub.
+**Kebutuhan:** Sistem harus memungkinkan OD Admin mengimpor data posisi secara massal dan menjalankan ekspor data posisi sesuai kewenangannya. Sistem juga harus menyediakan ekspor Position Chart dalam format PDF dan PNG. Sistem harus mendukung migrasi data posisi dari Sistem HRIS sebelumnya ke Sistem HRIS.
 
 ## Ketentuan pendukung
 
@@ -69,7 +69,7 @@
 
 **Rujukan:** §2.2.1 In Scope, butir 12; §5.1 Position Management Policies / Business Rules, butir 19.
 
-**Ketentuan:** Data posisi yang digunakan proses bisnis lain harus menjadi referensi tunggal bagi modul Employee Central dan Mata Air Hub terkait. Penggunaan posisi sebagai referensi tidak memindahkan transaksi rekrutmen, RTE, atau ESC ke dalam cakupan Position Management.
+**Ketentuan:** Data posisi yang digunakan proses bisnis lain harus menjadi referensi tunggal bagi modul Employee Central dan Sistem HRIS terkait. Penggunaan posisi sebagai referensi tidak memindahkan transaksi rekrutmen, RTE, atau ESC ke dalam cakupan Position Management.
 
 ## Batas cakupan
 
@@ -78,7 +78,7 @@ Pembuatan otomatis Job Code Framework, rekrutmen termasuk penerimaan karyawan ba
 ## Ambiguitas dan batas interpretasi
 
 - BRD tidak memiliki bab kebutuhan fungsional yang rinci atau katalog lengkap data posisi. Kebutuhan diturunkan dari ruang lingkup, peran, alur yang diharapkan, mitigasi risiko, dan kebijakan bisnis. Contoh atribut pada alur tidak diperlakukan sebagai katalog lengkap.
-- Sumber menetapkan migrasi dari SAP SuccessFactors, impor massal, dan kewenangan impor/ekspor data posisi, tetapi tidak menjelaskan format berkas, pemetaan migrasi, penanganan kegagalan per baris, atau format ekspor data selain PDF dan PNG untuk bagan. Rincian tersebut tidak diisi dengan asumsi.
+- Sumber menetapkan migrasi dari Sistem HRIS sebelumnya, impor massal, dan kewenangan impor/ekspor data posisi, tetapi tidak menjelaskan format berkas, pemetaan migrasi, penanganan kegagalan per baris, atau format ekspor data selain PDF dan PNG untuk bagan. Rincian tersebut tidak diisi dengan asumsi.
 - Penonaktifan memiliki prasyarat eksplisit, sedangkan alur dan prasyarat rinci aktivasi belum dijelaskan. Ketentuan penonaktifan tidak otomatis dianggap sebagai ketentuan aktivasi.
 - Katalog peran menempatkan Cost Code pada Comben dan pengelolaan posisi pada OD, sementara alur Edit Position mencantumkan Cost Center sebagai atribut yang dapat diperbarui sesuai kewenangan. Batas antara pemeliharaan master kode biaya dan pemilihan kode biaya pada posisi perlu dipertahankan saat menyusun model; dokumen ini tidak memberikan hak pengelolaan master kepada peran lain.
 

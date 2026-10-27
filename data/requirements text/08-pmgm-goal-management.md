@@ -3,7 +3,7 @@
 ## Sumber dan ruang lingkup
 
 - Source: `data/raw/BRD_PMGM_Goal_Management.md`
-- Aktor: administrator Organization Development (OD), karyawan Staff dan Non-Staff, atasan langsung (Direct Supervisor), atasan satu tingkat di atas atasan langsung (One-Up Supervisor), Manager, dan Senior Manager. Department Head, Senior Manager/Director, serta GMO/Director menerima eskalasi pengingat sesuai konfigurasi.
+- Aktor: administrator Organization Development (OD), karyawan Staff dan Non-Staff, atasan langsung (Direct Supervisor), atasan satu tingkat di atas atasan langsung (One-Up Supervisor), Manager, dan Senior Manager. Department Head, Senior Manager/Director, serta Kepala Operasional/Director menerima eskalasi pengingat sesuai konfigurasi.
 - Cakupan: pengaturan periode, formulir KPI, penurunan sasaran dari atasan kepada bawahan (cascade), pengajuan, peninjauan, revisi, aktivitas, pemantauan, dan ekspor.
 - Dokumen terkait: `09-pmgm-goal-management-addendum.md` memuat tiga penegasan aturan cascade dan penyimpanan draf. Nama status dan istilah konfigurasi tertentu dipertahankan untuk ketertelusuran.
 
@@ -73,7 +73,7 @@
 
 **Rujukan:** 5.2 Summary, F. Notification, butir 24, 26, dan 27.
 
-**Kebutuhan:** Ketika tenggat pengisian mendekat dan ada bawahan yang belum mengajukan KPI, sistem harus mengirimkan pengingat kepada atasan langsung. Sistem harus mendukung pengiriman bertahap menurut struktur organisasi, dengan konfigurasi bawaan tiga minggu sebelum tenggat kepada Department Head, dua minggu sebelum tenggat kepada Senior Manager/Director, dan satu minggu sebelum tenggat kepada GMO/Director. OD harus dapat menyesuaikan konfigurasi pengingat tersebut.
+**Kebutuhan:** Ketika tenggat pengisian mendekat dan ada bawahan yang belum mengajukan KPI, sistem harus mengirimkan pengingat kepada atasan langsung. Sistem harus mendukung pengiriman bertahap menurut struktur organisasi, dengan konfigurasi bawaan tiga minggu sebelum tenggat kepada Department Head, dua minggu sebelum tenggat kepada Senior Manager/Director, dan satu minggu sebelum tenggat kepada Kepala Operasional/Director. OD harus dapat menyesuaikan konfigurasi pengingat tersebut.
 
 ### REQ-GM-012: Mengekspor KPI sesuai kewenangan
 

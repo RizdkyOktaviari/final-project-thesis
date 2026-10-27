@@ -1,6 +1,6 @@
 # Business Requirement Assessment - Manage Hiring
 
-**Project:** Mata Air Hub  
+**Project:** Sistem HRIS  
 **Module:** Manage Hiring  
 **Document version:** 1.1  
 **Source:** BRD - EC Manage Hiring.docx
@@ -9,8 +9,8 @@
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 9 Oct 2026 |  | Maheswara Sinatriyo | 0.1 | Drafting |
-|  |  | Maheswara Sinatriyo | 1.0 | Issued for Review |
+| 9 Oct 2026 |  | Analis Bisnis A | 0.1 | Drafting |
+|  |  | Analis Bisnis A | 1.0 | Issued for Review |
 
 ## Log Changes
 
@@ -31,8 +31,8 @@
 
 ## Project Description
 
-**Project:** Mata Air Hub  
-**Business User Expert:** Anny Nasution / Agung Wahyudiono  
+**Project:** Sistem HRIS  
+**Business User Expert:** Narasumber Bisnis A / Narasumber Bisnis B  
 **Assessment Date:** 8 Sep 2026  
 **Module Description:** Manage Hiring
 
@@ -87,7 +87,7 @@ Pembuatan dan pengajuan Request to Employ oleh Department Head User, meliputi:
 
 Pengelolaan proses review, approval, dan pengembalian pengajuan hiring, meliputi:
 
-- Penyediaan workflow approval RTE secara berjenjang dari OD TM, HR Recruitment, Sr. Manager HCM, Sr. Manager Business Unit, GMO/GM PD/Chief Geo, Director in Charge, hingga Director of HC sesuai alur yang berlaku.
+- Penyediaan workflow approval RTE secara berjenjang dari OD TM, HR Recruitment, Sr. Manager HCM, Sr. Manager Business Unit, Kepala Operasional/Kepala Divisi/Kepala Teknis, Director in Charge, hingga Director of HC sesuai alur yang berlaku.
 - Penyediaan workflow approval SBU sesuai urutan approver pada diagram Salary Build Up.
 - Penyediaan tindakan Approve, Send Back, Submit, dan Withdraw sesuai kewenangan dan status pengajuan.
 - Pengembalian pengajuan melalui mekanisme Send Back apabila terdapat informasi yang perlu diperbaiki.
@@ -107,10 +107,10 @@ Penyediaan form SBU untuk mendukung evaluasi dan review informasi kandidat serta
 - Penyajian informasi Grade kepada approver sebagai referensi tanpa hak untuk mengubah Grade.
 - Penyediaan Internal Comparison yang memungkinkan user menambahkan lebih dari satu data pembanding.
 - Penyediaan Previous Employment dalam bentuk tabel yang mendukung lebih dari satu riwayat perusahaan atau tempat kerja.
-- Penyediaan informasi previous salary dan salary components sebelumnya sebelum bagian PTAR Offer.
+- Penyediaan informasi previous salary dan salary components sebelumnya sebelum bagian Penawaran Perusahaan.
 - Penyediaan penambahan Salary Component secara manual sesuai kebutuhan.
 
-- Penyediaan pilihan dropdown/list untuk Employment Status dan Work Roster Cycle pada bagian PTAR Offer.
+- Penyediaan pilihan dropdown/list untuk Employment Status dan Work Roster Cycle pada bagian Penawaran Perusahaan.
 
 ##### Input New Employee Data
 
@@ -259,7 +259,7 @@ Penyediaan notifikasi untuk mendukung kelancaran proses hiring, meliputi:
 
 #### Hiring Approver
 
-**Assigned to:** Sr. Manager HCM, Sr. Manager Business Unit, GMO/GM PD/Chief Geo, Director in Charge, dan Director of HC
+**Assigned to:** Sr. Manager HCM, Sr. Manager Business Unit, Kepala Operasional/Kepala Divisi/Kepala Teknis, Director in Charge, dan Director of HC
 
 ##### Request to Employ (RTE)
 
@@ -383,14 +383,14 @@ Setelah data diinput, proses dilanjutkan kepada Department HR-CompBen untuk peng
 **Pelaksana:** Department HR-CompBen  
 **Jenis Proses:** Application Process
 
-Department HR-CompBen memasukkan data kompensasi dan benefit karyawan baru. Setelah itu, proses dilanjutkan kepada Department IT & System untuk mengaktifkan data karyawan baru di Mata Air.
+Department HR-CompBen memasukkan data kompensasi dan benefit karyawan baru. Setelah itu, proses dilanjutkan kepada Department IT & System untuk mengaktifkan data karyawan baru di Sistem HRIS.
 
-#### 8. Aktivasi Data Karyawan Baru di Mata Air
+#### 8. Aktivasi Data Karyawan Baru di Sistem HRIS
 
 **Pelaksana:** Department IT & System  
 **Jenis Proses:** Manual Process
 
-Department IT & System mengaktifkan data karyawan baru di Mata Air agar data tersebut dapat digunakan dalam proses selanjutnya.
+Department IT & System mengaktifkan data karyawan baru di Sistem HRIS agar data tersebut dapat digunakan dalam proses selanjutnya.
 
 #### 9. Input Data Payroll
 
@@ -488,15 +488,15 @@ Proses Probation Evaluation berakhir setelah notification letter hasil probation
 
 ### Employee Recruitment Process (RTE & SBU) Activity Diagram
 
-![](manage_hiring_assets/as-is-employee-recruitment.png)
+[Ilustrasi sumber dihapus dari korpus publik: diagram]
 
 ### Input New Employee Data Activity Diagram
 
-![](manage_hiring_assets/as-is-input-new-employee-data.png)
+[Ilustrasi sumber dihapus dari korpus publik: diagram]
 
 ### Probation Evaluation Activity Diagram
 
-![](manage_hiring_assets/as-is-probation-evaluation.png)
+[Ilustrasi sumber dihapus dari korpus publik: diagram]
 
 ## Expected New System Business Flow (To-Be)
 
@@ -529,7 +529,7 @@ Proses Probation Evaluation berakhir setelah notification letter hasil probation
 
 #### 4. Approval berjenjang tetap mengikuti urutan berikut:
 
-Sr. Manager HCM → Sr. Manager Business Unit → GMO/GM PD/Chief Geo → Director in Charge → Director of HC.
+Sr. Manager HCM → Sr. Manager Business Unit → Kepala Operasional/Kepala Divisi/Kepala Teknis → Director in Charge → Director of HC.
 
 Pada setiap tahap, approver melakukan review dan memutuskan apakah kebutuhan recruitment disetujui.
 
@@ -582,17 +582,17 @@ Director of HC melakukan review terhadap pengajuan SBU yang telah disetujui oleh
 
 Sr. Manager Business Unit melakukan review terhadap pengajuan SBU yang telah disetujui oleh Director of HC.
 
-- **Yes:** Sr. Manager Business Unit memberikan approval dan pengajuan dilanjutkan kepada GMO/GM PD/Chief Geo.
+- **Yes:** Sr. Manager Business Unit memberikan approval dan pengajuan dilanjutkan kepada Kepala Operasional/Kepala Divisi/Kepala Teknis.
 - **No:** Pengajuan dikembalikan melalui mekanisme Submit/Withdraw.
 
-#### 5. Review SBU oleh GMO/GM PD/Chief Geo
+#### 5. Review SBU oleh Kepala Operasional/Kepala Divisi/Kepala Teknis
 
-**Pelaksana:** GMO/GM PD/Chief Geo  
+**Pelaksana:** Kepala Operasional/Kepala Divisi/Kepala Teknis  
 **Jenis Proses:** Application Process
 
-GMO/GM PD/Chief Geo melakukan review terhadap pengajuan SBU yang telah disetujui oleh Sr. Manager Business Unit.
+Kepala Operasional/Kepala Divisi/Kepala Teknis melakukan review terhadap pengajuan SBU yang telah disetujui oleh Sr. Manager Business Unit.
 
-- **Yes:** GMO/GM PD/Chief Geo memberikan approval dan pengajuan dilanjutkan kepada Director in Charge.
+- **Yes:** Kepala Operasional/Kepala Divisi/Kepala Teknis memberikan approval dan pengajuan dilanjutkan kepada Director in Charge.
 - **No:** Pengajuan dikembalikan melalui mekanisme Submit/Withdraw.
 
 #### 6. Review SBU oleh Director in Charge
@@ -600,7 +600,7 @@ GMO/GM PD/Chief Geo melakukan review terhadap pengajuan SBU yang telah disetujui
 **Pelaksana:** Director in Charge  
 **Jenis Proses:** Application Process
 
-Director in Charge melakukan review terhadap pengajuan SBU yang telah disetujui oleh GMO/GM PD/Chief Geo.
+Director in Charge melakukan review terhadap pengajuan SBU yang telah disetujui oleh Kepala Operasional/Kepala Divisi/Kepala Teknis.
 
 - **Yes:** Director in Charge memberikan approval akhir dan pengajuan dilanjutkan ke tahap Create Offering Letter.
 - **No:** Pengajuan dikembalikan melalui mekanisme Submit/Withdraw.
@@ -732,19 +732,19 @@ Proses Probation Evaluation berakhir setelah HR Recruitment mengirimkan email no
 
 ### Request To Employ (RTE) Activity Diagram
 
-![](manage_hiring_assets/to-be-request-to-employ.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: diagram]
 
 ### Salary Build Up (SBU) Activity Diagram
 
-![](manage_hiring_assets/to-be-salary-build-up.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: diagram]
 
 ### Input New Employee Data Activity Diagram
 
-![](manage_hiring_assets/to-be-input-new-employee-data.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: diagram]
 
 ### Probation Evaluation Activity Diagram
 
-![](manage_hiring_assets/to-be-probation-evaluation.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: diagram]
 
 ## Business Rules
 
@@ -762,7 +762,7 @@ Proses Probation Evaluation berakhir setelah HR Recruitment mengirimkan email no
 ### Business Rules – Salary Build Up (SBU)
 
 - Pengajuan SBU dibuat oleh HR Recruitment dan harus mengikuti workflow approval yang berlaku.
-- Pengajuan SBU harus melalui review dan approval berjenjang oleh Sr. Manager HCM, Director of HC, Sr. Manager Business Unit, GMO/GM PD/Chief Geo, dan Director in Charge sesuai urutan workflow yang ditetapkan.
+- Pengajuan SBU harus melalui review dan approval berjenjang oleh Sr. Manager HCM, Director of HC, Sr. Manager Business Unit, Kepala Operasional/Kepala Divisi/Kepala Teknis, dan Director in Charge sesuai urutan workflow yang ditetapkan.
 - Setiap approver melakukan review dan memberikan keputusan terhadap pengajuan SBU pada tahap kewenangannya.
 - Approver tidak dapat melanjutkan pengajuan ke tahap berikutnya apabila pengajuan belum memperoleh approval pada tahap yang sedang berjalan.
 - Pengajuan SBU yang tidak disetujui dikembalikan melalui mekanisme Send Back.
@@ -777,9 +777,9 @@ Proses Probation Evaluation berakhir setelah HR Recruitment mengirimkan email no
 - Informasi Grade ditampilkan kepada approver untuk keperluan review dan tidak dapat diubah oleh approver.
 - Internal Comparison harus mendukung penambahan lebih dari satu data pembanding.
 - Previous Employment harus disajikan dalam bentuk tabel untuk menampung riwayat pekerjaan sebelumnya.
-- Informasi previous salary dan salary components sebelumnya ditampilkan sebelum bagian PTAR Offer.
+- Informasi previous salary dan salary components sebelumnya ditampilkan sebelum bagian Penawaran Perusahaan.
 - Penambahan Salary Component dilakukan secara manual sesuai kebutuhan.
-- Employment Status dan Work Roster Cycle pada bagian PTAR Offer disediakan dalam bentuk dropdown/list.
+- Employment Status dan Work Roster Cycle pada bagian Penawaran Perusahaan disediakan dalam bentuk dropdown/list.
 
 ### Business Rules – Position Availability & Manning Budget
 
@@ -856,9 +856,9 @@ Proses Probation Evaluation berakhir setelah HR Recruitment mengirimkan email no
 - Sistem menyediakan bagian Grade yang dapat dilihat oleh approver sebagai referensi review.
 - Sistem menyediakan bagian Internal Comparison yang mendukung penambahan lebih dari satu data pembanding.
 - Sistem menyediakan bagian Previous Employment dalam bentuk tabel untuk menampung riwayat pekerjaan sebelumnya.
-- Sistem menampilkan informasi previous salary dan salary components sebelum bagian PTAR Offer.
+- Sistem menampilkan informasi previous salary dan salary components sebelum bagian Penawaran Perusahaan.
 - Sistem menyediakan mekanisme penambahan Salary Component secara manual.
-- Sistem menyediakan pilihan Employment Status dan Work Roster Cycle dalam bentuk dropdown/list pada bagian PTAR Offer.
+- Sistem menyediakan pilihan Employment Status dan Work Roster Cycle dalam bentuk dropdown/list pada bagian Penawaran Perusahaan.
 
 #### SBU Review & Approval Workflow
 
@@ -882,7 +882,7 @@ Proses Probation Evaluation berakhir setelah HR Recruitment mengirimkan email no
 
 - Sistem mendukung penyimpanan data karyawan baru yang telah diinput oleh HR Recruitment.
 - Sistem menyediakan mekanisme bagi Department HR-CompBen untuk memasukkan data Compensation & Benefits karyawan baru.
-- Sistem mendukung proses aktivasi data karyawan baru di Mata Air oleh Department IT & System sesuai alur yang berlaku.
+- Sistem mendukung proses aktivasi data karyawan baru di Sistem HRIS oleh Department IT & System sesuai alur yang berlaku.
 - Sistem mendukung proses input data payroll oleh Department Finance sesuai ruang lingkup data yang ditetapkan.
 
 ### Probation Evaluation
@@ -1384,9 +1384,9 @@ Informasi personal dan employment information yang diproses dalam Manage Hiring 
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Maheswara Sinatriyo | ![Signature](manage_hiring_assets/signature-maheswara.jpeg) | 28 September 2026 |
-| Project Coordinator | Darren Nurachmad |  |  |
-| Business User Expert | Anny Nasution |  |  |
-| Business User Expert | Agung Wahyudiono |  |  |
+| Business Analyst | Analis Bisnis A | [Ilustrasi sumber dihapus dari korpus publik: Signature] | 28 September 2026 |
+| Project Coordinator | Koordinator Proyek A |  |  |
+| Business User Expert | Narasumber Bisnis A |  |  |
+| Business User Expert | Narasumber Bisnis B |  |  |
 
 *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*

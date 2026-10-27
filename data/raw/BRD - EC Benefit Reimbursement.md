@@ -1,23 +1,23 @@
 # BRD — EC Benefit Reimbursement
 
-![Agincourt Resources](media/agincourt_logo.jpeg)
+[Ilustrasi sumber dihapus dari korpus publik: Perusahaan A]
 
 **IT SYSTEM DEVELOPMENT — BUSINESS REQUIREMENT ASSESSMENT**
 
-**Project:** Mata Air Hub
+**Project:** Sistem HRIS
 
 **Module:** Benefits Submission
 
 **Document version (footer):** 1.1
 
-**Organization:** Agincourt Resources
+**Organization:** Perusahaan A
 
 ## Business Requirement Record
 
 | Start Date | End Date | Author | Version Doc | Change Reference |
 | --- | --- | --- | --- | --- |
-| 26 Aug 2026 |   | Maheswara Sinatriyo | 0.1 | Drafting |
-| 28 Sep 2026 |   | Maheswara Sinatriyo | 1.0 | Issued for Review |
+| 26 Aug 2026 |   | Analis Bisnis A | 0.1 | Drafting |
+| 28 Sep 2026 |   | Analis Bisnis A | 1.0 | Issued for Review |
 
 ## Log Changes
 
@@ -40,8 +40,8 @@ Describe the changes which impact to the Module
 
 | Item | Value |
 | --- | --- |
-| Project Description | Mata Air Hub |
-| Business User Expert | Anny Nasution/ Agung Wahyudiono |
+| Project Description | Sistem HRIS |
+| Business User Expert | Narasumber Bisnis A/ Narasumber Bisnis B |
 | Assessment Date | 8 Sep 2026 |
 | Module Description | Benefits Submission |
 
@@ -292,7 +292,7 @@ Benefit Submission:
 6. **Finance** melakukan proses pembayaran benefit sesuai dengan pengajuan yang telah disetujui.
 7. Setelah proses pembayaran selesai, Benefit Submission process berakhir.
 
-![Benefits Submission workflow](media/image1.png)
+[Ilustrasi sumber dihapus dari korpus publik: Benefits Submission workflow]
 
 ## Expected New System Business Flow
 
@@ -318,7 +318,7 @@ Benefit Submission:
 
 **Untuk backdate:** Super Admin dapat membuat pengajuan atas nama employee sesuai kewenangannya. Sistem tetap mencatat identitas pembuat pengajuan dan employee yang diwakili.
 
-![Benefits Submission workflow](media/image1.png)
+[Ilustrasi sumber dihapus dari korpus publik: Benefits Submission workflow]
 
 ## Business Rules
 
@@ -725,27 +725,27 @@ Please review the request and take the necessary action through the Benefit Subm
 
 ### Benefits Reimbursement
 
-![Benefits Reimbursement](media/image2.png)
+[Ilustrasi sumber dihapus dari korpus publik: Benefits Reimbursement]
 
 ### Claim Education Assistance Form
 
-![Claim Education Assistance Form](media/image3.png)
+[Ilustrasi sumber dihapus dari korpus publik: Claim Education Assistance Form]
 
 ### Claim Education Assistance Details & History
 
-![Claim Education Assistance Details & History](media/image4.png)
+[Ilustrasi sumber dihapus dari korpus publik: Claim Education Assistance Details & History]
 
 ### Benefit Reimbursement Request
 
-![Benefit Reimbursement Request](media/image5.png)
+[Ilustrasi sumber dihapus dari korpus publik: Benefit Reimbursement Request]
 
 ### Benefit Reimbursement Monitoring
 
-![Benefit Reimbursement Monitoring](media/image6.png)
+[Ilustrasi sumber dihapus dari korpus publik: Benefit Reimbursement Monitoring]
 
 ### Workflow Details
 
-![Workflow Details](media/image7.png)
+[Ilustrasi sumber dihapus dari korpus publik: Workflow Details]
 
 ## Validation Rules
 
@@ -862,9 +862,9 @@ Audit Trail bersifat **read-only** dan tidak dapat diubah maupun dihapus oleh pe
 
 | Role | Name | Signature | Date |
 | --- | --- | --- | --- |
-| Business Analyst | Maheswara Sinatriyo | ![Signature](media/image8.jpeg) | 28 September 2026 |
-| Project Coordinator | Darren Nurachmad | | |
-| Business User Expert | Anny Nasution | | |
-| Business User Expert | Agung Wahyudiono | | |
+| Business Analyst | Analis Bisnis A | [Ilustrasi sumber dihapus dari korpus publik: Signature] | 28 September 2026 |
+| Project Coordinator | Koordinator Proyek A | | |
+| Business User Expert | Narasumber Bisnis A | | |
+| Business User Expert | Narasumber Bisnis B | | |
 
 *By signing this document, all items contained herein are confirmed as mandatory requirements to be delivered as the agreed-upon product. Any changes or modifications to these requirements will be managed through the change request process.*
