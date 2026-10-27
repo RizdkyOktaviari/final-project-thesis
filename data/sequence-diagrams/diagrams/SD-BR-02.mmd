@@ -1,0 +1,23 @@
+sequenceDiagram
+ title Persetujuan Klaim Manfaat
+ actor K as Pegawai
+ participant UI as Aplikasi
+ participant S as Layanan Klaim
+ actor HR as HR Compensation dan Benefit
+ participant N as Notifikasi
+ K->>UI: Ajukan klaim dan dokumen
+ UI->>S: Validasi data dan lampiran wajib
+ alt Pengajuan lengkap
+  S->>S: Simpan status menunggu peninjauan
+  S->>N: Beri tahu HR
+  HR->>S: Periksa klaim dan lampiran
+  alt Klaim disetujui
+   S->>S: Catat persetujuan
+   S->>N: Beri tahu pegawai
+   S-->>HR: Data untuk administrasi pembayaran
+  else Perlu perbaikan
+   S-->>HR: Minta pengembalian dengan alasan
+  end
+ else Pengajuan tidak lengkap
+  S-->>UI: Tampilkan kesalahan validasi
+ end

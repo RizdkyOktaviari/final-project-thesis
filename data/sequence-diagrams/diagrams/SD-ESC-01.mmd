@@ -1,0 +1,23 @@
+sequenceDiagram
+ title Pembuatan Pengajuan Perubahan Status
+ actor P as Pengaju
+ participant UI as Formulir ESC
+ participant S as Layanan ESC
+ participant DB as Penyimpanan
+ P->>UI: Isi pengajuan dan lampiran
+ UI->>S: Periksa pengajuan aktif pegawai
+ S->>DB: Cari ESC berstatus In Progress
+ alt Tidak ada pengajuan aktif
+  S->>S: Validasi Position Description PDF
+  opt Pegawai Non-Staff
+   S->>S: Validasi CAM PDF
+  end
+  alt Dokumen lengkap
+   S->>DB: Simpan pengajuan ESC
+   DB-->>UI: Nomor pengajuan
+  else Dokumen kurang
+   S-->>UI: Tolak dan tampilkan kekurangan
+  end
+ else Masih ada ESC In Progress
+  S-->>UI: Tolak pengajuan baru
+ end

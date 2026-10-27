@@ -1,0 +1,21 @@
+sequenceDiagram
+ title Keputusan Akses Proxy
+ actor O as Pemilik Akun
+ participant UI as Halaman Persetujuan
+ participant S as Layanan Proxy
+ participant N as Notifikasi
+ O->>UI: Buka permintaan proxy
+ UI->>S: Ambil rincian Pending Approval
+ S-->>UI: Rincian permintaan
+ alt Setuju
+  O->>UI: Approve
+  UI->>S: Simpan Approved
+  opt Periode efektif telah mulai
+   S->>S: Aktifkan hak proxy
+  end
+  S->>N: Beri tahu pemohon
+ else Tolak
+  O->>UI: Reject
+  UI->>S: Simpan Rejected tanpa aktivasi
+  S->>N: Beri tahu pemohon
+ end

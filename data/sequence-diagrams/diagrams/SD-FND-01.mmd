@@ -1,0 +1,18 @@
+sequenceDiagram
+ title Permintaan Akses Proxy
+ actor P as Pemohon
+ participant UI as Proxy Access
+ participant S as Layanan Proxy
+ actor O as Pemilik Akun
+ participant N as Notifikasi
+ P->>UI: Pilih pengguna, periode, dan alasan
+ UI->>S: Periksa identitas dan masa berlaku
+ alt Pengajuan valid
+  S-->>UI: Tampilkan ringkasan
+  P->>UI: Konfirmasi pengajuan
+  UI->>S: Simpan Pending Approval
+  S->>N: Kirim notifikasi keputusan
+  N-->>O: Ada permintaan proxy
+ else Tidak memenuhi syarat
+  S-->>UI: Tampilkan alasan penolakan
+ end

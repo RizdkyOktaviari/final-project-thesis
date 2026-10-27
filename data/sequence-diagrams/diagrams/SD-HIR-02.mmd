@@ -1,0 +1,21 @@
+sequenceDiagram
+ title Persetujuan SBU dan Surat Penawaran
+ actor HR as HR Recruitment
+ participant W as Workflow SBU
+ actor A as Pejabat Persetujuan
+ participant N as Notifikasi
+ W->>W: Mulai urutan persetujuan SBU
+ loop SM HCM, Director HC, SM BU, Kepala Operasional, Director in Charge
+  W->>N: Notifikasi pejabat pada tahap saat ini
+  W->>A: Minta keputusan
+  alt Disetujui
+   A->>W: Approve
+   W->>W: Catat dan lanjut tahap berikutnya
+  else Dikembalikan
+   A->>W: Send Back
+   W-->>HR: SBU perlu diperbaiki
+  end
+ end
+ W-->>HR: Semua persetujuan lengkap
+ HR->>W: Buat Offering Letter
+ W->>W: Tandai proses selesai

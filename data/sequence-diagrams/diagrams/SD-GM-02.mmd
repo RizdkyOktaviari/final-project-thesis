@@ -1,0 +1,15 @@
+sequenceDiagram
+ title Pengajuan KPI untuk Peninjauan
+ actor E as Karyawan
+ participant UI as Formulir KPI
+ participant S as Layanan Goal
+ actor M as Atasan Langsung
+ E->>UI: Klik Submit KPI
+ UI->>S: Validasi jumlah, bobot, dan cascade
+ alt Memenuhi aturan yang dikonfigurasi
+  S->>S: Ubah status Submitted dan kunci formulir
+  S-->>M: Kirim tugas peninjauan
+  S-->>UI: Pengajuan berhasil
+ else Tidak memenuhi syarat
+  S-->>UI: Tolak dan jelaskan alasan
+ end

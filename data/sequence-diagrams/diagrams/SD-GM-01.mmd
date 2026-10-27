@@ -1,0 +1,18 @@
+sequenceDiagram
+ title Pembuatan dan Penyimpanan KPI
+ actor E as Karyawan
+ participant UI as Formulir KPI
+ participant S as Layanan Goal
+ participant DB as Data KPI
+ E->>UI: Buka formulir Staff atau Non-Staff
+ E->>UI: Isi KPI, perspektif, dan bobot
+ UI->>S: Validasi periode dan bobot
+ S->>S: Maksimal 10 KPI, total bobot 100 persen
+ S->>S: Learning dan Growth maksimal 15 persen
+ S->>S: Per KPI Staff 5-25 persen, Non-Staff 5-30 persen
+ alt Semua valid
+  S->>DB: Simpan draf walau cascade belum diterima
+  S-->>UI: Draf tersimpan
+ else Validasi gagal
+  S-->>UI: Tolak penyimpanan
+ end

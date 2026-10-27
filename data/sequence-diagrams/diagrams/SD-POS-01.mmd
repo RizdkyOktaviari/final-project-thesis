@@ -1,0 +1,16 @@
+sequenceDiagram
+ title Pembuatan Posisi Baru
+ actor OD as OD Admin
+ participant UI as Formulir Posisi
+ participant S as Layanan Posisi
+ participant DB as Data Posisi
+ OD->>UI: Isi kode, nama, job code, unit, dan atasan
+ UI->>S: Validasi posisi
+ S->>DB: Periksa kode unik dan hierarki
+ alt Valid
+  S->>DB: Simpan posisi baru
+  DB-->>S: ID posisi
+  S-->>UI: Posisi berhasil dibuat
+ else Tidak valid
+  S-->>UI: Tampilkan error untuk diperbaiki
+ end

@@ -1,0 +1,17 @@
+sequenceDiagram
+ title Memperbarui Struktur Organisasi
+ actor OD as OD Admin
+ participant UI as Manajemen Organisasi
+ participant S as Layanan Organisasi
+ participant DB as Data Organisasi
+ OD->>OD: Pastikan persetujuan manual selesai
+ OD->>UI: Input atau impor CSV/XLSX
+ UI->>S: Validasi unit dan hierarki
+ S->>DB: Periksa kode unik dan relasi induk
+ alt Data valid
+  S->>DB: Simpan struktur dan tanggal berlaku
+  S->>DB: Catat audit perubahan
+  S-->>UI: Pembaruan berhasil
+ else Struktur tidak valid
+  S-->>UI: Laporkan rincian kesalahan
+ end

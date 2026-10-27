@@ -1,0 +1,12 @@
+sequenceDiagram
+ title Draf KPI Sebelum Cascade
+ actor E as Karyawan
+ participant UI as Formulir KPI
+ participant S as Layanan Goal
+ E->>UI: Buat KPI sebelum menerima cascade
+ UI->>S: Simpan draf
+ alt Cascade belum diterima
+  S-->>UI: Wajib menunggu cascade sebelum menyimpan
+ else Cascade sudah diterima
+  S-->>UI: Draf tersimpan
+ end

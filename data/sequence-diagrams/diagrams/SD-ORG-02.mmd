@@ -1,0 +1,16 @@
+sequenceDiagram
+ title Melihat Struktur Berdasarkan Tanggal
+ actor U as Pengguna
+ participant UI as Bagan Organisasi
+ participant S as Layanan Organisasi
+ participant DB as Riwayat Struktur
+ U->>UI: Pilih tanggal tampilan
+ UI->>S: Minta struktur pada tanggal terpilih
+ S->>S: Periksa hak akses pengguna
+ alt Berwenang
+  S->>DB: Ambil versi yang berlaku pada tanggal
+  DB-->>S: Hierarki dan profil yang boleh dilihat
+  S-->>UI: Tampilkan bagan historis
+ else Tidak berwenang
+  S-->>UI: Tolak akses
+ end

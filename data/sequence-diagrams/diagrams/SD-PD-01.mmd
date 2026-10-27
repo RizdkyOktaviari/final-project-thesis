@@ -1,0 +1,18 @@
+sequenceDiagram
+ title Pengajuan Perubahan Data Pribadi
+ actor E as Pegawai
+ participant UI as Formulir Data Pribadi
+ participant S as Layanan Perubahan Data
+ participant DB as Data Pengajuan
+ actor HR as HR Compensation dan Benefit
+ E->>UI: Pilih bagian dan isi perubahan
+ E->>UI: Lampirkan dokumen wajib
+ UI->>S: Kirim permintaan
+ S->>DB: Periksa In Progress untuk bagian yang sama
+ alt Tidak ada pengajuan aktif dan lampiran lengkap
+  S->>DB: Simpan permohonan untuk persetujuan
+  S-->>HR: Notifikasi pengajuan baru
+  S-->>UI: Status In Progress
+ else Ada pengajuan aktif atau data kurang
+  S-->>UI: Tolak dan tampilkan alasan
+ end

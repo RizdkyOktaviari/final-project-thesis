@@ -1,0 +1,17 @@
+sequenceDiagram
+ title Finalisasi Penilaian Kinerja
+ actor OD as OD
+ participant UI as Dashboard PA
+ participant S as Layanan PA
+ participant DB as Data PA
+ actor E as Karyawan
+ OD->>UI: Finalisasi penilaian
+ UI->>S: Periksa normalisasi seluruh departemen
+ alt Semua departemen selesai
+  S->>DB: Simpan Completed dan kunci nilai akhir
+  S-->>UI: Finalisasi berhasil
+  E->>S: Lihat hasil penilaian
+  S-->>E: Tampilkan nilai akhir saja
+ else Belum lengkap
+  S-->>UI: Finalisasi ditolak
+ end

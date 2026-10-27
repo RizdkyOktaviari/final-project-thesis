@@ -1,0 +1,17 @@
+sequenceDiagram
+ title Persetujuan dan Penerapan Data Pribadi
+ actor HR as HR Compensation dan Benefit
+ participant S as Layanan Perubahan Data
+ participant DB as Data Kepegawaian
+ participant N as Notifikasi
+ actor E as Pegawai
+ HR->>S: Tinjau perubahan dan dokumen
+ alt Persyaratan terpenuhi
+  HR->>S: Setujui permohonan
+  S->>DB: Catat status Approved dan histori
+  S->>DB: Terapkan perubahan ke data resmi
+  S->>N: Kirim notifikasi persetujuan
+  N-->>E: Pengajuan disetujui
+ else Tidak memenuhi syarat
+  S-->>HR: Minta perbaikan
+ end

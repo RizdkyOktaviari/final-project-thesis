@@ -1,0 +1,20 @@
+sequenceDiagram
+ title Pengajuan Penilaian Diri
+ actor E as Karyawan
+ participant UI as Formulir Penilaian
+ participant S as Layanan PA
+ actor M as Atasan Langsung
+ E->>UI: Buka dan isi nilai 1 sampai 6
+ E->>UI: Isi komentar setiap sasaran dan aspirasi
+ opt Simpan draf
+  UI->>S: Simpan tanpa mengubah tahap
+ end
+ E->>UI: Ajukan penilaian diri
+ UI->>S: Validasi seluruh isian wajib
+ alt Lengkap
+  S->>S: Set Pending Direct Supervisor Review
+  S->>S: Kunci edit oleh karyawan
+  S-->>M: Tugas peninjauan
+ else Tidak lengkap
+  S-->>UI: Tampilkan validasi
+ end

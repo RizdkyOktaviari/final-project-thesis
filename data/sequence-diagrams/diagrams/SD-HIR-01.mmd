@@ -1,0 +1,21 @@
+sequenceDiagram
+ title Pengajuan Request to Employ
+ actor D as Department Head
+ participant UI as Formulir RTE
+ participant S as Layanan Rekrutmen
+ actor OD as OD TM atau OD Section
+ participant N as Notifikasi
+ D->>D: Periksa approved manning budget
+ alt Anggaran tersedia
+  D->>UI: Unggah RTE dan Position Description PDF
+  UI->>S: Validasi dokumen wajib
+  alt Lengkap
+   S->>S: Simpan permintaan
+   S->>N: Notifikasi peninjauan
+   N-->>OD: RTE baru
+  else Tidak lengkap
+   S-->>UI: Tampilkan berkas yang kurang
+  end
+ else Anggaran belum tersedia
+  D->>D: Usulkan anggaran terlebih dahulu
+ end

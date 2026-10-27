@@ -1,0 +1,18 @@
+sequenceDiagram
+ title Persiapan Bantuan Pendidikan
+ actor K as Pegawai
+ participant UI as Formulir Bantuan
+ participant S as Layanan Manfaat
+ participant EC as Data Pegawai
+ K->>UI: Buka formulir bantuan pendidikan
+ UI->>S: Minta informasi hak manfaat
+ S->>EC: Ambil tanggungan yang memenuhi syarat
+ EC-->>S: Daftar tanggungan
+ S-->>UI: Hak manfaat dan daftar tanggungan
+ K->>UI: Pilih tanggungan dan isi rincian pendidikan
+ UI->>S: Validasi rincian
+ alt Maksimum tiga tanggungan memenuhi syarat
+  S-->>UI: Draf siap disimpan
+ else Melebihi batas atau tidak memenuhi syarat
+  S-->>UI: Tolak dan tampilkan alasan
+ end

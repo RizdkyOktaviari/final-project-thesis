@@ -1,0 +1,13 @@
+sequenceDiagram
+ title Cascade KPI Atasan
+ actor M as Atasan
+ actor E as Bawahan
+ participant S as Layanan Goal
+ M->>S: Pilih KPI untuk di-cascade
+ S->>S: Periksa status KPI atasan
+ alt KPI atasan sudah Submitted
+  S->>E: Kirim KPI hasil cascade
+  S-->>M: Cascade berhasil
+ else KPI atasan masih draf
+  S-->>M: Cascade ditolak
+ end

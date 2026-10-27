@@ -1,0 +1,15 @@
+sequenceDiagram
+ title Penonaktifan Posisi
+ actor OD as OD Admin
+ participant UI as Manajemen Posisi
+ participant S as Layanan Posisi
+ participant DB as Data Posisi
+ OD->>UI: Pilih Nonaktifkan Posisi
+ UI->>S: Periksa syarat nonaktif
+ S->>DB: Periksa pemangku dan anak aktif
+ alt Ada pemangku atau anak aktif
+  S-->>UI: Penonaktifan ditolak
+ else Tidak ada keterikatan aktif
+  S->>DB: Nonaktifkan tanpa menghapus riwayat
+  S-->>UI: Posisi nonaktif
+ end

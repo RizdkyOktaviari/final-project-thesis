@@ -1,0 +1,22 @@
+sequenceDiagram
+ title Alur Persetujuan ESC Standar
+ actor D as Kepala Departemen
+ actor HR as HR Admin
+ participant W as Layanan Alur Persetujuan
+ actor A as Pemberi Persetujuan
+ participant N as Notifikasi
+ D->>W: Ajukan perubahan status standar
+ W->>HR: Minta pemeriksaan awal
+ HR->>W: Tetapkan jalur persetujuan
+ loop Setiap tahap yang dikonfigurasi
+  W->>N: Kirim pemberitahuan tahap
+  W->>A: Kirim tugas persetujuan
+  alt Disetujui
+   A->>W: Setujui tahap
+   W->>W: Catat keputusan dan lanjutkan
+  else Dikembalikan
+   A->>W: Kembalikan dengan catatan
+   W->>N: Beri tahu pengaju
+  end
+ end
+ W-->>D: Status dan riwayat proses
