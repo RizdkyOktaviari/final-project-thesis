@@ -1,30 +1,30 @@
 flowchart TB
-    I["IR, mapping, scope, dan aturan"]
-    G{"Bukti dan prasyarat memadai?"}
+    I["IR spesifikasi dan diagram + mapping terverifikasi + scope + rulebook"]
+    G{"Prasyarat aturan dan bukti cukup pada elemen yang diuji?"}
+    ROLE["Normalisasi role berbasis mapping terverifikasi; tidak membandingkan nama mentah"]
     S["Spesifikasi ke desain"]
     D["Desain ke spesifikasi"]
-    SC["Cek realisasi perilaku yang diwajibkan"]
-    DC["Cek dukungan perilaku dan refinement"]
-    E["Evaluasi tujuh kategori konsistensi"]
-    J{"Hasil setiap aturan"}
-    F["violation: temuan dengan bukti"]
-    N["no_violation_found: cakupan tanpa temuan"]
-    U["needs_review: alasan ketidakpastian"]
-    O["Gabungkan hasil dan cakupan pemeriksaan"]
+    SC["R1 missing; R3 participant; R4 message; R5 direction; R6 order; R7 guard"]
+    DC["R2 additional; R3 participant; R4 message; R5 direction; R6 order; R7 guard"]
+    E["Evaluasi aturan dengan kondisi, fragment, dan cakupan"]
+    J{"Status setiap aturan"}
+    F["violation: kontradiksi atau kekurangan yang terbukti"]
+    N["no_violation_found: tidak ada temuan pada cakupan terperiksa"]
+    U["needs_review: scope, role mapping, guard, atau sumber ambigu"]
+    O["Agregasi temuan, deduplikasi, bukti, dan coverage"]
 
     I --> G
-    G -->|Ya| S
-    G -->|Ya| D
     G -->|Tidak| U
-    S --> SC
-    D --> DC
-    SC --> E
-    DC --> E
-    I -.->|Struktur dan relasi sumber| E
+    G -->|Ya, pada bagian yang dapat diuji| ROLE
+    ROLE --> S
+    ROLE --> D
+    S --> SC --> E
+    D --> DC --> E
+    I -.->|IR dan bukti sumber| E
     E --> J
-    J -->|Pelanggaran ditemukan| F
+    J -->|Terbukti melanggar| F
     J -->|Tidak ditemukan pada cakupan| N
-    J -->|Belum dapat diputuskan| U
+    J -->|Tidak dapat dipastikan| U
     F --> O
     N --> O
     U --> O
@@ -32,6 +32,6 @@ flowchart TB
     classDef process fill:#eff6ff,stroke:#2563eb,color:#172554
     classDef validation fill:#f0fdfa,stroke:#0f766e,color:#134e4a
     classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
-    class S,D,SC,DC process
+    class ROLE,S,D,SC,DC process
     class I,G,E,J,F,N,O validation
     class U review

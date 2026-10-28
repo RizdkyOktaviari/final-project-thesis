@@ -1,53 +1,60 @@
 flowchart TB
-    R["Use Case Specification atau FR"]
-    D["Sequence diagram tekstual"]
+    FR["Use Case Specification / Functional Requirements"]
+    SD["Sequence Diagram (Mermaid)"]
+    SCOPE["Kontrak cakupan skenario dan tingkat abstraksi"]
+    RULEBOOK["Rulebook R1-R7 dan kebijakan padanan peran"]
 
-    subgraph REP["1. Representasi"]
-        EX["Ekstraksi dan dekomposisi dengan LLM"]
-        PA["Parsing pesan dan konteks fragment"]
-        RI["IR spesifikasi dan bukti sumber"]
-        DI["IR diagram dan bukti sumber"]
-        V["Validasi IR dan cakupan skenario"]
-        EX --> RI
-        PA --> DI
-        RI --> V
-        DI --> V
+    subgraph REP["1. STRUCTURE-AWARE REPRESENTATION"]
+        A1["Agent 1 - Requirements Extractor (LLM)"]
+        P1["Mermaid Parser (Python)"]
+        SIR["Specification IR: actor, action, guard, order, evidence"]
+        DIR["Diagram IR: lifeline, message, fragment, evidence"]
+        V1["IR Validator (Python): schema, scope, referensi, cakupan"]
+        A1 --> SIR --> V1
+        P1 --> DIR --> V1
     end
 
-    subgraph ALIGN["2. Pemetaan"]
-        L["Semantic alignment dengan LLM"]
-        T["Traceability dua arah dan ketidakpastian"]
-        L --> T
+    subgraph ALIGN["2. SEMANTIC ALIGNMENT & VERIFICATION"]
+        A2["Agent 2 - Role and Behavior Alignment (LLM)"]
+        A3["Agent 3 - Mapping Verifier (LLM)"]
+        MAP["Verified mapping: canonical roles, behavior links, evidence, uncertainty"]
+        A2 --> A3 --> MAP
     end
 
-    subgraph CHECK["3. Pemeriksaan"]
-        C["Deterministic consistency checker"]
-        O["Laporan temuan, bukti, dan cakupan"]
-        C --> O
+    subgraph CHECK["3. DETERMINISTIC CONSISTENCY CHECKING"]
+        PY["Rule Checker (Python): R1-R7, bukan perbandingan nama mentah"]
+        FIND["Temuan per aturan, bukti, cakupan, dan status"]
+        A4["Agent 4 - Evidence-based Report Generator (LLM)"]
+        PY --> FIND --> A4
     end
 
-    K["Aturan konsistensi dan kontrak abstraksi"]
-    Q["Kasus yang perlu review"]
+    REVIEW["Needs review: ambiguitas role, scope, mapping, atau fitur"]
+    REPORT["Laporan konsistensi dan traceability dua arah"]
 
-    R --> EX
-    D --> PA
-    V -->|Elemen valid beserta konteks| L
-    V -->|Tidak lengkap atau tidak didukung| Q
-    T -->|Pemetaan memenuhi prasyarat| C
-    T -->|Pemetaan belum pasti| Q
-    RI -.->|IR spesifikasi valid| C
-    DI -.->|IR diagram valid| C
-    K --> C
-    Q --> O
+    FR --> A1
+    SD --> P1
+    SCOPE -.-> V1
+    SCOPE -.-> A2
+    SCOPE -.-> PY
+    RULEBOOK -.-> A3
+    RULEBOOK --> PY
+    V1 -->|IR terverifikasi| A2
+    V1 -->|Tidak lengkap / tak didukung| REVIEW
+    A3 -->|Mapping belum pasti| REVIEW
+    MAP -->|Diterima, ditolak, atau belum terpetakan dengan bukti| PY
+    SIR -.-> PY
+    DIR -.-> PY
+    REVIEW --> A4
+    A4 --> REPORT
 
     classDef input fill:#f8fafc,stroke:#475569,color:#0f172a
-    classDef semantic fill:#eff6ff,stroke:#2563eb,color:#172554
-    classDef validation fill:#f0fdfa,stroke:#0f766e,color:#134e4a
+    classDef agent fill:#eff6ff,stroke:#2563eb,color:#172554
+    classDef python fill:#f0fdfa,stroke:#0f766e,color:#134e4a
     classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
-    class R,D,RI,DI,K input
-    class EX,L,T semantic
-    class PA,V,C,O validation
-    class Q review
+    class FR,SD,SCOPE,RULEBOOK,SIR,DIR,MAP,REPORT input
+    class A1,A2,A3,A4 agent
+    class P1,V1,PY,FIND python
+    class REVIEW review
     style REP fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
     style ALIGN fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
     style CHECK fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
