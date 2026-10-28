@@ -117,79 +117,17 @@ Istilah *deterministik* berarti aturan menghasilkan keputusan yang sama untuk IR
 
 ## 3. Swimlane alur kerja multi-agent
 
-```mermaid
-flowchart LR
-    subgraph DATA["LANE 1 - DATASET / ORCHESTRATOR"]
-        direction TB
-        INPUT["Pasangan FR dan SD tanpa label kesalahan"]
-        SCOPE["Scope, tingkat abstraksi, kontrak peran"]
-        INPUT --> SCOPE
-    end
+![Swimlane multi-agent Structure-Aware Hybrid Consistency Checking](05-agent-swimlane.svg)
 
-    subgraph LLM["LANE 2 - LLM AGENTS"]
-        direction TB
-        A1["Agent 1: ekstraksi atom dan relasi FR"]
-        A2["Agent 2: alignment role, perilaku, guard"]
-        A3["Agent 3: verifikasi mapping dengan bukti sumber"]
-        A4["Agent 4: susun narasi temuan tanpa mengubah status"]
-    end
+Diagram di atas adalah **swimlane diagram sebenarnya**, dengan empat lane vertikal (Orchestrator/Dataset, LLM Agents, Python Services, dan Human Review), urutan proses dari atas ke bawah, serta panah solid untuk alur utama dan panah putus-putus untuk *escalation/needs_review*. Setiap kotak berada pada lane pihak yang melaksanakan tugas tersebut.
 
-    subgraph PY["LANE 3 - PYTHON / DETERMINISTIC SERVICES"]
-        direction TB
-        P1["Parse Mermaid: participant, pesan, alt/opt/loop"]
-        P2["Validasi kedua IR dan cakupan"]
-        P3["R1-R7 checker dengan verified mapping"]
-        P4["Gabungkan hasil per aturan dan deduplikasi"]
-    end
+- [Pratinjau diagram vektor (SVG)](05-agent-swimlane.svg) untuk GitHub, Bab 3 tesis, atau presentasi.
+- [Sumber editable di diagrams.net / draw.io](05-agent-swimlane.drawio) untuk mengubah kotak, alur, dan lane.
+- [Mermaid process-flow alternatif](04-agent-swimlane-flowchart.mmd) untuk menunjukkan dependensi logis; ini **bukan** swimlane dengan posisi lane tetap.
 
-    subgraph HUMAN["LANE 4 - REVIEW / UNCERTAINTY"]
-        direction TB
-        Q["Needs review: peran ambigu, evidence lemah, scope belum pasti"]
-    end
 
-    subgraph OUT["LANE 5 - OUTPUT"]
-        direction TB
-        REPORT["Report: violation / no_violation_found / needs_review"]
-        TRACE["Bukti FR-SD, traceability, coverage, versi aturan"]
-        REPORT --> TRACE
-    end
 
-    INPUT --> A1
-    INPUT --> P1
-    SCOPE -.-> P2
-    A1 -->|Specification IR| P2
-    P1 -->|Diagram IR| P2
-    P2 -->|IR valid dan didukung| A2
-    P2 -->|Gagal parse atau cakupan tak jelas| Q
-    SCOPE -.-> A2
-    A2 -->|Mapping kandidat| A3
-    A3 -->|Mapping diverifikasi, unmatched tercatat| P3
-    A3 -->|Mapping belum dapat dipastikan| Q
-    SCOPE -.-> P3
-    P2 -.->|Struktur dan lokasi sumber| P3
-    P3 -->|Temuan per aturan| P4
-    Q -->|Catatan review| P4
-    P4 -->|Status dan evidence terkunci| A4
-    A4 --> REPORT
-
-    classDef input fill:#f8fafc,stroke:#64748b,color:#0f172a
-    classDef agent fill:#eff6ff,stroke:#2563eb,color:#172554
-    classDef python fill:#f0fdfa,stroke:#0f766e,color:#134e4a
-    classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
-    classDef result fill:#f8fafc,stroke:#475569,color:#0f172a
-    class INPUT,SCOPE input
-    class A1,A2,A3,A4 agent
-    class P1,P2,P3,P4 python
-    class Q review
-    class REPORT,TRACE result
-    style DATA fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
-    style LLM fill:#eff6ff,stroke:#93c5fd,color:#172554
-    style PY fill:#f0fdfa,stroke:#99f6e4,color:#134e4a
-    style HUMAN fill:#fffbeb,stroke:#fcd34d,color:#78350f
-    style OUT fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
-```
-
-**Gambar 2. Swimlane tanggung jawab komponen penelitian.** Lane menunjukkan kepemilikan tugas oleh orchestrator, agent LLM, layanan Python, review manusia, dan keluaran. Arah panah menunjukkan transfer data, bukan bahwa setiap lane harus selesai seluruhnya sebelum lane berikutnya dijalankan. Berkas sumber: [04-agent-swimlane-flowchart.mmd](04-agent-swimlane-flowchart.mmd).
+**Gambar 2. Diagram swimlane tugas lintas komponen.** Setiap lane merepresentasikan pelaksana pekerjaan; keluaran akhir berada pada lane Orchestrator. Berkas pratinjau: [05-agent-swimlane.svg](05-agent-swimlane.svg); berkas editable: [05-agent-swimlane.drawio](05-agent-swimlane.drawio).
 
 | Pemilik | Input utama | Output/kontrak |
 | --- | --- | --- |
@@ -378,10 +316,12 @@ Diagram asal dan variannya ditempatkan dalam kelompok asal yang sama ketika memb
 | [01-system-architecture.mmd](01-system-architecture.mmd) | Diagram arsitektur utama untuk penjelasan metode pada Bab 3. |
 | [02-bidirectional-validation.mmd](02-bidirectional-validation.mmd) | Detail pemeriksaan dua arah dan status keputusan. |
 | [03-evaluation-flow.mmd](03-evaluation-flow.mmd) | Pemisahan inferensi dan evaluasi serta konfigurasi pembanding. |
-| [04-agent-swimlane-flowchart.mmd](04-agent-swimlane-flowchart.mmd) | Swimlane flowchart lintas orchestrator, LLM agents, Python, review, dan pelaporan. |
+| [04-agent-swimlane-flowchart.mmd](04-agent-swimlane-flowchart.mmd) | Mermaid process flow alternatif (dependensi logis, bukan tata letak swimlane tetap). |
+| [05-agent-swimlane.svg](05-agent-swimlane.svg) | Diagram swimlane vektor yang langsung terlihat pada GitHub dan dapat digunakan sebagai gambar Bab 3. |
+| [05-agent-swimlane.drawio](05-agent-swimlane.drawio) | Sumber swimlane yang dapat diedit menggunakan diagrams.net / draw.io. |
 | [README.md](README.md) | Diagram yang dirender GitHub, penjelasan komponen, batas rancangan, dan referensi. |
 
-Blok Mermaid pada README identik dengan berkas `.mmd` masing-masing. Jika diagram diubah, perbarui kedua representasinya. Keempat diagram ini adalah dokumentasi arsitektur penelitian dan tidak menjadi bagian dari 30 sequence diagram dalam dataset eksperimen.
+Blok Mermaid 01–03 dalam README identik dengan masing-masing berkas `.mmd`. Mermaid 04 dipertahankan sebagai flowchart alternatif, sedangkan swimlane utama Gambar 2 bersumber dari SVG/draw.io. Jika diagram diperbarui, sinkronkan diagram, tabel, dan penjelasan yang terkait. Semua diagram ini merupakan dokumentasi rancangan penelitian dan bukan bagian dari dataset sequence diagram eksperimen.
 
 ## Referensi
 
