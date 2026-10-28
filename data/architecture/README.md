@@ -22,6 +22,18 @@ Integrasi dekomposisi yang mempertahankan struktur, semantic alignment, bidirect
 
 ## 2. Arsitektur utama
 
+### System Architecture — versi Draw.io (editable)
+
+![Proposed Structure-Aware Hybrid Consistency Checking Architecture](06-system-architecture.svg)
+
+**Gambar 1a. Arsitektur sistem fully automated** dengan ikon Python dan Mermaid, empat agent berbasis LLM, IR terstruktur, pemetaan peran/behavior, deterministic checker R1–R7, dan laporan akhir. Label `needs_review` adalah *abstention* otomatis yang tetap masuk ke laporan, **bukan** tahap Human Review. Diagram ini merupakan rancangan metode penelitian yang belum divalidasi melalui eksperimen.
+
+- [Edit diagram di Draw.io](06-system-architecture.drawio) — kotak, teks, panah, dan kelompok komponen dapat diedit. Ikon SVG disematkan di dalam file sehingga tidak membutuhkan URL eksternal.
+- [Lihat diagram SVG](06-system-architecture.svg) — pratinjau vektor dengan tata letak yang sesuai.
+- **Catatan representasi:** Python/Mermaid menandai teknologi yang digunakan pada rancangan, sedangkan ikon LLM bersifat generik dan tidak menyatakan penyedia model tertentu. Penilaian pakar atas gold standard dilakukan terpisah dari runtime.
+
+### Versi diagram Mermaid (ringkasan komponen)
+
 ```mermaid
 flowchart TB
     FR["Use Case Specification / Functional Requirements"]
@@ -84,7 +96,7 @@ flowchart TB
     style CHECK fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
 ```
 
-**Gambar 1. Rancangan arsitektur fully automated Structure-Aware Hybrid Consistency Checking.** Agent LLM menangani interpretasi semantik, sedangkan Python menangani parsing, validasi IR, pemeriksaan R1–R7, dan penggabungan status. Tidak ada human gate dalam inferensi. Garis putus-putus menandai kontrak pendukung dan akses checker terhadap struktur sumber. Berkas sumber: [01-system-architecture.mmd](01-system-architecture.mmd).
+**Gambar 1b. Rancangan arsitektur fully automated Structure-Aware Hybrid Consistency Checking.** Agent LLM menangani interpretasi semantik, sedangkan Python menangani parsing, validasi IR, pemeriksaan R1–R7, dan penggabungan status. Tidak ada human gate dalam inferensi. Garis putus-putus menandai kontrak pendukung dan akses checker terhadap struktur sumber. Berkas sumber: [01-system-architecture.mmd](01-system-architecture.mmd).
 
 ### Pembentukan representasi terstruktur
 
@@ -316,6 +328,8 @@ Diagram asal dan variannya ditempatkan dalam kelompok asal yang sama ketika memb
 | Berkas | Fungsi |
 | --- | --- |
 | [01-system-architecture.mmd](01-system-architecture.mmd) | Diagram arsitektur utama untuk penjelasan metode pada Bab 3. |
+| [06-system-architecture.drawio](06-system-architecture.drawio) | System architecture versi profesional yang sepenuhnya editable di diagrams.net. |
+| [06-system-architecture.svg](06-system-architecture.svg) | Pratinjau gambar sistem arsitektur vektor berikon yang langsung dirender di GitHub. |
 | [02-bidirectional-validation.mmd](02-bidirectional-validation.mmd) | Detail pemeriksaan dua arah dan status keputusan. |
 | [03-evaluation-flow.mmd](03-evaluation-flow.mmd) | Pemisahan inferensi dan evaluasi serta konfigurasi pembanding. |
 | [04-agent-swimlane-flowchart.mmd](04-agent-swimlane-flowchart.mmd) | Mermaid process flow otomatis (tanpa human-review gate). |
