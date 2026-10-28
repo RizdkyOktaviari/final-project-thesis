@@ -1,37 +1,38 @@
 flowchart TB
-    I["IR spesifikasi dan diagram + mapping terverifikasi + scope + rulebook"]
-    G{"Prasyarat aturan dan bukti cukup pada elemen yang diuji?"}
-    ROLE["Normalisasi role berbasis mapping terverifikasi; tidak membandingkan nama mentah"]
-    S["Spesifikasi ke desain"]
-    D["Desain ke spesifikasi"]
-    SC["R1 missing; R3 participant; R4 message; R5 direction; R6 order; R7 guard"]
-    DC["R2 additional; R3 participant; R4 message; R5 direction; R6 order; R7 guard"]
-    E["Evaluasi aturan dengan kondisi, fragment, dan cakupan"]
+    I["Specification IR, Diagram IR, mapping, scope, rulebook"]
+    G{"Prasyarat per aturan memadai?"}
+    ROLE["Gunakan padanan peran dan tindakan terverifikasi"]
+    S["FR ke SD: realisasi kebutuhan wajib"]
+    D["SD ke FR: dukungan perilaku dan refinement"]
+    SC["R1 missing, R3 participant, R4 action, R5 direction, R6 order, R7 condition"]
+    DC["R2 additional, R3 participant, R4 action, R5 direction, R6 order, R7 condition"]
+    E["Evaluasi jalur, guard, pesan, dan urutan"]
     J{"Status setiap aturan"}
-    F["violation: kontradiksi atau kekurangan yang terbukti"]
-    N["no_violation_found: tidak ada temuan pada cakupan terperiksa"]
-    U["needs_review: scope, role mapping, guard, atau sumber ambigu"]
-    O["Agregasi temuan, deduplikasi, bukti, dan coverage"]
-
+    F["violation: pelanggaran dengan bukti"]
+    N["no_violation_found: tidak ada temuan dalam cakupan"]
+    U["needs_review: abstention otomatis karena tidak cukup bukti"]
+    O["Python aggregator: deduplikasi, coverage, evidence"]
+    R["Laporan otomatis tanpa intervensi manusia"]
     I --> G
     G -->|Tidak| U
-    G -->|Ya, pada bagian yang dapat diuji| ROLE
+    G -->|Ya| ROLE
     ROLE --> S
     ROLE --> D
     S --> SC --> E
     D --> DC --> E
-    I -.->|IR dan bukti sumber| E
+    I -.-> E
     E --> J
-    J -->|Terbukti melanggar| F
-    J -->|Tidak ditemukan pada cakupan| N
-    J -->|Tidak dapat dipastikan| U
+    J -->|Pelanggaran| F
+    J -->|Tidak ditemukan| N
+    J -->|Tidak dapat diputuskan| U
     F --> O
     N --> O
     U --> O
+    O --> R
 
-    classDef process fill:#eff6ff,stroke:#2563eb,color:#172554
-    classDef validation fill:#f0fdfa,stroke:#0f766e,color:#134e4a
-    classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
-    class ROLE,S,D,SC,DC process
-    class I,G,E,J,F,N,O validation
-    class U review
+    classDef semantic fill:#eff6ff,stroke:#2563eb,color:#172554
+    classDef check fill:#f0fdfa,stroke:#0f766e,color:#134e4a
+    classDef uncertain fill:#fffbeb,stroke:#b45309,color:#78350f
+    class ROLE,S,D,SC,DC semantic
+    class I,G,E,J,F,N,O,R check
+    class U uncertain

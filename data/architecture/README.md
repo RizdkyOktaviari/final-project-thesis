@@ -2,7 +2,7 @@
 
 Dokumen ini menyajikan **rancangan Structure-Aware Hybrid Consistency Checking** untuk memeriksa kesesuaian Use Case Specification (UCS) atau functional requirements dengan sequence diagram. Sistem membentuk representasi terstruktur, menyelaraskan makna dengan LLM, membangun keterlacakan dua arah, lalu menerapkan aturan konsistensi dan melaporkan bukti pada artefak asal.
 
-**Status:** rancangan usulan berdasarkan Bab 1–2 draf tesis, disusun pada 27 Oktober 2026 dan diperbarui pada 28 Oktober 2026. Diagram ini menjelaskan metode penelitian yang akan diimplementasikan; peningkatan akurasi dan pengurangan false positive masih merupakan sasaran evaluasi.
+**Status:** rancangan usulan berdasarkan Bab 1–2 draf tesis, disusun pada 27 Oktober 2026 dan diperbarui pada 28 Oktober 2026. Jalur inferensi bersifat full otomatis tanpa reviewer manusia. Diagram ini menjelaskan metode penelitian yang akan diimplementasikan; peningkatan akurasi dan pengurangan false positive masih merupakan sasaran evaluasi.
 
 ## 1. Dasar rancangan dan diagram rujukan
 
@@ -25,67 +25,66 @@ Integrasi dekomposisi yang mempertahankan struktur, semantic alignment, bidirect
 ```mermaid
 flowchart TB
     FR["Use Case Specification / Functional Requirements"]
-    SD["Sequence Diagram (Mermaid)"]
-    SCOPE["Kontrak cakupan skenario dan tingkat abstraksi"]
-    RULEBOOK["Rulebook R1-R7 dan kebijakan padanan peran"]
+    SD["Sequence Diagram Mermaid"]
+    SCOPE["Kontrak skenario: cakupan dan otoritas peran"]
+    RULES["Rulebook R1-R7 dan kebijakan peran"]
 
-    subgraph REP["1. STRUCTURE-AWARE REPRESENTATION"]
+    subgraph REP["1. REPRESENTASI TERSTRUKTUR"]
         A1["Agent 1 - Requirements Extractor (LLM)"]
         P1["Mermaid Parser (Python)"]
-        SIR["Specification IR: actor, action, guard, order, evidence"]
-        DIR["Diagram IR: lifeline, message, fragment, evidence"]
-        V1["IR Validator (Python): schema, scope, referensi, cakupan"]
-        A1 --> SIR --> V1
-        P1 --> DIR --> V1
+        SI["Specification IR + evidence"]
+        DI["Diagram IR + evidence"]
+        V["Python IR Validator"]
+        A1 --> SI --> V
+        P1 --> DI --> V
     end
-
-    subgraph ALIGN["2. SEMANTIC ALIGNMENT & VERIFICATION"]
-        A2["Agent 2 - Role and Behavior Alignment (LLM)"]
+    subgraph ALIGN["2. SEMANTIC ALIGNMENT"]
+        A2["Agent 2 - Role / Behavior Alignment (LLM)"]
         A3["Agent 3 - Mapping Verifier (LLM)"]
-        MAP["Verified mapping: canonical roles, behavior links, evidence, uncertainty"]
+        MAP["Accepted, rejected, uncertain mapping + bukti"]
         A2 --> A3 --> MAP
     end
-
-    subgraph CHECK["3. DETERMINISTIC CONSISTENCY CHECKING"]
-        PY["Rule Checker (Python): R1-R7, bukan perbandingan nama mentah"]
-        FIND["Temuan per aturan, bukti, cakupan, dan status"]
-        A4["Agent 4 - Evidence-based Report Generator (LLM)"]
-        PY --> FIND --> A4
+    subgraph CHECK["3. AUTOMATED CHECKING & REPORT"]
+        C["Python consistency checker R1-R7"]
+        AG["Automatic findings aggregator: coverage, dedup, abstention"]
+        A4["Agent 4 - Report Generator (LLM; status terkunci)"]
+        C --> AG --> A4
     end
 
-    REVIEW["Needs review: ambiguitas role, scope, mapping, atau fitur"]
-    REPORT["Laporan konsistensi dan traceability dua arah"]
-
+    U["Uncertainty record: source, scope, atau mapping ambigu"]
+    REPORT["Laporan otomatis: violation / no_violation_found / needs_review"]
     FR --> A1
     SD --> P1
-    SCOPE -.-> V1
+    SCOPE -.-> V
     SCOPE -.-> A2
-    SCOPE -.-> PY
-    RULEBOOK -.-> A3
-    RULEBOOK --> PY
-    V1 -->|IR terverifikasi| A2
-    V1 -->|Tidak lengkap / tak didukung| REVIEW
-    A3 -->|Mapping belum pasti| REVIEW
-    MAP -->|Diterima, ditolak, atau belum terpetakan dengan bukti| PY
-    SIR -.-> PY
-    DIR -.-> PY
-    REVIEW --> A4
+    SCOPE -.-> C
+    RULES --> C
+    RULES -.-> A3
+    V -->|IR terverifikasi| A2
+    V -->|Elemen tidak dapat dipastikan| U
+    A3 -->|Mapping ambigu| U
+    MAP -->|Mapping dan elemen unmatched| C
+    SI -.-> C
+    DI -.-> C
+    V -.-> C
+    U --> AG
     A4 --> REPORT
+    AG -.->|Fallback JSON jika agent report gagal| REPORT
 
     classDef input fill:#f8fafc,stroke:#475569,color:#0f172a
     classDef agent fill:#eff6ff,stroke:#2563eb,color:#172554
     classDef python fill:#f0fdfa,stroke:#0f766e,color:#134e4a
-    classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
-    class FR,SD,SCOPE,RULEBOOK,SIR,DIR,MAP,REPORT input
+    classDef uncertain fill:#fffbeb,stroke:#b45309,color:#78350f
+    class FR,SD,SCOPE,RULES,SI,DI,MAP,REPORT input
     class A1,A2,A3,A4 agent
-    class P1,V1,PY,FIND python
-    class REVIEW review
+    class P1,V,C,AG python
+    class U uncertain
     style REP fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
     style ALIGN fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
     style CHECK fill:#f8fafc,stroke:#cbd5e1,color:#0f172a
 ```
 
-**Gambar 1. Rancangan arsitektur multi-agent Structure-Aware Hybrid Consistency Checking.** Agent LLM menangani ekstraksi dan pemetaan semantik, sedangkan Python menangani parsing, validasi IR, dan pemeriksaan R1–R7. Garis putus-putus menandai kontrak pendukung dan akses checker terhadap struktur sumber. Berkas sumber: [01-system-architecture.mmd](01-system-architecture.mmd).
+**Gambar 1. Rancangan arsitektur fully automated Structure-Aware Hybrid Consistency Checking.** Agent LLM menangani interpretasi semantik, sedangkan Python menangani parsing, validasi IR, pemeriksaan R1–R7, dan penggabungan status. Tidak ada human gate dalam inferensi. Garis putus-putus menandai kontrak pendukung dan akses checker terhadap struktur sumber. Berkas sumber: [01-system-architecture.mmd](01-system-architecture.mmd).
 
 ### Pembentukan representasi terstruktur
 
@@ -107,19 +106,19 @@ Pemetaan menyimpan elemen sumber, elemen tujuan, jenis hubungan, bukti tekstual,
 
 Sebaliknya, *Approver* dan *System* **tidak boleh otomatis disamakan**. Jika dokumentasi menyatakan persetujuan dilakukan manusia, penggantian oleh sistem memerlukan bukti delegasi atau kewenangan yang eksplisit. Mapping yang ditolak tetap dicatat sebagai elemen belum dipetakan; keputusan apakah itu pelanggaran R1/R3 membutuhkan cakupan dan bukti yang lengkap. Ketidakpastian tidak disamarkan sebagai `no_violation_found`.
 
-**Pemisahan tanggung jawab agent:** Agent 1 menerima FR tanpa diagram (mengurangi bias ekstraksi), Agent 2 mengusulkan role/behavior alignment, Agent 3 memverifikasi mapping secara independen berdasarkan kedua sumber asli, dan Agent 4 hanya menyusun penjelasan dari hasil checker tanpa mengubah klasifikasi atau membuat temuan baru. Verifikasi LLM bukan bukti formal; evaluasi mapping terhadap anotasi pakar tetap diperlukan.
+**Pemisahan tanggung jawab agent dalam inferensi otomatis:** Agent 1 menerima FR tanpa diagram (mengurangi bias ekstraksi), Agent 2 mengusulkan role/behavior alignment, Agent 3 memverifikasi mapping secara independen berdasarkan kedua sumber asli, dan Agent 4 hanya menyusun penjelasan dari hasil checker tanpa mengubah klasifikasi atau membuat temuan baru. Verifikasi LLM bukan bukti formal; evaluasi mapping terhadap anotasi pakar tetap diperlukan.
 
-### Validasi deterministik dan pelaporan
+### Validasi deterministik dan pelaporan otomatis
 
-Checker menerima **IR spesifikasi, IR diagram, mapping yang diverifikasi, cakupan, dan aturan**. Dengan demikian, aturan arah pesan atau urutan dapat memeriksa sender, receiver, kondisi, dan relasi urutan pada struktur yang tersimpan. Keputusan semantik yang belum dapat dibuktikan tidak dipaksakan menjadi keputusan biner.
+Checker menerima **IR spesifikasi, IR diagram, mapping yang diverifikasi, cakupan, dan aturan**. Dengan demikian, aturan arah pesan atau urutan dapat memeriksa sender, receiver, kondisi, dan relasi urutan pada struktur yang tersimpan. Keputusan semantik yang belum dapat dibuktikan tidak dipaksakan menjadi keputusan biner. Ketidakpastian dicatat secara otomatis tanpa menghentikan pemrosesan elemen lain.
 
-Istilah *deterministik* berarti aturan menghasilkan keputusan yang sama untuk IR, mapping, cakupan, dan versi aturan yang sama. Ketepatan hasil tetap bergantung pada ketepatan ekstraksi dan alignment. Status **tidak ditemukan pelanggaran** hanya berlaku pada elemen dan aturan yang berhasil diperiksa; itu bukan jaminan konsistensi menyeluruh.
+Istilah *deterministik* berarti aturan menghasilkan keputusan yang sama untuk IR, mapping, cakupan, dan versi aturan yang sama. Ketepatan hasil tetap bergantung pada ketepatan ekstraksi dan alignment. Status **tidak ditemukan pelanggaran** hanya berlaku pada elemen dan aturan yang berhasil diperiksa; itu bukan jaminan konsistensi menyeluruh. Pipeline inferensi tidak memiliki tahapan Human Review.
 
 ## 3. Swimlane alur kerja multi-agent
 
 ![Swimlane multi-agent Structure-Aware Hybrid Consistency Checking](05-agent-swimlane.svg)
 
-Diagram di atas adalah **swimlane diagram sebenarnya**, dengan empat lane vertikal (Orchestrator/Dataset, LLM Agents, Python Services, dan Human Review), urutan proses dari atas ke bawah, serta panah solid untuk alur utama dan panah putus-putus untuk *escalation/needs_review*. Setiap kotak berada pada lane pihak yang melaksanakan tugas tersebut.
+Diagram di atas adalah **swimlane tiga lane** (Dataset/Orchestrator, LLM Agents, Python Services). Semua langkah dari input hingga laporan berjalan otomatis. Panah putus-putus adalah aliran ketidakpastian ke agregator, bukan permintaan Human Review.
 
 - [Pratinjau diagram vektor (SVG)](05-agent-swimlane.svg) untuk GitHub, Bab 3 tesis, atau presentasi.
 - [Sumber editable di diagrams.net / draw.io](05-agent-swimlane.drawio) untuk mengubah kotak, alur, dan lane.
@@ -127,7 +126,7 @@ Diagram di atas adalah **swimlane diagram sebenarnya**, dengan empat lane vertik
 
 
 
-**Gambar 2. Diagram swimlane tugas lintas komponen.** Setiap lane merepresentasikan pelaksana pekerjaan; keluaran akhir berada pada lane Orchestrator. Berkas pratinjau: [05-agent-swimlane.svg](05-agent-swimlane.svg); berkas editable: [05-agent-swimlane.drawio](05-agent-swimlane.drawio).
+**Gambar 2. Swimlane pipeline otomatis.** Tiga lane merepresentasikan pelaksana algoritmik, dan laporan akhir dibuat tanpa human-review gate. Berkas pratinjau: [05-agent-swimlane.svg](05-agent-swimlane.svg); berkas editable: [05-agent-swimlane.drawio](05-agent-swimlane.drawio).
 
 | Pemilik | Input utama | Output/kontrak |
 | --- | --- | --- |
@@ -138,13 +137,13 @@ Diagram di atas adalah **swimlane diagram sebenarnya**, dengan empat lane vertik
 | **Agent 2 — Semantic Alignment** | IR valid, konteks artefak, scope | Kandidat padanan peran/tindakan, canonical roles, relasi, bukti, unmatched |
 | **Agent 3 — Mapping Verifier** | Kandidat mapping dan kedua sumber asli | Accepted/rejected/needs_review per mapping dengan bukti dan alasan |
 | **Python Rule Checker (R1–R7)** | IR, verified mapping, scope, rulebook | Temuan per aturan, kategori, lokasi bukti, coverage, needs_review |
-| **Agent 4 — Report Generator** | Hasil checker dan catatan review | Ringkasan bahasa Indonesia tanpa mengubah status atau menambah pelanggaran |
+| **Agent 4 — Report Generator** | Temuan checker dan status ketidakpastian otomatis | Ringkasan bahasa Indonesia tanpa mengubah status atau menambah pelanggaran |
 
 **Contoh role alias:** `Atasan` pada FR boleh dipetakan ke `Line Manager` pada SD apabila tanggung jawab approval dan referensi sumber mendukungnya. Python kemudian membandingkan role ID hasil mapping dan memeriksa aksi, arah, urutan, serta guard. Jika FR hanya menyebut `Approver` sementara SD hanya memuat `System`, kesetaraan tidak diasumsikan: tentukan apakah ada bukti approval otomatis yang sah, atau tandai `needs_review`/R3 sesuai kontrak skenario.
 
-**Gate keputusan:** IR tidak valid -> catatan review; mapping semantik belum pasti -> review; mapping sudah dinilai dan scope cukup -> rule checker. Elemen yang tidak memiliki padanan tetap masuk evaluasi cakupan jika prasyaratnya lengkap, sehingga missing behavior tidak disembunyikan. Checker boleh memproses elemen yang terbukti valid sambil menandai elemen lain sebagai `needs_review`.
+**Alur tanpa human gate:** IR atau mapping yang belum dapat dipastikan ditandai sebagai `needs_review` dan diteruskan otomatis ke agregator. Elemen yang memenuhi prasyarat tetap diproses oleh checker Python R1–R7. Elemen tanpa padanan tetap dinilai untuk R1/R2 ketika cakupannya lengkap. Seluruh temuan, termasuk ketidakpastian, masuk ke laporan akhir tanpa menunggu reviewer manusia.
 
-**Batas rancangan:** diagram swimlane adalah spesifikasi implementasi yang diusulkan, bukan bukti bahwa keempat agent atau checker telah tersedia/teruji. Output LLM harus mengikuti JSON Schema yang dikunci dan mempertahankan lokasi sumber; retry validasi perlu dibatasi dan direkam pada log eksekusi.
+**Batas rancangan:** diagram ini masih usulan implementasi. Output agent harus mematuhi JSON Schema dan menyimpan evidence; retry otomatis dibatasi dan dicatat. Jika Agent 4 gagal, agregator Python dapat menghasilkan laporan JSON otomatis sebagai fallback.
 
 ---
 
@@ -158,7 +157,7 @@ Field di bawah adalah rancangan minimum, bukan skema implementasi yang sudah ter
 | **IR spesifikasi** | ID unit, ID kebutuhan asal, actor, action, object, modalitas, kondisi, precondition, postcondition, jenis flow, hubungan urutan yang diwajibkan, dan lokasi sumber. |
 | **IR diagram** | ID pesan dan participant, sender, receiver, message type, action/payload, relasi urutan, guard, fragment induk, cabang, dan lokasi pada berkas diagram. |
 | **Mapping keterlacakan** | Kumpulan ID unit kebutuhan dan pesan; role mapping dan canonical role; jenis realisasi/refinement; bukti dua sumber; status accepted/rejected/needs_review; elemen belum terpetakan dan cakupan alignment. |
-| **Temuan** | Rule ID, kategori, status, elemen yang terlibat, expected versus observed behavior, bukti sumber, dan alasan yang dapat diperiksa. |
+| **Temuan** | Rule ID, kategori, status (termasuk `needs_review` otomatis), elemen, expected vs observed behavior, bukti sumber, dan alasan yang dapat diperiksa. |
 | **Catatan eksekusi** | Commit dataset, versi parser/IR/aturan, model dan versinya, versi prompt, parameter inferensi, ID run, dan output mentah yang diperlukan untuk reproduksi. |
 
 Kebutuhan `REQ-*` yang mencakup banyak tindakan dapat dipecah menjadi beberapa unit IR tanpa mengubah ID atau dokumen asal. Ketentuan pendukung dan ambiguitas sumber tetap disertakan sebagai konteks yang relevan.
@@ -167,45 +166,46 @@ Kebutuhan `REQ-*` yang mencakup banyak tindakan dapat dipecah menjadi beberapa u
 
 ```mermaid
 flowchart TB
-    I["IR spesifikasi dan diagram + mapping terverifikasi + scope + rulebook"]
-    G{"Prasyarat aturan dan bukti cukup pada elemen yang diuji?"}
-    ROLE["Normalisasi role berbasis mapping terverifikasi; tidak membandingkan nama mentah"]
-    S["Spesifikasi ke desain"]
-    D["Desain ke spesifikasi"]
-    SC["R1 missing; R3 participant; R4 message; R5 direction; R6 order; R7 guard"]
-    DC["R2 additional; R3 participant; R4 message; R5 direction; R6 order; R7 guard"]
-    E["Evaluasi aturan dengan kondisi, fragment, dan cakupan"]
+    I["Specification IR, Diagram IR, mapping, scope, rulebook"]
+    G{"Prasyarat per aturan memadai?"}
+    ROLE["Gunakan padanan peran dan tindakan terverifikasi"]
+    S["FR ke SD: realisasi kebutuhan wajib"]
+    D["SD ke FR: dukungan perilaku dan refinement"]
+    SC["R1 missing, R3 participant, R4 action, R5 direction, R6 order, R7 condition"]
+    DC["R2 additional, R3 participant, R4 action, R5 direction, R6 order, R7 condition"]
+    E["Evaluasi jalur, guard, pesan, dan urutan"]
     J{"Status setiap aturan"}
-    F["violation: kontradiksi atau kekurangan yang terbukti"]
-    N["no_violation_found: tidak ada temuan pada cakupan terperiksa"]
-    U["needs_review: scope, role mapping, guard, atau sumber ambigu"]
-    O["Agregasi temuan, deduplikasi, bukti, dan coverage"]
-
+    F["violation: pelanggaran dengan bukti"]
+    N["no_violation_found: tidak ada temuan dalam cakupan"]
+    U["needs_review: abstention otomatis karena tidak cukup bukti"]
+    O["Python aggregator: deduplikasi, coverage, evidence"]
+    R["Laporan otomatis tanpa intervensi manusia"]
     I --> G
     G -->|Tidak| U
-    G -->|Ya, pada bagian yang dapat diuji| ROLE
+    G -->|Ya| ROLE
     ROLE --> S
     ROLE --> D
     S --> SC --> E
     D --> DC --> E
-    I -.->|IR dan bukti sumber| E
+    I -.-> E
     E --> J
-    J -->|Terbukti melanggar| F
-    J -->|Tidak ditemukan pada cakupan| N
-    J -->|Tidak dapat dipastikan| U
+    J -->|Pelanggaran| F
+    J -->|Tidak ditemukan| N
+    J -->|Tidak dapat diputuskan| U
     F --> O
     N --> O
     U --> O
+    O --> R
 
-    classDef process fill:#eff6ff,stroke:#2563eb,color:#172554
-    classDef validation fill:#f0fdfa,stroke:#0f766e,color:#134e4a
-    classDef review fill:#fffbeb,stroke:#b45309,color:#78350f
-    class ROLE,S,D,SC,DC process
-    class I,G,E,J,F,N,O validation
-    class U review
+    classDef semantic fill:#eff6ff,stroke:#2563eb,color:#172554
+    classDef check fill:#f0fdfa,stroke:#0f766e,color:#134e4a
+    classDef uncertain fill:#fffbeb,stroke:#b45309,color:#78350f
+    class ROLE,S,D,SC,DC semantic
+    class I,G,E,J,F,N,O,R check
+    class U uncertain
 ```
 
-**Gambar 3. Alur keputusan setiap aturan pada cakupan yang ditetapkan.** Kedua arah pemeriksaan menggunakan struktur dan mapping yang sama. Satu pasangan artefak dapat menghasilkan temuan sekaligus bagian yang perlu review. Berkas sumber: [02-bidirectional-validation.mmd](02-bidirectional-validation.mmd).
+**Gambar 3. Keputusan aturan otomatis.** Dua arah pemeriksaan menggunakan struktur dan mapping yang sama. Satu pasangan artefak dapat menghasilkan temuan sekaligus kasus `needs_review` tanpa langkah manual. Berkas sumber: [02-bidirectional-validation.mmd](02-bidirectional-validation.mmd).
 
 **Spesifikasi ke desain** menilai realisasi perilaku wajib dalam cakupan. **Desain ke spesifikasi** menilai apakah perilaku desain didukung kebutuhan atau merupakan rincian implementasi yang sah. Satu diagram untuk satu skenario tidak dinilai terhadap semua kebutuhan sebuah modul; pemeriksaan kelengkapan pada tingkat modul menggunakan kelompok diagram yang relevan.
 
@@ -219,7 +219,7 @@ Kategori R1–R7 berikut mengikuti draf [D1]. ID aturan dan kriteria operasional
 | R4 | **Message mismatch** | Tindakan, objek, polaritas, atau efek bisnis pada realisasi yang dipetakan bertentangan dengan kebutuhan. Sinonim dan pemecahan atau penggabungan pesan diperbolehkan. |
 | R5 | **Incorrect message direction** | Sender dan receiver pada interaksi yang sepadan membalik aliran yang diwajibkan. Jenis request, response, notification, dan callback dibedakan. |
 | R6 | **Incorrect order** | Jalur yang dapat terjadi melanggar relasi urutan yang diwajibkan. Perbandingan menggunakan precedence dan konteks cabang, bukan sekadar nomor pesan global. |
-| R7 | **Condition/alternative-flow mismatch** | Guard atau efek cabang mengizinkan keadaan terlarang atau menghilangkan perilaku wajib. Kondisi bahasa alami yang belum dapat dinormalisasi diarahkan ke review. |
+| R7 | **Condition/alternative-flow mismatch** | Guard atau efek cabang mengizinkan keadaan terlarang atau menghilangkan perilaku wajib. Kondisi yang belum dapat dinormalisasi menghasilkan `needs_review` otomatis. |
 
 Untuk `alt`, pesan pada cabang berbeda tidak diperlakukan sebagai rangkaian serial. `opt` mempertahankan sifat opsional, sedangkan `loop` mempertahankan batas dan konteks iterasi. Jika verifikasi loop menggunakan batas eksplorasi, batas tersebut harus dicatat. Konstruksi parallel hanya diperiksa setelah semantik dan dukungan parsernya ditetapkan [R4–R5].
 
@@ -227,7 +227,7 @@ Setiap aturan menghasilkan salah satu status berikut:
 
 - **`violation`**: pelanggaran terdeteksi terhadap IR dan mapping yang memenuhi prasyarat, dengan bukti yang dapat ditelusuri.
 - **`no_violation_found`**: tidak ditemukan pelanggaran pada cakupan aturan yang berhasil diperiksa.
-- **`needs_review`**: scope, ekstraksi, alignment, kondisi, atau fitur belum memadai untuk memutuskan. Status ini tidak dihitung sebagai kasus konsisten.
+- **`needs_review`**: abstention otomatis saat scope, ekstraksi, alignment, kondisi, atau dukungan fitur belum memadai. Ini merupakan status laporan, bukan tahap review manual, dan tidak dihitung sebagai konsisten.
 
 Temuan dengan akar masalah yang sama digabung sambil mempertahankan kategori terkait. Sebagai contoh, pembalikan penerima dapat memicu gejala participant mismatch dan missing behavior; keduanya tidak otomatis dihitung sebagai dua kesalahan independen.
 
@@ -244,6 +244,8 @@ Temuan dengan akar masalah yang sama digabung sambil mempertahankan kategori ter
 Inventaris saat sumber dibaca memuat **30 diagram**, terdiri dari **26 tanpa injeksi kesalahan disengaja** dan **4 dengan injeksi terkontrol**, sebagaimana dicatat pada [README dataset](../sequence-diagrams/README.md). Label tanpa injeksi tidak membuktikan diagram sudah sepenuhnya konsisten. Jumlah tersebut juga belum membuktikan bahwa ketujuh kategori telah memiliki contoh evaluasi yang cukup.
 
 Pada penyiapan eksperimen, metadata pasangan diturunkan menjadi daftar yang hanya memuat ID skenario, kebutuhan, diagram, dan scope yang telah ditinjau. Label, kategori mutasi, lokasi kesalahan, serta penjelasan jawaban dipisahkan dari input inferensi. Penentuan scope dapat diperbaiki melalui kurasi tanpa mengubah dokumen sumber secara diam-diam.
+
+**Penting:** review pakar hanya digunakan secara *offline* untuk penyusunan gold standard dan penilaian eksperimen. Pada runtime, label kesalahan tidak diberikan kepada agent dan tidak ada intervensi manusia sebelum laporan dihasilkan.
 
 ## 7. Rancangan evaluasi
 
@@ -316,9 +318,9 @@ Diagram asal dan variannya ditempatkan dalam kelompok asal yang sama ketika memb
 | [01-system-architecture.mmd](01-system-architecture.mmd) | Diagram arsitektur utama untuk penjelasan metode pada Bab 3. |
 | [02-bidirectional-validation.mmd](02-bidirectional-validation.mmd) | Detail pemeriksaan dua arah dan status keputusan. |
 | [03-evaluation-flow.mmd](03-evaluation-flow.mmd) | Pemisahan inferensi dan evaluasi serta konfigurasi pembanding. |
-| [04-agent-swimlane-flowchart.mmd](04-agent-swimlane-flowchart.mmd) | Mermaid process flow alternatif (dependensi logis, bukan tata letak swimlane tetap). |
-| [05-agent-swimlane.svg](05-agent-swimlane.svg) | Diagram swimlane vektor yang langsung terlihat pada GitHub dan dapat digunakan sebagai gambar Bab 3. |
-| [05-agent-swimlane.drawio](05-agent-swimlane.drawio) | Sumber swimlane yang dapat diedit menggunakan diagrams.net / draw.io. |
+| [04-agent-swimlane-flowchart.mmd](04-agent-swimlane-flowchart.mmd) | Mermaid process flow otomatis (tanpa human-review gate). |
+| [05-agent-swimlane.svg](05-agent-swimlane.svg) | Diagram swimlane tiga lane full otomatis untuk Bab 3. |
+| [05-agent-swimlane.drawio](05-agent-swimlane.drawio) | Sumber swimlane tiga lane yang dapat diedit di diagrams.net / draw.io. |
 | [README.md](README.md) | Diagram yang dirender GitHub, penjelasan komponen, batas rancangan, dan referensi. |
 
 Blok Mermaid 01–03 dalam README identik dengan masing-masing berkas `.mmd`. Mermaid 04 dipertahankan sebagai flowchart alternatif, sedangkan swimlane utama Gambar 2 bersumber dari SVG/draw.io. Jika diagram diperbarui, sinkronkan diagram, tabel, dan penjelasan yang terkait. Semua diagram ini merupakan dokumentasi rancangan penelitian dan bukan bagian dari dataset sequence diagram eksperimen.

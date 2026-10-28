@@ -1,133 +1,109 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1895" viewBox="0 0 1480 1895" role="img" aria-labelledby="diagram-title diagram-desc">
-<title id="diagram-title">Swimlane multi-agent Structure-Aware Hybrid Consistency Checking</title>
-<desc id="diagram-desc">Empat lane vertikal: Orchestrator, LLM Agents, Python Services, dan Human Review. Alur dari atas ke bawah, panah solid proses normal dan panah putus-putus eskalasi review.</desc>
-<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L9,5 L0,9 z" fill="#567185"/></marker>
-<marker id="arrow-review" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L9,5 L0,9 z" fill="#B88937"/></marker>
-<filter id="shadow" x="-20%" y="-30%" width="150%" height="180%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243B4C" flood-opacity=".12"/></filter></defs>
-<rect width="1480" height="1895" fill="#FFFFFF"/>
-<text x="80" y="59" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="bold" fill="#0B3346" text-anchor="start">SWIMLANE · MULTI-AGENT CONSISTENCY CHECKING</text>
-<text x="80" y="92" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" fill="#536878" text-anchor="start">Structure-aware IR  ·  Semantic role alignment  ·  Deterministic rule checking R1–R7</text>
-<rect x="80" y="110" width="1320" height="2" fill="#E6EDF2"/>
-<rect x="80" y="130" width="305" height="1698" rx="14" fill="#F5F8FA" stroke="#C8D5DE" stroke-width="1"/>
-<rect x="80" y="130" width="305" height="81" rx="13" fill="#074466"/>
-<rect x="80" y="180" width="305" height="31" fill="#074466"/>
-<text x="98" y="165" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="start">01  ORCHESTRATOR / DATASET</text>
-<text x="98" y="189" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#E5F2F6" text-anchor="start">Penetapan skenario &amp; hasil akhir</text>
-<rect x="415" y="130" width="305" height="1698" rx="14" fill="#F1F7FF" stroke="#C6DBED" stroke-width="1"/>
-<rect x="415" y="130" width="305" height="81" rx="13" fill="#1D5C88"/>
-<rect x="415" y="180" width="305" height="31" fill="#1D5C88"/>
-<text x="433" y="165" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="start">02  LLM AGENTS</text>
-<text x="433" y="189" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#E5F2F6" text-anchor="start">Interpretasi semantik &amp; verifikasi</text>
-<rect x="750" y="130" width="305" height="1698" rx="14" fill="#F0FBF8" stroke="#B9DDD5" stroke-width="1"/>
-<rect x="750" y="130" width="305" height="81" rx="13" fill="#0A746C"/>
-<rect x="750" y="180" width="305" height="31" fill="#0A746C"/>
-<text x="768" y="165" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="start">03  PYTHON SERVICES</text>
-<text x="768" y="189" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#E5F2F6" text-anchor="start">Parsing &amp; deterministic rules</text>
-<rect x="1085" y="130" width="305" height="1698" rx="14" fill="#FFFAEC" stroke="#ECD9AF" stroke-width="1"/>
-<rect x="1085" y="130" width="305" height="81" rx="13" fill="#976C26"/>
-<rect x="1085" y="180" width="305" height="31" fill="#976C26"/>
-<text x="1103" y="165" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="start">04  HUMAN REVIEW</text>
-<text x="1103" y="189" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#E5F2F6" text-anchor="start">Escalation / uncertainty</text>
-<rect x="9" y="242" width="49" height="72" rx="8" fill="#EFF3F5"/>
-<text x="33" y="286" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#526473" text-anchor="middle">INPUT</text>
-<rect x="9" y="614" width="49" height="72" rx="8" fill="#EFF3F5"/>
-<text x="33" y="658" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#526473" text-anchor="middle">IR</text>
-<rect x="9" y="927" width="49" height="72" rx="8" fill="#EFF3F5"/>
-<text x="33" y="971" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#526473" text-anchor="middle">ALIGN</text>
-<rect x="9" y="1254" width="49" height="72" rx="8" fill="#EFF3F5"/>
-<text x="33" y="1298" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#526473" text-anchor="middle">CHECK</text>
-<rect x="9" y="1558" width="49" height="72" rx="8" fill="#EFF3F5"/>
-<text x="33" y="1602" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#526473" text-anchor="middle">REPORT</text>
-<path d="M 232.5 318 L 232.5 362" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 232.5 450 L 253 482 L 567.5 482 L 567.5 532" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 232.5 450 L 253 482 L 902.5 482 L 902.5 532" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 699 580 L 732 580 L 732 771 L 771 771" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 902.5 628 L 902.5 723" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 1034 771 L 1106 771" stroke="#B88937" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#arrow-review)"/>
-<path d="M 771 771 L 732 782 L 732 862 L 567.5 862 L 567.5 894" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 567.5 996 L 567.5 1038" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 699 1089 L 1106 1089" stroke="#B88937" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#arrow-review)"/>
-<path d="M 567.5 1140 L 567.5 1175 L 902.5 1175 L 902.5 1213" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 902.5 1315 L 902.5 1351" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 771 1398 L 732 1398 L 732 1492 L 567.5 1492 L 567.5 1525" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<path d="M 1369 771 L 1406 771 L 1406 1441 L 1369 1441" stroke="#B88937" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#arrow-review)"/>
-<path d="M 1237.5 1140 L 1237.5 1394" stroke="#B88937" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#arrow-review)"/>
-<path d="M 1237.5 1488 L 1237.5 1559 L 699 1572" stroke="#B88937" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#arrow-review)"/>
-<path d="M 567.5 1619 L 567.5 1665 L 232.5 1665 L 232.5 1700" stroke="#567185" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="101" y="245" width="263" height="73" rx="12" fill="#FFFFFF" stroke="#90A8BA" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="101" y="258" width="4" height="47" rx="2" fill="#074466"/>
-<text x="119" y="273" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#074466" text-anchor="start">Pasangan artefak</text>
-<text x="119" y="295" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">FR + SD Mermaid</text>
-<text x="119" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Tanpa ground-truth / label</text>
-<rect x="101" y="362" width="263" height="88" rx="12" fill="#FFFFFF" stroke="#90A8BA" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="101" y="375" width="4" height="62" rx="2" fill="#074466"/>
-<text x="119" y="390" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#074466" text-anchor="start">Scope &amp; kontrak skenario</text>
-<text x="119" y="412" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">ID skenario, cakupan FR-SD</text>
-<text x="119" y="431" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Abstraksi dan role authority</text>
-<rect x="436" y="532" width="263" height="96" rx="12" fill="#FFFFFF" stroke="#78AED4" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="436" y="545" width="4" height="70" rx="2" fill="#1D5C88"/>
-<text x="454" y="560" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1D5C88" text-anchor="start">Agent 1 · Requirement Extractor</text>
-<text x="454" y="582" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Atom, aktor, guard, urutan</text>
-<text x="454" y="601" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Hasil: Specification IR</text>
-<rect x="771" y="532" width="263" height="96" rx="12" fill="#FFFFFF" stroke="#7DBDB1" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="771" y="545" width="4" height="70" rx="2" fill="#0A746C"/>
-<text x="789" y="560" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#0A746C" text-anchor="start">Mermaid Parser</text>
-<text x="789" y="582" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Participant, message, alt/opt/loop</text>
-<text x="789" y="601" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Hasil: Diagram IR</text>
-<rect x="771" y="723" width="263" height="96" rx="12" fill="#FFFFFF" stroke="#7DBDB1" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="771" y="736" width="4" height="70" rx="2" fill="#0A746C"/>
-<text x="789" y="751" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#0A746C" text-anchor="start">IR Validator</text>
-<text x="789" y="773" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Schema, sumber &amp; cakupan</text>
-<text x="789" y="792" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Hasil: validated IR</text>
-<rect x="1106" y="723" width="263" height="96" rx="12" fill="#FFFFFF" stroke="#D4AF69" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="1106" y="736" width="4" height="70" rx="2" fill="#976C26"/>
-<text x="1124" y="751" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#976C26" text-anchor="start">Review IR / Scope</text>
-<text x="1124" y="773" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Parse error, scope belum jelas</text>
-<text x="1124" y="792" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Catat ketidakpastian</text>
-<rect x="436" y="894" width="263" height="102" rx="12" fill="#FFFFFF" stroke="#78AED4" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="436" y="907" width="4" height="76" rx="2" fill="#1D5C88"/>
-<text x="454" y="922" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#1D5C88" text-anchor="start">Agent 2 · Semantic Alignment</text>
-<text x="454" y="944" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Padanan role, aksi, guard</text>
-<text x="454" y="963" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Atasan ≈ Line Manager (jika valid)</text>
-<rect x="436" y="1038" width="263" height="102" rx="12" fill="#FFFFFF" stroke="#78AED4" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="436" y="1051" width="4" height="76" rx="2" fill="#1D5C88"/>
-<text x="454" y="1066" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#1D5C88" text-anchor="start">Agent 3 · Mapping Verifier</text>
-<text x="454" y="1088" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Bukti sumber &amp; otoritas peran</text>
-<text x="454" y="1107" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Accepted / rejected / uncertain</text>
-<rect x="1106" y="1038" width="263" height="102" rx="12" fill="#FFFFFF" stroke="#D4AF69" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="1106" y="1051" width="4" height="76" rx="2" fill="#976C26"/>
-<text x="1124" y="1066" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#976C26" text-anchor="start">Review Semantic Mapping</text>
-<text x="1124" y="1088" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Role ambigu atau bukti kurang</text>
-<text x="1124" y="1107" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Tandai needs_review</text>
-<rect x="771" y="1213" width="263" height="102" rx="12" fill="#FFFFFF" stroke="#7DBDB1" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="771" y="1226" width="4" height="76" rx="2" fill="#0A746C"/>
-<text x="789" y="1241" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#0A746C" text-anchor="start">Rule Checker R1–R7</text>
-<text x="789" y="1263" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Canonical role, tindakan &amp; arah</text>
-<text x="789" y="1282" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Urutan, guard, scope &amp; bukti</text>
-<rect x="771" y="1351" width="263" height="94" rx="12" fill="#FFFFFF" stroke="#7DBDB1" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="771" y="1364" width="4" height="68" rx="2" fill="#0A746C"/>
-<text x="789" y="1379" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#0A746C" text-anchor="start">Aggregator &amp; Coverage</text>
-<text x="789" y="1401" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Dedup temuan; status per rule</text>
-<text x="789" y="1420" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Pertahankan needs_review</text>
-<rect x="1106" y="1394" width="263" height="94" rx="12" fill="#FFFFFF" stroke="#D4AF69" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="1106" y="1407" width="4" height="68" rx="2" fill="#976C26"/>
-<text x="1124" y="1422" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#976C26" text-anchor="start">Catatan Review</text>
-<text x="1124" y="1444" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Alasan, bukti, batas pemeriksaan</text>
-<text x="1124" y="1463" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Dilampirkan ke laporan</text>
-<rect x="436" y="1525" width="263" height="94" rx="12" fill="#FFFFFF" stroke="#78AED4" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="436" y="1538" width="4" height="68" rx="2" fill="#1D5C88"/>
-<text x="454" y="1553" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#1D5C88" text-anchor="start">Agent 4 · Report Generator</text>
-<text x="454" y="1575" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Narasi hasil checker + review</text>
-<text x="454" y="1594" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">Tidak menambah pelanggaran</text>
-<rect x="101" y="1700" width="263" height="111" rx="12" fill="#FFFFFF" stroke="#90A8BA" stroke-width="1.6" filter="url(#shadow)"/>
-<rect x="101" y="1713" width="4" height="85" rx="2" fill="#074466"/>
-<text x="119" y="1728" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#074466" text-anchor="start">Consistency Report</text>
-<text x="119" y="1750" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">violation / no_violation_found</text>
-<text x="119" y="1769" font-family="Arial, Helvetica, sans-serif" font-size="12.3" font-weight="normal" fill="#475E6C" text-anchor="start">needs_review + source evidence</text>
-<rect x="80" y="1842" width="1320" height="35" rx="8" fill="#F5F7F9"/>
-<path d="M100 1860 L151 1860" stroke="#567185" stroke-width="2.3" marker-end="url(#arrow)"/>
-<text x="167" y="1864" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#445B6B" text-anchor="start">Alur normal</text>
-<path d="M345 1860 L396 1860" stroke="#B88937" stroke-width="2.3" stroke-dasharray="8 6" marker-end="url(#arrow-review)"/>
-<text x="413" y="1864" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#735425" text-anchor="start">Escalation / needs_review</text>
-<text x="1100" y="1864" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#445B6B" text-anchor="start">Alur waktu: atas → bawah</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="2120" viewBox="0 0 1350 2120" role="img" aria-labelledby="swimtitle swimdesc">
+<title id="swimtitle">Automated structure-aware consistency checking swimlane</title><desc id="swimdesc">Three lanes: Dataset/Orchestrator, LLM Agents and Python Services. No human review gate. The pipeline produces an automatic report with needs_review as an uncertainty status.</desc>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 1 L9 5 L0 9 Z" fill="#577181"/></marker><marker id="warn" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 1 L9 5 L0 9 Z" fill="#B48638"/></marker><filter id="shade" x="-20%" y="-30%" width="150%" height="160%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#385665" flood-opacity=".12"/></filter></defs>
+<rect x="0" y="0" width="1350" height="2120" rx="0" fill="#FFFFFF" />
+<text x="60" y="60" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#073C57" text-anchor="start">AUTOMATED MULTI-AGENT SWIMLANE</text>
+<text x="60" y="97" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#516D7A" text-anchor="start">Structure-Aware Hybrid Consistency Checking · Fully automated FR–SD pipeline</text>
+<path d="M60 115 H1290" stroke="#DCE6EB" stroke-width="2"/>
+<rect x="60" y="135" width="360" height="1913" rx="14" fill="#F4F8FA" stroke="#C2D3DC" stroke-width="1.5"/>
+<rect x="60" y="135" width="360" height="75" rx="12" fill="#074466" />
+<rect x="60" y="178" width="360" height="32" fill="#074466"/>
+<text x="78" y="165" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">01  DATASET &amp; ORCHESTRATOR</text>
+<text x="78" y="190" font-family="Arial, Helvetica, sans-serif" font-size="12.4" font-weight="400" fill="#EAF4F8" text-anchor="start">Input, scope, report</text>
+<rect x="495" y="135" width="360" height="1913" rx="14" fill="#F0F7FE" stroke="#C4D9E9" stroke-width="1.5"/>
+<rect x="495" y="135" width="360" height="75" rx="12" fill="#205E8A" />
+<rect x="495" y="178" width="360" height="32" fill="#205E8A"/>
+<text x="513" y="165" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">02  LLM AGENTS</text>
+<text x="513" y="190" font-family="Arial, Helvetica, sans-serif" font-size="12.4" font-weight="400" fill="#EAF4F8" text-anchor="start">Ekstraksi, semantik, pelaporan</text>
+<rect x="930" y="135" width="360" height="1913" rx="14" fill="#F0FBF8" stroke="#BFE0D7" stroke-width="1.5"/>
+<rect x="930" y="135" width="360" height="75" rx="12" fill="#0A746C" />
+<rect x="930" y="178" width="360" height="32" fill="#0A746C"/>
+<text x="948" y="165" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">03  PYTHON SERVICES</text>
+<text x="948" y="190" font-family="Arial, Helvetica, sans-serif" font-size="12.4" font-weight="400" fill="#EAF4F8" text-anchor="start">Parsing, validasi, rules R1-R7</text>
+<path d="M 240 326 L 240 376" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 240 477 L 240 511 L 675 511 L 675 545" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 399 426.5 L 445 427 L 445 524 L 1110 524 L 1110 545" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 834 595.5 L 889 596 L 889 790 L 951 791.5" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 1110 646 L 1110 735" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 951 791.5 L 890 791 L 890 893 L 675 893 L 675 927" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 675 1031 L 675 1092" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 834 1146 L 895 1146 L 895 1348 L 951 1348" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 1110 1404 L 1110 1528" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 1269 791.5 L 1320 791 L 1320 1586 L 1269 1586" fill="none" stroke="#B48638" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 6" marker-end="url(#warn)"/>
+<path d="M 834 1146 L 908 1146 L 908 1586 L 951 1586" fill="none" stroke="#B48638" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 6" marker-end="url(#warn)"/>
+<path d="M 951 1586 L 887 1586 L 887 1681 L 675 1681 L 675 1715" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 516 1769 L 445 1769 L 445 1937 L 399 1937" fill="none" stroke="#577181" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arr)"/>
+<path d="M 1110 1644 L 1110 2045 L 240 2045 L 240 1999" fill="none" stroke="#B48638" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 6" marker-end="url(#warn)"/>
+<g><rect x="81" y="235" width="318" height="91" rx="12" fill="#FFFFFF" stroke="#C2D3DC" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="81" y="249" width="5" height="63" rx="2" fill="#074466" />
+<text x="101" y="267" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#074466" text-anchor="start">Input · FR + Sequence Diagram</text>
+<text x="101" y="293" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Input tanpa label kesalahan</text>
+<text x="101" y="313" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Pasangan artefak dan metadata</text>
+</g>
+<g><rect x="81" y="376" width="318" height="101" rx="12" fill="#FFFFFF" stroke="#C2D3DC" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="81" y="390" width="5" height="73" rx="2" fill="#074466" />
+<text x="101" y="408" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#074466" text-anchor="start">Scenario Contract</text>
+<text x="101" y="434" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Scope, tingkat abstraksi dan role</text>
+<text x="101" y="454" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Versi aturan R1-R7</text>
+</g>
+<g><rect x="516" y="545" width="318" height="101" rx="12" fill="#FFFFFF" stroke="#C4D9E9" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="516" y="559" width="5" height="73" rx="2" fill="#205E8A" />
+<text x="536" y="577" font-family="Arial, Helvetica, sans-serif" font-size="13.2" font-weight="700" fill="#205E8A" text-anchor="start">Agent 1 · Requirements Extractor</text>
+<text x="536" y="603" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Actor, behavior, guard, precedence</text>
+<text x="536" y="623" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Output: Specification IR</text>
+</g>
+<g><rect x="951" y="545" width="318" height="101" rx="12" fill="#FFFFFF" stroke="#BFE0D7" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="951" y="559" width="5" height="73" rx="2" fill="#0A746C" />
+<text x="971" y="577" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#0A746C" text-anchor="start">Mermaid Parser</text>
+<text x="971" y="603" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Participant, message, alt / opt / loop</text>
+<text x="971" y="623" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Output: Diagram IR</text>
+</g>
+<g><rect x="951" y="735" width="318" height="113" rx="12" fill="#FFFFFF" stroke="#BFE0D7" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="951" y="749" width="5" height="85" rx="2" fill="#0A746C" />
+<text x="971" y="767" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#0A746C" text-anchor="start">Python IR Validator</text>
+<text x="971" y="793" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Schema, evidence, coverage</text>
+<text x="971" y="813" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Valid elements + uncertainty flags</text>
+</g>
+<g><rect x="516" y="927" width="318" height="104" rx="12" fill="#FFFFFF" stroke="#C4D9E9" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="516" y="941" width="5" height="76" rx="2" fill="#205E8A" />
+<text x="536" y="959" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#205E8A" text-anchor="start">Agent 2 · Semantic Alignment</text>
+<text x="536" y="985" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Role alias dan behavior equivalence</text>
+<text x="536" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Mempertahankan konteks struktur</text>
+</g>
+<g><rect x="516" y="1092" width="318" height="108" rx="12" fill="#FFFFFF" stroke="#C4D9E9" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="516" y="1106" width="5" height="80" rx="2" fill="#205E8A" />
+<text x="536" y="1124" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#205E8A" text-anchor="start">Agent 3 · Mapping Verifier</text>
+<text x="536" y="1150" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Accepted / rejected / uncertain</text>
+<text x="536" y="1170" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Bukti dua sumber dan traceability</text>
+</g>
+<g><rect x="951" y="1292" width="318" height="112" rx="12" fill="#FFFFFF" stroke="#BFE0D7" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="951" y="1306" width="5" height="84" rx="2" fill="#0A746C" />
+<text x="971" y="1324" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#0A746C" text-anchor="start">Python Checker · R1–R7</text>
+<text x="971" y="1350" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Role, aksi, arah, urutan, kondisi</text>
+<text x="971" y="1370" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Aturan deterministik dan scope</text>
+</g>
+<g><rect x="951" y="1528" width="318" height="116" rx="12" fill="#FFFFFF" stroke="#BFE0D7" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="951" y="1542" width="5" height="88" rx="2" fill="#0A746C" />
+<text x="971" y="1560" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#0A746C" text-anchor="start">Automatic Findings Aggregator</text>
+<text x="971" y="1586" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Deduplicate findings, coverage</text>
+<text x="971" y="1606" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">needs_review = status otomatis</text>
+</g>
+<g><rect x="516" y="1715" width="318" height="108" rx="12" fill="#FFFFFF" stroke="#C4D9E9" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="516" y="1729" width="5" height="80" rx="2" fill="#205E8A" />
+<text x="536" y="1747" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#205E8A" text-anchor="start">Agent 4 · Report Generator</text>
+<text x="536" y="1773" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Hanya menjelaskan temuan terkunci</text>
+<text x="536" y="1793" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">Tanpa mengarang kesalahan baru</text>
+</g>
+<g><rect x="81" y="1875" width="318" height="124" rx="12" fill="#FFFFFF" stroke="#C2D3DC" stroke-width="1.7" filter="url(#shade)"/>
+<rect x="81" y="1889" width="5" height="96" rx="2" fill="#074466" />
+<text x="101" y="1907" font-family="Arial, Helvetica, sans-serif" font-size="14.7" font-weight="700" fill="#074466" text-anchor="start">Automated Consistency Report</text>
+<text x="101" y="1933" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">violation / no_violation_found</text>
+<text x="101" y="1953" font-family="Arial, Helvetica, sans-serif" font-size="12.8" font-weight="400" fill="#556A78" text-anchor="start">needs_review + evidence / coverage</text>
+</g>
+<rect x="60" y="2075" width="1230" height="31" rx="7" fill="#F3F6F8" />
+<path d="M78 2090 H124" stroke="#577181" stroke-width="2.3" marker-end="url(#arr)"/>
+<text x="140" y="2094" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#506B79" text-anchor="start">Normal flow</text>
+<path d="M295 2090 H340" stroke="#B48638" stroke-width="2.3" stroke-dasharray="7 6" marker-end="url(#warn)"/>
+<text x="356" y="2094" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#8A662B" text-anchor="start">Uncertain data → auto-aggregation; no human review gate</text>
+<text x="1100" y="2094" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#506B79" text-anchor="start">Time: top → bottom</text>
 </svg>
