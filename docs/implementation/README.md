@@ -53,6 +53,56 @@ anonimisasi data. `store=False` dan tracing nonaktif bukan jaminan zero-retentio
 seluruh layanan API. Checkpoint lokal mengandung kutipan sumber: lindungi folder
 output meskipun diabaikan Git. Tidak perlu membagikan key untuk debugging.
 
+## AgentRouter dan error 401
+
+API key AgentRouter **bukan** key dari `platform.openai.com`. Endpoint default
+`AsyncOpenAI` adalah API OpenAI resmi; mengirim key AgentRouter ke endpoint tersebut
+menimbulkan 401. Gunakan konfigurasi `.env`:
+
+```dotenv
+OPENAI_API_KEY=key_agentrouter_anda
+OPENAI_BASE_URL=https://co.agentrouter.org/v1
+OPENAI_API_MODE=chat_completions
+OPENAI_MODEL=gpt-5.5
+OPENAI_AGENTS_DISABLE_TRACING=1
+OPENAI_AGENTS_TRACE_INCLUDE_SENSITIVE_DATA=0
+```
+
+OpenAI-compatible AgentRouter memakai `/v1` dan Chat Completions, sedangkan
+Anthropic-compatible memakai URL tanpa `/v1`. Backend mendukung kedua bentuk
+OpenAI: `responses` (default saat direct OpenAI) dan `chat_completions` (default
+saat custom `OPENAI_BASE_URL`). `OPENAI_API_MODE` atau `llm.api_mode` di TOML
+mengoverride pemilihan otomatis. Ini **bukan** dukungan Anthropic-native Messages.
+
+Untuk mengecek autentikasi tanpa mengungkapkan key, dari root repo jalankan:
+
+```powershell
+@'
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+load_dotenv(override=False)
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"], base_url=os.environ["OPENAI_BASE_URL"])
+try:
+    result = client.models.list()
+    print("Connected; model entries:", len(result.data))
+except Exception as error:
+    print("Connection error:", type(error).__name__, "HTTP", getattr(error, "status_code", "n/a"))
+'@ | .\.venv\Scripts\python.exe -
+```
+
+Jika 401 masih muncul, verifikasi key pada dashboard AgentRouter, aktif/tidaknya
+key, serta apakah variabel `OPENAI_API_KEY` yang sudah diset di PowerShell menimpa
+nilai `.env`. Jangan menyalin key atau log header Authorization ke issue/chat.
+Tes `/models` hanya memeriksa akses endpoint; layanan dapat membatasi listing.
+Setelah autentikasi berhasil, `400` untuk `response_format/json_schema` berarti
+model/gateway belum mendukung Structured Outputs yang diperlukan schema Pydantic;
+pilih model/provider yang mendukung, jangan menonaktifkan validasi diam-diam.
+Belum ada bukti pengujian live terhadap AgentRouter pada lingkungan ini.
+
+Dokumentasi: https://co.agentrouter.org/portal/guide dan
+https://openai.github.io/openai-agents-python/models/#non-openai-models .
+
 ## Menjalankan sistem
 
 ```powershell
