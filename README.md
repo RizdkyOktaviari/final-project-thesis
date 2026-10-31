@@ -32,3 +32,10 @@ modifying the source evidence.
 ## Privasi korpus
 
 Dokumen di `data/` merupakan **salinan anonim untuk riset**, bukan BRD asli. Nama organisasi, aplikasi, dan narasumber diganti dengan label umum. Aset visual sumber tidak tersedia di cabang publik. Penghapusan pada revisi sekarang **tidak menghapus riwayat Git terdahulu**, sehingga repository ini tidak boleh dianggap telah bebas sepenuhnya dari paparan dokumen sebelumnya. Pastikan izin penggunaan dan publikasi korpus sebelum membagikannya.
+
+## Implementasi Python multi-agent
+
+[Mulai dari README Python](README-python.md) untuk setup API key lokal, menjalankan
+empat agent dan checker R1-R7, mengatur on/off tiap tahap dan log, serta membaca hasil.
+[Rincian implementasi dan batas metode](docs/implementation/README.md) menjelaskan
+checkpoint, evidence validation, data leakage boundary, dan cakupan prototype.

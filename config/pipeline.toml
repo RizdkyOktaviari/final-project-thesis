@@ -1,0 +1,67 @@
+# All relative paths refer to --root, not to this configuration file.
+output_dir = "outputs"
+max_source_chars = 120000
+max_paths = 128
+
+[llm]
+# By default, direct OpenAI uses Responses; a custom OPENAI_BASE_URL automatically
+# selects Chat Completions unless api_mode or OPENAI_API_MODE explicitly overrides it.
+# api_mode = "chat_completions"
+model = "gpt-4.1-mini"
+timeout_seconds = 120
+attempts = 3
+max_output_tokens = 10000
+tracing = false
+# temperature = 0.0  # Only for a model supporting this parameter.
+
+[llm.models]
+# agent3 = "model-id-enabled-in-your-api-project"
+
+[logging]
+enabled = true
+console = true
+jsonl = true
+level = "INFO"
+disabled_steps = []  # e.g. ["load", "agent2"]
+
+[stages.parse]
+enabled = true
+log_enabled = true
+
+[stages.agent1]
+enabled = true
+log_enabled = true
+
+[stages.validate]
+enabled = true
+log_enabled = true
+
+[stages.agent2]
+enabled = true
+log_enabled = true
+
+[stages.agent3]
+enabled = true
+log_enabled = true
+
+[stages.check]
+enabled = true
+log_enabled = true
+log_level = "DEBUG"
+
+[stages.aggregate]
+enabled = true
+log_enabled = true
+
+[stages.agent4]
+enabled = true
+log_enabled = true
+
+[rules]
+R1 = true
+R2 = true
+R3 = true
+R4 = true
+R5 = true
+R6 = true
+R7 = true
