@@ -21,29 +21,7 @@ notepad .env
 ```
 
 Isi `OPENAI_API_KEY` di `.env` lokal. Jangan kirim key ke chat, issue, PR, atau source.
-
-### AgentRouter (401 Unauthorized)
-
-AgentRouter adalah gateway pihak ketiga, bukan API OpenAI langsung. Jika key berasal
-AgentRouter, set **ketiganya** di `.env`:
-
-```dotenv
-OPENAI_API_KEY=key_agentrouter_anda
-OPENAI_BASE_URL=https://co.agentrouter.org/v1
-OPENAI_API_MODE=chat_completions
-OPENAI_MODEL=gpt-5.5
-```
-
-Pilih model ID yang tersedia di akun Anda. Model `gpt-5.5` hanya contoh dari
-panduan AgentRouter. Bila memakai key OpenAI resmi, hilangkan `OPENAI_BASE_URL`
-dan `OPENAI_API_MODE` agar menggunakan Responses API. `OPENAI_API_MODE` mengatasi
-gateway yang tidak menyediakan endpoint `/responses`; jangan mencampur protokol
-Anthropic tanpa `/v1` dengan OpenAI-compatible `/v1`.
-
-PowerShell dapat mewarisi environment variable lama yang mengalahkan `.env`.
-Pastikan `OPENAI_API_KEY` aktif sesuai provider, tanpa mencetak key ke terminal.
-Lihat [diagnostik dan tes koneksi](docs/implementation/README.md#agentrouter-dan-error-401).
-Pilih `OPENAI_MODEL` yang tersedia di project API Anda. Default `gpt-4.1-mini`
+Pilih `OPENAI_MODEL` yang tersedia di project API Anda. Default `gpt-5.6-sol`
 adalah pilihan awal yang dapat diganti, bukan klaim model terbaru atau terbaik.
 `.env` dan `outputs/` dikecualikan dari Git.
 

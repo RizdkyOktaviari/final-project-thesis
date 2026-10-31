@@ -7,7 +7,7 @@ max_paths = 128
 # By default, direct OpenAI uses Responses; a custom OPENAI_BASE_URL automatically
 # selects Chat Completions unless api_mode or OPENAI_API_MODE explicitly overrides it.
 # api_mode = "chat_completions"
-model = "gpt-4.1-mini"
+model = "gpt-5.6-sol"
 timeout_seconds = 120
 attempts = 3
 max_output_tokens = 10000

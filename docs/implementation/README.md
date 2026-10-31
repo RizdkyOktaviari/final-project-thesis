@@ -36,7 +36,7 @@ Isi `.env` lokal:
 
 ```dotenv
 OPENAI_API_KEY=isi_key_Anda_hanya_di_file_lokal
-OPENAI_MODEL=gpt-4.1-mini
+OPENAI_MODEL=gpt-5.6-sol
 OPENAI_AGENTS_DISABLE_TRACING=1
 OPENAI_AGENTS_TRACE_INCLUDE_SENSITIVE_DATA=0
 ```
