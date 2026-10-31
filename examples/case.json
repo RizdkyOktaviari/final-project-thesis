@@ -1,0 +1,13 @@
+{
+  "id": "DEMO",
+  "requirement_ids": ["REQ-DEMO-001", "REQ-DEMO-002"],
+  "requirement_files": ["examples/requirements.md"],
+  "diagram_file": "examples/sequence.mmd",
+  "contract": {
+    "scope_complete": true,
+    "allow_technical_refinement": true,
+    "closed_world": false,
+    "ordering": "shared_lifeline",
+    "assumptions": []
+  }
+}

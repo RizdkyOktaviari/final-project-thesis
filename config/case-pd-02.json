@@ -1,0 +1,13 @@
+{
+  "id": "SD-PD-02",
+  "requirement_ids": ["REQ-PD-003"],
+  "requirement_files": ["data/requirements text/10-ec-personal-data.md"],
+  "diagram_file": "data/sequence-diagrams/diagrams/SD-PD-02.mmd",
+  "contract": {
+    "scope_complete": false,
+    "allow_technical_refinement": true,
+    "closed_world": false,
+    "ordering": "shared_lifeline",
+    "assumptions": []
+  }
+}
