@@ -26,7 +26,8 @@ class OpenAIBackend:
 
     async def generate(self, stage: str, payload: dict, schema: type[T]) -> T:
         # Lazy imports keep offline parser/tests independent of API packages.
-        from agents import Agent, ModelSettings, OpenAIResponsesModel, RunConfig, Runner
+        from agents import (Agent, ModelSettings, OpenAIChatCompletionsModel,
+                            OpenAIResponsesModel, RunConfig, Runner)
         from openai import AsyncOpenAI
 
         key = os.getenv("OPENAI_API_KEY")
@@ -36,16 +37,28 @@ class OpenAIBackend:
         prompt = (Path(__file__).parent / "prompts" / f"{stage}.md").read_text(encoding="utf-8")
         request = json.dumps(jsonable(payload), ensure_ascii=False)
         for attempt in range(1, self.settings.attempts + 1):
-            self.log.emit(stage, "llm_request", attempt=attempt, model=model_name)
+            self.log.emit(stage, "llm_request", attempt=attempt, model=model_name,
+                          api_mode=self.settings.api_mode)
             try:
-                async with AsyncOpenAI(api_key=key, max_retries=0,
-                                       timeout=self.settings.timeout_seconds) as client:
+                # Explicit client: do not accidentally send a gateway key to api.openai.com.
+                # OPENAI_BASE_URL is required when OPENAI_API_KEY belongs to AgentRouter.
+                client_options = dict(api_key=key, max_retries=0,
+                                      timeout=self.settings.timeout_seconds)
+                if base_url := os.getenv("OPENAI_BASE_URL"):
+                    client_options["base_url"] = base_url
+                async with AsyncOpenAI(**client_options) as client:
+                    model_class = (OpenAIChatCompletionsModel
+                                   if self.settings.api_mode == "chat_completions"
+                                   else OpenAIResponsesModel)
+                    model_options = {"max_tokens": self.settings.max_output_tokens,
+                                     "temperature": self.settings.temperature}
+                    if self.settings.api_mode == "responses":
+                        model_options["store"] = False
                     agent = Agent(
                         name=stage, instructions=prompt,
-                        model=OpenAIResponsesModel(model=model_name, openai_client=client),
+                        model=model_class(model=model_name, openai_client=client),
                         output_type=schema,
-                        model_settings=ModelSettings(max_tokens=self.settings.max_output_tokens,
-                                                     store=False, temperature=self.settings.temperature),
+                        model_settings=ModelSettings(**model_options),
                     )
                     result = await asyncio.wait_for(
                         Runner.run(agent, request, max_turns=1, run_config=RunConfig(
@@ -76,8 +89,10 @@ class OpenAIBackend:
                 self.log.emit(stage, "llm_error", "ERROR", error_type=name,
                               http_status=status, attempt=attempt, retryable=retryable)
                 if not retryable or attempt == self.settings.attempts:
+                    guidance = ("check provider API key and OPENAI_BASE_URL"
+                                if status == 401 else "check model access, API quota and configuration")
                     raise RuntimeError(
-                        f"{stage} failed ({name}); check model access, API quota and configuration"
+                        f"{stage} failed ({name}, HTTP {status}); {guidance}"
                     ) from None
                 delay = min(2 ** (attempt - 1), 8)
                 self.log.emit(stage, "llm_retry", "WARNING", delay_seconds=delay)
