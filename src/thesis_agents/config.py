@@ -20,6 +20,7 @@ class StageSettings(Model):
 
 
 class LLMSettings(Model):
+    api_mode: Literal["responses", "chat_completions"] = "responses"
     model: str = "gpt-4.1-mini"
     models: dict[str, str] = Field(default_factory=dict)
     timeout_seconds: float = Field(default=120, gt=0, le=1800)
@@ -60,4 +61,10 @@ def load_settings(path: Path | None) -> Settings:
         raise ValueError(f"Unknown configuration names: {sorted(unknown)}")
     if model := os.getenv("OPENAI_MODEL"):
         result.llm.model = model
+    # Most OpenAI-compatible gateways expose Chat Completions rather than Responses.
+    # An explicit OPENAI_API_MODE or [llm].api_mode always takes precedence.
+    if mode := os.getenv("OPENAI_API_MODE"):
+        result.llm.api_mode = mode
+    elif os.getenv("OPENAI_BASE_URL") and "api_mode" not in data.get("llm", {}):
+        result.llm.api_mode = "chat_completions"
     return result
