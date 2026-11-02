@@ -20,7 +20,7 @@ class StageSettings(Model):
 
 
 class LLMSettings(Model):
-    model: str = "gpt-5.6-sol"
+    model: str = "gpt-6-astra"
     api_mode: Literal["responses", "chat_completions"] = "responses"
     models: dict[str, str] = Field(default_factory=dict)
     timeout_seconds: float = Field(default=120, gt=0, le=1800)

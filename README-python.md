@@ -21,7 +21,7 @@ notepad .env
 ```
 
 Isi `OPENAI_API_KEY` di `.env` lokal. Jangan kirim key ke chat, issue, PR, atau source.
-Pilih `OPENAI_MODEL` yang tersedia di project API Anda. Default `gpt-5.6-sol`
+Pilih `OPENAI_MODEL` yang tersedia di project API Anda. Default `gpt-6-astra`
 adalah pilihan awal yang dapat diganti, bukan klaim model terbaru atau terbaik.
 `.env` dan `outputs/` dikecualikan dari Git.
 

@@ -154,12 +154,12 @@ def test_environment_model_override(monkeypatch):
 
 def test_gateway_base_url_selects_chat_completions(monkeypatch):
     monkeypatch.delenv("OPENAI_API_MODE", raising=False)
-    monkeypatch.setenv("OPENAI_BASE_URL", "https://co.agentrouter.org/v1")
+    monkeypatch.setenv("OPENAI_BASE_URL", "https://agentrouter.org/")
     assert load_settings(ROOT / "config/pipeline.toml").llm.api_mode == "chat_completions"
 
 
 def test_explicit_responses_mode_overrides_gateway_default(monkeypatch):
-    monkeypatch.setenv("OPENAI_BASE_URL", "https://co.agentrouter.org/v1")
+    monkeypatch.setenv("OPENAI_BASE_URL", "https://agentrouter.org/")
     monkeypatch.setenv("OPENAI_API_MODE", "responses")
     assert load_settings(ROOT / "config/pipeline.toml").llm.api_mode == "responses"
 

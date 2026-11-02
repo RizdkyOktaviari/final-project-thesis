@@ -36,7 +36,7 @@ Isi `.env` lokal:
 
 ```dotenv
 OPENAI_API_KEY=isi_key_Anda_hanya_di_file_lokal
-OPENAI_MODEL=gpt-5.6-sol
+OPENAI_MODEL=gpt-6-astra
 OPENAI_AGENTS_DISABLE_TRACING=1
 OPENAI_AGENTS_TRACE_INCLUDE_SENSITIVE_DATA=0
 ```
@@ -61,7 +61,7 @@ menimbulkan 401. Gunakan konfigurasi `.env`:
 
 ```dotenv
 OPENAI_API_KEY=key_agentrouter_anda
-OPENAI_BASE_URL=https://co.agentrouter.org/v1
+OPENAI_BASE_URL=https://agentrouter.org/
 OPENAI_API_MODE=chat_completions
 OPENAI_MODEL=gpt-5.5
 OPENAI_AGENTS_DISABLE_TRACING=1
