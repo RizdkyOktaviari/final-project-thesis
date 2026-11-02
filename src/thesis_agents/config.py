@@ -20,6 +20,7 @@ class StageSettings(Model):
 
 
 class LLMSettings(Model):
+    backend: Literal["openai", "claude_cli"] = "openai"
     api_mode: Literal["responses", "chat_completions"] = "responses"
     model: str = "gpt-4.1-mini"
     models: dict[str, str] = Field(default_factory=dict)
@@ -59,6 +60,12 @@ def load_settings(path: Path | None) -> Settings:
     unknown |= set(result.llm.models) - {"agent1", "agent2", "agent3", "agent4"}
     if unknown:
         raise ValueError(f"Unknown configuration names: {sorted(unknown)}")
+    if backend := os.getenv("THESIS_LLM_BACKEND"):
+        result.llm.backend = backend
+    if result.llm.backend == "claude_cli":
+        if model := os.getenv("AGENT_ROUTER_MODEL"):
+            result.llm.model = model
+        return result
     if model := os.getenv("OPENAI_MODEL"):
         result.llm.model = model
     # Most OpenAI-compatible gateways expose Chat Completions rather than Responses.
