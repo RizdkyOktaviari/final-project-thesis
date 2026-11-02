@@ -11,6 +11,7 @@ from pydantic import BaseModel, ValidationError
 from .config import Settings
 from .dataset import load_inputs, numbered
 from .llm import Backend, OpenAIBackend
+from .backends.claude_cli import ClaudeCliBackend
 from .logging_utils import EventLog
 from .mermaid import parse
 from .models import Alignment, Checks, Diagram, Narrative, Report, Specification, Validation, Verification
@@ -34,7 +35,11 @@ class Pipeline:
         self.directory = self.root / settings.output_dir / self.run_id
         self.directory.mkdir(parents=True, exist_ok=False)
         self.log = EventLog(self.directory, self.run_id, settings)
-        self.backend = backend or OpenAIBackend(settings.llm, self.log)
+        self.backend = backend or (
+            ClaudeCliBackend(settings.llm, self.log)
+            if settings.llm.backend == "claude_cli"
+            else OpenAIBackend(settings.llm, self.log)
+        )
         self.code_digest = implementation_digest()
         self.current_stage = "load"
         self.metadata = {
