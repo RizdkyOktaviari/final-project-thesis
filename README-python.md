@@ -103,3 +103,41 @@ Unit test memakai fixture buatan, bukan prediksi LLM atau ukuran akurasi tesis.
 Test SDK berjalan ketika dependency terpasang. Pengujian API langsung, gold-standard
 annotation, precision/recall, baseline, dan ablation adalah eksperimen terpisah.
 Narasi Agent 4 tidak mengubah keputusan deteksi kanonis.
+
+
+## AgentRouter via Claude Code CLI (tested connection path)
+
+The previous Python OpenAI Agents SDK integration can be rejected by AgentRouter as an
+unsupported client (HTTP 401). A new optional `claude_cli` backend uses the installed
+Claude Code CLI as a supported client. Python still controls all four agent stages,
+Mermaid parsing, IR validation, R1–R7 rules, checkpointing and reporting.
+
+1. Install Claude Code CLI, verify `claude --version`, and first verify your
+   AgentRouter account supports the selected model. Do not commit credentials.
+2. In your local `.env` set:
+
+```dotenv
+THESIS_LLM_BACKEND=claude_cli
+AGENT_ROUTER_TOKEN=your_private_token
+AGENT_ROUTER_BASE_URL=https://agentrouter.org
+AGENT_ROUTER_MODEL=gpt-5.6-sol
+```
+
+3. Run the existing orchestration with the new backend:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m thesis_agents.cli run --case examples/case.json --until agent1
+.\.venv\Scripts\python.exe -m thesis_agents.cli run --case config/case-pd-02.json
+```
+
+Each agent is a separate CLI call with `--tools ""`, a stage-specific system
+prompt, input JSON sent through stdin and JSON/Pydantic validation. The adapter
+keeps the input out of command-line arguments and does not log API keys or raw
+provider output. Stage retries are bounded; authorization failures fail fast.
+
+**Important:** The previously successful `Reply with exactly OK` check proves
+connectivity only. It does not verify that all models support schema-sized outputs
+or that the full four-agent thesis pipeline has succeeded. Run an Agent 1 case
+first and inspect `outputs/<run-id>/` before running the full pipeline. This is
+Claude Code CLI orchestration, not native OpenAI Agents SDK compatibility.
